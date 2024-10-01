@@ -1,0 +1,62 @@
+[
+    {
+        "constituencyID": "1",
+        "Name": "Uttarahalli",
+        "Details": "Uttarahalli, previously one of Karnataka's largest constituencies, was split into smaller areas like Padmanabhanagar after 2008. Now part of Bangalore South, the region focuses on infrastructure improvements and lake management, including Gubbalala and Subramanyapura lakes. Key issues include road development and pollution control.",
+        "constituencyPic":"1.jpg"
+    },
+    {
+        "constituencyID": "2",
+        "Name": "Jayanagar",
+        "Details": "Jayanagar is an established residential and commercial area in South Bengaluru, known for its well-planned layout and green spaces. The constituency emphasizes civic amenities, traffic management, and preservation of parks while addressing issues related to urbanization and public transport.",
+        "constituencyPic":"2.jpg"
+    },
+    {
+        "constituencyID": "3",
+        "Name": "Basavanagudi",
+        "Details": "Basavanagudi, located in South Bengaluru, is a historic constituency known for landmarks like Bull Temple. The constituency faces challenges in maintaining its old-world charm while ensuring modern amenities like road maintenance, waste management, and improved water supply.",
+        "constituencyPic":"3.jpg"
+    },
+    {
+        "constituencyID": "4",
+        "Name": "Padmanabhanagar",
+        "Details": "Padmanabhanagar, carved out of Uttarahalli, is a suburban constituency in Bengaluru focusing on infrastructure expansion. Issues such as traffic congestion, road connectivity, and drainage systems remain key concerns as the region develops rapidly.",
+        "constituencyPic":"4.jpg"
+    },
+    {
+        "constituencyID": "5",
+        "Name": "Chickpet",
+        "Details": "Chickpet, located in central Bengaluru, is known for its bustling commercial activity. The constituency's main focus is on improving market conditions, traffic regulation, and waste management in one of the city’s oldest business hubs.",
+        "constituencyPic":"5.jpg"
+    },
+    {
+        "constituencyID": "6",
+        "Name": "Rajajinagar",
+        "Details": "Rajajinagar is a well-developed constituency in West Bengaluru. With a mix of residential and industrial areas, the constituency focuses on infrastructure development, civic amenities, and resolving traffic bottlenecks while preserving its residential charm.",
+        "constituencyPic":"6.jpg"
+    },
+    {
+        "constituencyID": "7",
+        "Name": "Hebbal",
+        "Details": "Hebbal, located in North Bengaluru, is a growing area with a mix of residential and commercial spaces. Known for its lake, Hebbal’s issues include road congestion, infrastructure expansion, and ensuring sustainable urban development.",
+        "constituencyPic":"7.jpg"
+    },
+    {
+        "constituencyID": "8",
+        "Name": "Shivajinagar",
+        "Details": "Shivajinagar is a densely populated central constituency in Bengaluru. The area faces challenges related to congestion, public transport improvement, and maintaining public spaces amidst rapid urbanization.",
+        "constituencyPic":"8.jpg"
+    },
+    {
+        "constituencyID": "9",
+        "Name": "Malleshwaram",
+        "Details": "Malleshwaram, a historic area in Bengaluru, is known for its cultural heritage and parks. The constituency focuses on maintaining its greenery, improving waste management, and upgrading public infrastructure while preserving its traditional charm.",
+        "constituencyPic":"9.jpg"
+    },
+    {
+        "constituencyID": "10",
+        "Name": "Yeshwanthpur",
+        "Details": "Yeshwanthpur, in North Bengaluru, is a key industrial and residential hub. The constituency's challenges include addressing industrial pollution, improving road infrastructure, and resolving traffic issues while supporting its growing population.",
+        "constituencyPic":"10.jpg"
+    }
+]
