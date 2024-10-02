@@ -1,6 +1,7 @@
 [
     {
         "adminID":"9856746",
+        "Password":"Navaneeth",
         "Name":"Navaneeth N",
         "Email":"navaneethnaren6@gmail.com",
         "DOB":"2003-10-15",
@@ -9,6 +10,7 @@
     },
     {
         "adminID":"3765443",
+        "Password":"Prarthana",
         "Name":"Prarthana R",
         "Email":"prarthanar1305@gmail.com",
         "DOB":"2003-05-13",
@@ -17,6 +19,7 @@
     },
     {
         "adminID":"7676643",
+        "Password":"Rahul",
         "Name":"Rahul G Athreyas",
         "Email":"rahulgathreyas1408@gmail.com",
         "DOB":"2003-08-14",

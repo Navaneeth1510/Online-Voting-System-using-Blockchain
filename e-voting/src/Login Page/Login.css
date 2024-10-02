@@ -1,3 +1,8 @@
-.rounded-4 {
-    border-radius: var(--bs-border-radius-xxl) !important;
+.login-page{
+    .rounded-4 {
+        border-radius: var(--bs-border-radius-xxl) !important;
+    }
+    .btn-link{
+        --bs-btn-hover-bg: #{shade-color($bd-white, 0%)};
+    }
 }

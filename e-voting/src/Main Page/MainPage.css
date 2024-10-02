@@ -1,0 +1,12 @@
+
+.main-page{
+    .fs-1 {
+        font-size: 5rem !important;
+    }
+    .ms-5 {
+        margin-left: 12rem !important;
+    }
+    .ms-4 {
+        margin-left: 25rem !important;
+    }
+}

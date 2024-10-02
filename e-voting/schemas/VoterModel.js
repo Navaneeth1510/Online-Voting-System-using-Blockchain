@@ -7,6 +7,10 @@ const voterSchema = mongoose.Schema(
             required: true,
             unique: true, 
         },
+        Password:{
+            type:String,
+            required: true,
+        },
         Name: {
             type: String,
             required: true,
