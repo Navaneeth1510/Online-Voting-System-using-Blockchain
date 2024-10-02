@@ -1,9 +1,10 @@
 //MainPage.jsx
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import VotingImage from './VotingImage';
 import Side from '../Side_panel/Side';
 import './MainPage.css'; 
+import { FaArrowRight } from 'react-icons/fa';
+
 import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
@@ -30,7 +31,7 @@ const MainPage = () => {
                     style={{ backgroundColor: '#6610f2',color:'white' }} 
                     onClick={handleGetStarted}
                 >
-                    Get Started
+                    Get Started <FaArrowRight />
                 </button>
             </div>
         </div>

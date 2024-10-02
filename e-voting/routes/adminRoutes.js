@@ -18,7 +18,7 @@ router.get('/:id/:pass', async (request, response) => {
         const { id, pass } = request.params;
         const admin = await Admin.findOne({ adminID: id, Password: pass });
         if (!admin) {
-            return response.status(404).json({ message: 'Voter not found' });
+            return response.status(404).json({ message: 'Admin not found' });
         }
         return response.status(200).send(admin);
     } catch (err) {

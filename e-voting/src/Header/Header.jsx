@@ -7,7 +7,7 @@ function Header() {
 
     return (
         <>
-            <div className="row align-items-center border border-dark" style={{ height: '100%' }}>
+            <div className="row align-items-center border-bottom border-dark" style={{ height: '100%' }}>
                 <div className="col-4 d-flex align-items-center">
                     <img src="src/assets/e-voting-header.png" className="img-fluid ms-3 p-2" style={{width:"25%"}}/>
                 </div>

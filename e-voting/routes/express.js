@@ -3,6 +3,7 @@ import {mongoDBURL, PORT} from "./MongoDB.js";
 import mongoose from "mongoose";
 import voterRoutes from './voterRoutes.js'
 import adminRoutes from './adminRoutes.js'
+import constRoutes from './constRoutes.js'
 import cors from 'cors';
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/voter',voterRoutes);
 app.use('/admin',adminRoutes);
+app.use('/const',constRoutes);
 
 
 mongoose
