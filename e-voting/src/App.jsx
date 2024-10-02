@@ -34,7 +34,7 @@ function App() {
       <Route path='/login' element={<Login voterData={voterData} setVoterData={setVoterData} setConstData={setConstData}/>}/>
       <Route path='/header' element={<Header />}/>
       <Route path='/constituency' element={<Constituency voter={voterData} constituency={constData} setVoterData={setVoterData} setConstData={setConstData}/>}/>
-      <Route path='/voter-details' element={<VoterDetails voter={voterData} const={constData}/>}/>
+      <Route path='/voter-details' element={<VoterDetails voter={voterData} constituency={constData} setVoterData={setVoterData} setConstData={setConstData}/>}/>
     </Routes>
   )
 }
