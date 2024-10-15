@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaEye, FaEyeSlash } from 'react-icons/fa';
 
-function Login({voterData, setVoterData, setConstData}) {
+function Login({voterData, setVoterData, adminData, setAdminData, setConstData}) {
     const navigate = useNavigate();
 
 
@@ -64,6 +64,8 @@ function Login({voterData, setVoterData, setConstData}) {
             }
             const data = await response.json();
             console.log(data);
+            setAdminData(data);
+            navigate('/otp-authentication');
         } catch (error) {
             console.error('Error:', error.message);
         }
