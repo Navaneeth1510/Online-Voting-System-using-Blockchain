@@ -7,6 +7,9 @@ import Constituency from './ConstituencyPage/Constituency'
 import VoterDetails from './Voter-Details/Voter-Details';
 import AdminOTP from './Otp-adminpage/AdminOTP';
 import Admin from './Admin/Admin';
+import AdminSide from './Admin-side/AdminPanel';
+import Side from './Side_panel/Side';
+import logout from './Header_Logout/Logout_trial';
 
 
 function App() {
@@ -41,15 +44,26 @@ function App() {
     localStorage.setItem("constData", JSON.stringify(constData))
   },[constData])
 
+  const props = {
+    voterData:voterData,
+    adminData:adminData,
+    constData:constData,
+    setAdminData:setAdminData,
+    setVoterData:setVoterData,
+    setConstData:setConstData,
+  }
   return (
     <Routes>
       <Route path='/' element={<MainPage />}/>
-      <Route path='/login' element={<Login voterData={voterData} setVoterData={setVoterData} adminData={adminData} setAdminData={setAdminData}  setConstData={setConstData}/>}/>
+      <Route path='/login' element={<Login props={props}/>}/>
       <Route path='/header' element={<Header />}/>
-      <Route path='/constituency' element={<Constituency voter={voterData} constituency={constData} setVoterData={setVoterData} setConstData={setConstData}/>}/>
-      <Route path='/voter-details' element={<VoterDetails voter={voterData} constituency={constData} setVoterData={setVoterData} setConstData={setConstData}/>}/>
-      <Route path='/otp-authentication' element={<AdminOTP admin={adminData} />}/>
-      <Route path='/admin' element={<Admin admin={adminData} />}/>
+      <Route path='/side' element={<Side />}/>
+      <Route path='/constituency' element={<Constituency props={props}/>}/>
+      <Route path='/voter-details' element={<VoterDetails props={props}/>}/>
+      <Route path='/otp-authentication' element={<AdminOTP props={props} />}/>
+      <Route path='/side-admin' element={<AdminSide props={props} />}/>
+      <Route path='/admin' element={<Admin props={props} />}/>
+      <Route path='/logout' element={<logout props={props}/>}/>
     </Routes>
   )
 }

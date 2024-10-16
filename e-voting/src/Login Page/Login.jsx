@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaEye, FaEyeSlash } from 'react-icons/fa';
 
-function Login({voterData, setVoterData, adminData, setAdminData, setConstData}) {
+function Login({props}) {
     const navigate = useNavigate();
 
 
@@ -24,7 +24,7 @@ function Login({voterData, setVoterData, adminData, setAdminData, setConstData})
             }
             const data = await response.json();
             console.log(data);
-            setVoterData(data);
+            props.setVoterData(data);
             const constituncy = data.ConstituencyID;
             console.log('constituency id : ',constituncy)
             try {
@@ -33,12 +33,14 @@ function Login({voterData, setVoterData, adminData, setAdminData, setConstData})
                     throw new Error('Constituency not found');
                 }
                 const data = await response.json();
-                setConstData(data);
+                console.log(data);
+                props.setConstData(data);
+                console.log('const set');
+                navigate('/constituency');
     
             } catch (error) {
                 console.error('Error:', error.message);
             }
-            navigate('/constituency')
 
         } catch (error) {
             console.error('Error:', error.message);
@@ -64,7 +66,7 @@ function Login({voterData, setVoterData, adminData, setAdminData, setConstData})
             }
             const data = await response.json();
             console.log(data);
-            setAdminData(data);
+            props.setAdminData(data);
             navigate('/otp-authentication');
         } catch (error) {
             console.error('Error:', error.message);

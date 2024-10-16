@@ -6,7 +6,8 @@
         "Email":"navaneethnaren6@gmail.com",
         "DOB":"2003-10-15",
         "Address":"11, Krishnanagar, Dr.Vishnuvardhana Road, Bengaluru-560061",
-        "AdminPic":"nava.png"
+        "AdminPic":"nava.png",
+        "isAdmin":true
     },
     {
         "adminID":"3765443",
@@ -15,7 +16,8 @@
         "Email":"prarthanar1305@gmail.com",
         "DOB":"2003-05-13",
         "Address":"11, Krishnanagar, Dr.Vishnuvardhana Road, Bengaluru-560061",
-        "AdminPic":"nava.png"
+        "AdminPic":"nava.png",
+        "isAdmin":true
     },
     {
         "adminID":"7676643",
@@ -24,6 +26,18 @@
         "Email":"rahulgathreyas1408@gmail.com",
         "DOB":"2003-08-14",
         "Address":"11, Krishnanagar, Dr.Vishnuvardhana Road, Bengaluru-560061",
-        "AdminPic":"nava.png"
+        "AdminPic":"nava.png",
+        "isAdmin":true
+    },
+    
+    {
+        "adminID":"7777777",
+        "Password":"Namratha",
+        "Name":"Namratha N",
+        "Email":"namrathanren6@@gmail.com",
+        "DOB":"1998-03-04",
+        "Address":"11, Krishnanagar, Dr.Vishnuvardhana Road, Bengaluru-560061",
+        "AdminPic":"nava.png",
+        "isAdmin":true
     }
 ]

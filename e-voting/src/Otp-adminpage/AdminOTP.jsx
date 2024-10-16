@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import otp from '../../otp-gen/otp';
 
 
-function AdminOTP({admin}){
+function AdminOTP({props}){
     const navigate = useNavigate();
     const [adminotp, setotp] = useState("");
     
@@ -26,7 +26,7 @@ function AdminOTP({admin}){
     async function sendotp(){
         console.log("Sending the otp");
         try {
-            const response = await fetch(`http://localhost:5000/email/send-otp/${admin.Name}/${admin.Email}/${otp}`);
+            const response = await fetch(`http://localhost:5000/email/send-otp/${props.adminData.Name}/${props.adminData.Email}/${otp}`);
             if (!response.ok) {
                 throw new Error('Couldnt send email');
             }
@@ -46,7 +46,7 @@ function AdminOTP({admin}){
                     <div className="row mt-5">
                         <div className="col-6 shadow-sm card border rounded-5 ms-5 ps-5 pt-5 pb-5">
                             <h1 className="mb-4" style={{ color: '#5522D0' }}>OTP Authentication</h1>
-                            <p>An OTP has been sent to "<span style={{fontWeight:"bold"}}>{admin.Email}</span>"</p>
+                            <p>An OTP has been sent to "<span style={{fontWeight:"bold"}}>{props.adminData.Email}</span>"</p>
                             <div className="row">
                                 <div className="col-1"></div>
                                 <div className="col-11">

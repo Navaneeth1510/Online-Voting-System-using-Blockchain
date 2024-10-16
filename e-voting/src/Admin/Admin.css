@@ -1,0 +1,8 @@
+.admin-row .control {
+    background-color: #436fb5;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.admin-row .control:hover {
+    background-color: #5522D0 !important; /* Hover color with !important to override Bootstrap */
+}
