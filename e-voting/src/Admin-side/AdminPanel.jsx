@@ -1,6 +1,6 @@
 import './AdminPanel.css'
-function AdminSide({props}){
-    const imageurl = props.adminData.AdminPic
+function AdminSide({admin}){
+    const imageurl = admin.adminData.AdminPic
     console.log(imageurl);
 
     return (
@@ -9,7 +9,7 @@ function AdminSide({props}){
                 <div className="p-3 info" style={{alignItems:"center", marginTop:"-4rem"}}>
                     <div className="info-box h-50">
                         <div className="name border-bottom border-dark" style={{alignItems:"center" ,textAlign:"center"}}>
-                            <h2 className="">{props.adminData.Name}</h2>
+                            <h2 className="">{admin.adminData.Name}</h2>
                         </div>                        
                         <div className="card mt-5" style={{backgroundColor:'#e4dcf8', border:'none'}}>
                             <div className="image img-fluid center" style={{textAlign:"center",alignItems:"center"}}>
@@ -30,10 +30,10 @@ function AdminSide({props}){
                                         <p>:</p>
                                     </div>
                                     <div className="col-8">
-                                        <p>{props.adminData.adminID}</p>
-                                        <p>{props.adminData.Email}</p>
-                                        <p>{props.adminData.DOB}</p>
-                                        <p>{props.adminData.Address}</p>
+                                        <p>{admin.adminData.adminID}</p>
+                                        <p>{admin.adminData.Email}</p>
+                                        <p>{admin.adminData.DOB}</p>
+                                        <p>{admin.adminData.Address}</p>
                                     </div>
                                 </div>
                             </div>

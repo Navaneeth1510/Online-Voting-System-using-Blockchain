@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import './Header_Logout.css';
 import { useNavigate } from 'react-router-dom';
 
 function HeaderLogout({props, user}) {
@@ -16,7 +17,7 @@ function HeaderLogout({props, user}) {
     }
     return (
         <>
-            <div className="row align-items-center border-bottom border-dark" style={{ height: '100%' }}>
+            <div className="row hl shadow-sm align-items-center " style={{ height: '100%' }}>
                 <div className="col-4 d-flex align-items-center">
                     <img src="src/assets/e-voting-header.png" className="img-fluid ms-3 p-2" style={{width:"25%"}}/>
                 </div>

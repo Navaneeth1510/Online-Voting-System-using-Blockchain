@@ -1,11 +1,10 @@
 import Side from "../Side_panel/Side"
-import Constituency from "../ConstituencyPage/Constituency";
 import './Login.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaEye, FaEyeSlash } from 'react-icons/fa';
 
-function Login({props}) {
+function Login({voter, admin}) {
     const navigate = useNavigate();
 
 
@@ -23,8 +22,7 @@ function Login({props}) {
                 throw new Error('Voter not found');
             }
             const data = await response.json();
-            console.log(data);
-            props.setVoterData(data);
+            voter.setVoterData(data);
             const constituncy = data.ConstituencyID;
             console.log('constituency id : ',constituncy)
             try {
@@ -33,9 +31,7 @@ function Login({props}) {
                     throw new Error('Constituency not found');
                 }
                 const data = await response.json();
-                console.log(data);
-                props.setConstData(data);
-                console.log('const set');
+                voter.setConstData(data);
                 navigate('/constituency');
     
             } catch (error) {
@@ -66,7 +62,7 @@ function Login({props}) {
             }
             const data = await response.json();
             console.log(data);
-            props.setAdminData(data);
+            admin.setAdminData(data);
             navigate('/otp-authentication');
         } catch (error) {
             console.error('Error:', error.message);

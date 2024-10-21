@@ -1,0 +1,403 @@
+[
+  {
+    "candidateID": "12435",
+    "candidateName": "Amit Sharma",
+    "constituencyID": 1,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_1.jpg"
+  },
+  {
+    "candidateID": "23456",
+    "candidateName": "Neha Verma",
+    "constituencyID": 1,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_2.jpg"
+  },
+  {
+    "candidateID": "98345",
+    "candidateName": "Rahul Mehta",
+    "constituencyID": 1,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_3.jpg"
+  },
+  {
+    "candidateID": "56478",
+    "candidateName": "Priya Nair",
+    "constituencyID": 1,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_4.jpg"
+  },
+  {
+    "candidateID": "34521",
+    "candidateName": "Anjali Gupta",
+    "constituencyID": 1,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_5.jpg"
+  },
+  {
+    "candidateID": "76543",
+    "candidateName": "Sanjay Patel",
+    "constituencyID": 2,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_6.jpg"
+  },
+  {
+    "candidateID": "12398",
+    "candidateName": "Meena Desai",
+    "constituencyID": 2,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_7.jpg"
+  },
+  {
+    "candidateID": "98342",
+    "candidateName": "Arjun Reddy",
+    "constituencyID": 2,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_8.jpg"
+  },
+  {
+    "candidateID": "19284",
+    "candidateName": "Lakshmi Iyer",
+    "constituencyID": 2,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_9.jpg"
+  },
+  {
+    "candidateID": "65782",
+    "candidateName": "Pooja Chawla",
+    "constituencyID": 2,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_10.jpg"
+  },
+  {
+    "candidateID": "24567",
+    "candidateName": "Vikram Singh",
+    "constituencyID": 3,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_11.jpg"
+  },
+  {
+    "candidateID": "48273",
+    "candidateName": "Kavita Rao",
+    "constituencyID": 3,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_12.jpg"
+  },
+  {
+    "candidateID": "98654",
+    "candidateName": "Manish Kapoor",
+    "constituencyID": 3,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_13.jpg"
+  },
+  {
+    "candidateID": "76532",
+    "candidateName": "Shreya Pillai",
+    "constituencyID": 3,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_14.jpg"
+  },
+  {
+    "candidateID": "36489",
+    "candidateName": "Rohan Bhatia",
+    "constituencyID": 3,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_15.jpg"
+  },
+  {
+    "candidateID": "56987",
+    "candidateName": "Ajay Narang",
+    "constituencyID": 4,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_16.jpg"
+  },
+  {
+    "candidateID": "49372",
+    "candidateName": "Divya Sharma",
+    "constituencyID": 4,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_17.jpg"
+  },
+  {
+    "candidateID": "17523",
+    "candidateName": "Ravi Jain",
+    "constituencyID": 4,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_18.jpg"
+  },
+  {
+    "candidateID": "98432",
+    "candidateName": "Sonal Patil",
+    "constituencyID": 4,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_19.jpg"
+  },
+  {
+    "candidateID": "67293",
+    "candidateName": "Varun Kaur",
+    "constituencyID": 4,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_20.jpg"
+  },
+  {
+    "candidateID": "54678",
+    "candidateName": "Rajesh Kumar",
+    "constituencyID": 5,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_21.jpg"
+  },
+  {
+    "candidateID": "67219",
+    "candidateName": "Meera Iyer",
+    "constituencyID": 5,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_22.jpg"
+  },
+  {
+    "candidateID": "81245",
+    "candidateName": "Vikash Singh",
+    "constituencyID": 5,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_23.jpg"
+  },
+  {
+    "candidateID": "91845",
+    "candidateName": "Sakshi Chauhan",
+    "constituencyID": 5,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_24.jpg"
+  },
+  {
+    "candidateID": "62389",
+    "candidateName": "Rohit Nair",
+    "constituencyID": 5,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_25.jpg"
+  },
+  {
+    "candidateID": "73248",
+    "candidateName": "Anita Desai",
+    "constituencyID": 6,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_26.jpg"
+  },
+  {
+    "candidateID": "89563",
+    "candidateName": "Prashant Bhardwaj",
+    "constituencyID": 6,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_27.jpg"
+  },
+  {
+    "candidateID": "92734",
+    "candidateName": "Simran Kaur",
+    "constituencyID": 6,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_28.jpg"
+  },
+  {
+    "candidateID": "76589",
+    "candidateName": "Deepak Chandra",
+    "constituencyID": 6,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_29.jpg"
+  },
+  {
+    "candidateID": "84567",
+    "candidateName": "Pooja Srinivas",
+    "constituencyID": 6,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_30.jpg"
+  },
+  {
+    "candidateID": "95234",
+    "candidateName": "Manoj Patel",
+    "constituencyID": 7,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_31.jpg"
+  },
+  {
+    "candidateID": "72345",
+    "candidateName": "Shruti Sharma",
+    "constituencyID": 7,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_32.jpg"
+  },
+  {
+    "candidateID": "56894",
+    "candidateName": "Abhishek Singh",
+    "constituencyID": 7,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_33.jpg"
+  },
+  {
+    "candidateID": "13456",
+    "candidateName": "Ritika Verma",
+    "constituencyID": 7,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_34.jpg"
+  },
+  {
+    "candidateID": "76823",
+    "candidateName": "Vishal Gupta",
+    "constituencyID": 7,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_35.jpg"
+  },
+  {
+    "candidateID": "63487",
+    "candidateName": "Anil Nair",
+    "constituencyID": 8,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_36.jpg"
+  },
+  {
+    "candidateID": "89243",
+    "candidateName": "Sneha Rao",
+    "constituencyID": 8,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_37.jpg"
+  },
+  {
+    "candidateID": "76542",
+    "candidateName": "Vishal Kulkarni",
+    "constituencyID": 8,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_38.jpg"
+  },
+  {
+    "candidateID": "94823",
+    "candidateName": "Rani Jain",
+    "constituencyID": 8,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_39.jpg"
+  },
+  {
+    "candidateID": "83746",
+    "candidateName": "Manisha Sharma",
+    "constituencyID": 8,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_40.jpg"
+  },
+  {
+    "candidateID": "95783",
+    "candidateName": "Gopal Krishna",
+    "constituencyID": 9,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_41.jpg"
+  },
+  {
+    "candidateID": "76245",
+    "candidateName": "Shweta Verma",
+    "constituencyID": 9,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_42.jpg"
+  },
+  {
+    "candidateID": "83456",
+    "candidateName": "Raghav Mishra",
+    "constituencyID": 9,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_43.jpg"
+  },
+  {
+    "candidateID": "95432",
+    "candidateName": "Komal Bhat",
+    "constituencyID": 9,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_44.jpg"
+  },
+  {
+    "candidateID": "76895",
+    "candidateName": "Arvind Kumar",
+    "constituencyID": 9,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_45.jpg"
+  },
+  {
+    "candidateID": "62354",
+    "candidateName": "Vivek Reddy",
+    "constituencyID": 10,
+    "partyName": "Unity Front",
+    "partyPic": "UF.jpg",
+    "candidatePic": "candidate_pic_46.jpg"
+  },
+  {
+    "candidateID": "98723",
+    "candidateName": "Nisha Malhotra",
+    "constituencyID": 10,
+    "partyName": "Progressive Alliance",
+    "partyPic": "PA.jpg",
+    "candidatePic": "candidate_pic_47.jpg"
+  },
+  {
+    "candidateID": "74829",
+    "candidateName": "Rakesh Shetty",
+    "constituencyID": 10,
+    "partyName": "People's Voice",
+    "partyPic": "PV.jpg",
+    "candidatePic": "candidate_pic_48.jpg"
+  },
+  {
+    "candidateID": "84639",
+    "candidateName": "Shilpa Desai",
+    "constituencyID": 10,
+    "partyName": "Nation Builders",
+    "partyPic": "NB.jpg",
+    "candidatePic": "candidate_pic_49.jpg"
+  },
+  {
+    "candidateID": "93485",
+    "candidateName": "Vikram Menon",
+    "constituencyID": 10,
+    "partyName": "Future Vision Party",
+    "partyPic": "FVP.jpg",
+    "candidatePic": "candidate_pic_50.jpg"
+  }
+]
+

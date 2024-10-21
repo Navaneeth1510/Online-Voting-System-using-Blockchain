@@ -1,0 +1,51 @@
+.voting{
+    .fs-6 {
+        font-size: 0.8rem !important;
+    }
+}
+.fs{
+    font-size: 01rem !important;
+}
+.evm-body{
+    .shadow-sm {
+        box-shadow: 3px 3px 5px  rgb(186, 184, 184) !important;
+    }
+}
+.vote{
+    .shadow-sm {
+        box-shadow: 3px 3px 5px  rgb(186, 184, 184) !important;
+    }
+}
+.radiobtn {
+    display: none; 
+}
+
+.custom-radio {
+    display: inline-block;
+    width: 10vh; 
+    height: 6vh; 
+    border: 2px solid #000; 
+    position: center;
+    cursor: pointer;
+}
+
+.radiobtn:checked + .custom-radio {
+    background-color: #5522D0; 
+    border-color: #0056b3; 
+}
+
+.custom-radio:after {
+    content: '';
+    display: none;
+}
+.radiobtn:checked + .custom-radio:after {
+    content: ''; 
+    position: center;
+    top: 3px; 
+    left: 3px; 
+    width: 14px;
+    height: 14px; 
+    border-radius: 50%;
+    background: white; 
+}
+

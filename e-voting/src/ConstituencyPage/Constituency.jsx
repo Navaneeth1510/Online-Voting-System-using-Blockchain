@@ -3,17 +3,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderLogout from '../Header_Logout/Header_Logout';
 import { useNavigate } from 'react-router-dom';
 import './Constituency.css'
-function Constituency({ props }) {
-    const uri = props.constData.constituencyPic;
+function Constituency({ voter, candi }) {
+    const uri = voter.constData.constituencyPic;
     console.log(uri);
     const navigate = useNavigate();
-    function nextbutton(){
-        navigate('/voter-details');
+    async function nextbutton(){
+        try {
+            const id = voter.voterData.ConstituencyID;
+            console.log(`http://localhost:5000/candi/${voter.voterData.ConstituencyID}`);
+            const response = await fetch(`http://localhost:5000/candi/${voter.voterData.ConstituencyID}`);
+            if (!response.ok) {
+                throw new Error('Candidates not found');
+            }
+            const data = await response.json();
+            candi.setCandiData(data);
+            navigate('/voting');
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     }
     return (
         <>  
             <div className='row mb-0 h-100'>
-                <HeaderLogout props={props}/>
+                <HeaderLogout props={voter} user={voter.voterData}/>
             </div>
             <div className='row overflow-hidden const'  style={{height:"auto"}}>
                 <div className='col-4 border-end border-dark align-items-center justify-content-center' style={{background:"#e4dcf8"}}>
@@ -25,14 +37,14 @@ function Constituency({ props }) {
                 </div>
                 <div className='col-8'>
                     <div className="row" style={{height:"20vh"}}>
-                        <h1 className="mt-5 ms-5 fs-1" style={{color:"#5522D0"}}>{props.constData.Name}</h1>
+                        <h1 className="mt-5 ms-5 fs-1" style={{color:"#5522D0"}}>{voter.constData.Name}</h1>
                     </div>
 
                     <div className="row" style={{height:"75vh"}}>
                         <div className='row m-5'>
                             <div className='col-1'></div>
                             <div className='col-10'>
-                                <h4>{props.constData.Details}</h4>
+                                <h4>{voter.constData.Details}</h4>
                             </div>
                             <div className='col-1'></div>
                         </div>

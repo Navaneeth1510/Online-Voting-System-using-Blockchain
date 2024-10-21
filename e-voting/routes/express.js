@@ -5,6 +5,7 @@ import voterRoutes from './voterRoutes.js'
 import adminRoutes from './adminRoutes.js'
 import constRoutes from './constRoutes.js'
 import emailRoutes from './mail_setup.js'
+import candiRoutes from './candiRoutes.js';
 import cors from 'cors';
 
 const app = express();
@@ -16,6 +17,7 @@ app.use('/voter',voterRoutes);
 app.use('/admin',adminRoutes);
 app.use('/const',constRoutes);
 app.use('/email',emailRoutes);
+app.use('/candi',candiRoutes);
 
 
 mongoose

@@ -1,0 +1,28 @@
+[
+    {
+      "partyID": "1",
+      "partyName": "Unity Front",
+      "partyPic": "UF.jpg"
+    },
+    {
+      "partyID": "2",
+      "partyName": "Progressive Alliance",
+      "partyPic": "PA.jpg"
+    },
+    {
+      "partyID": "3",
+      "partyName": "People's Voice",
+      "partyPic": "PV.jpg"
+    },
+    {
+      "partyID": "4",
+      "partyName": "Nation Builders",
+      "partyPic": "NB.jpg"
+    },
+    {
+      "partyID": "5",
+      "partyName": "Future Vision Party",
+      "partyPic": "FVP.jpg"
+    }
+  ]
+  
