@@ -20,7 +20,7 @@ function AdminOTP({admin}){
         console.log('validating the otp');
         if(adminotp==otp){
             console.log('otp correct');
-            navigate('/admin');
+            navigate('/admin-welcome');
         }
     }
     async function sendotp(){

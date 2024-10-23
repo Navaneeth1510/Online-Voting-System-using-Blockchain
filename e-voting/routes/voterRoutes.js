@@ -27,4 +27,23 @@ router.get('/:id/:pass', async (request, response) => {
     }
 });
 
+router.get('/update/:id/:pass', async (request, response) => {
+    try {
+        const { id, pass } = request.params;
+        const voter = await Voter.findOneAndUpdate(
+            { voterID: id, Password: pass }, 
+            { $set: { Status: 1 } }, 
+            { new: true } 
+        );        
+        if (!voter) {
+            return response.status(404).json({ message: 'Voter not found' });
+        }
+        return response.status(200).send(voter);
+    } catch (err) {
+        console.log(err.message);
+        response.status(500).send({ message: err.message });
+    }
+});
+
+
 export default router;

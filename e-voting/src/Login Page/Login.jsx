@@ -3,9 +3,16 @@ import './Login.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { LuCheckCircle } from "react-icons/lu";
+import { VscError } from "react-icons/vsc";
 
 function Login({voter, admin}) {
     const navigate = useNavigate();
+
+    const[login , setLogin]=useState(false);
+    const[user,setUser] = useState(true);
+    const[error, setError] = useState(false);
+    const [loginSuccess, setLoginSuccess] = useState(false);
 
 
     //voter    
@@ -14,60 +21,68 @@ function Login({voter, admin}) {
     const [VoterPassVisible, setVoterPassVisible] = useState(false);
 
     async function voterLogin(e) {
+        setError(false);
         e.preventDefault();
-        
+        setUser(false);
         try {
             const response = await fetch(`http://localhost:5000/voter/${VoterID}/${VoterPass}`);
             if (!response.ok) {
+                setError(true);
                 throw new Error('Voter not found');
             }
             const data = await response.json();
             voter.setVoterData(data);
             const constituncy = data.ConstituencyID;
-            console.log('constituency id : ',constituncy)
+            console.log('constituency id : ', constituncy)
             try {
                 const response = await fetch(`http://localhost:5000/const/${constituncy}`);
                 if (!response.ok) {
+                    setError(true);
                     throw new Error('Constituency not found');
                 }
-                const data = await response.json();
-                voter.setConstData(data);
-                navigate('/constituency');
-    
+                const constData = await response.json();
+                voter.setConstData(constData);
+                setError(false);
+                setLoginSuccess(true);
             } catch (error) {
+                setError(true);
+                setLoginSuccess(false); 
                 console.error('Error:', error.message);
             }
-
         } catch (error) {
+            setError(true);
+            setLoginSuccess(false); 
             console.error('Error:', error.message);
         }
-
+        setLogin(true);
         setnewVID("");
         setnewVP("");
     }
-
 
     //admin
     const [AdminID, setnewAID] = useState("");
     const [AdminPass, setnewAP] = useState("");
     const [AdminPassVisible, setAdminPassVisible] = useState(false);
-    
+
     async function adminLogin(e) {
+        setError(false);
+        setUser(true);
         e.preventDefault();
-        
         try {
             const response = await fetch(`http://localhost:5000/admin/${AdminID}/${AdminPass}`);
             if (!response.ok) {
+                setError(true);
                 throw new Error('Admin not found');
             }
             const data = await response.json();
-            console.log(data);
             admin.setAdminData(data);
-            navigate('/otp-authentication');
+            setLoginSuccess(true); 
         } catch (error) {
+            setError(true);
+            setLoginSuccess(false);
             console.error('Error:', error.message);
         }
-
+        setLogin(true);
         setnewAID("");
         setnewAP("");
     }
@@ -76,6 +91,16 @@ function Login({voter, admin}) {
     function backtoHome(){
         navigate('/');
     }   
+
+    function redokay(){
+        setLogin(false);
+    }
+    function okay(){
+        if(user)            
+            navigate('/otp-authentication');
+        else
+            navigate('/constituency');
+    }
 
     return (
       <>
@@ -214,6 +239,50 @@ function Login({voter, admin}) {
                     <div className="col-1"></div>
                 </div>
             </div>
+            {login && (
+                <div
+                    className="modal fade show"
+                    style={{display: 'block', background: 'rgba(0, 0, 0, 0.8)'}}
+                    aria-labelledby="validationModal"
+                    aria-modal="true"
+                    role="dialog"
+                >
+                    <div className="modal-dialog modal-dialog-centered " role="document">
+                        <div className="modal-content dark rounded-4" style={{backgroundColor:"#e6e0f3", color:"black"}}>
+                            <div className="modal-header d-flex justify-content-center">
+                                <div className="logo">
+                                {!error && loginSuccess ? (
+                                    <LuCheckCircle style={{ fontSize: "4rem", color: "green" }} /> 
+                                )
+                                :
+                                (
+                                    <VscError style={{ fontSize: "4rem", color: "red" }} />
+                                )}
+                                </div>
+                            </div>
+                            <div className="modal-body d-flex justify-content-center fs-4 mb-2">
+                                {!error && loginSuccess ? (
+                                    <p>{user ? 'Admin login successful!' : 'Voter login successful!'}</p>
+                                ) : (
+                                    <p>{user ? 'Admin login failed!' : 'Voter login failed!'}</p>
+                                )}
+                            </div>
+                            <div className="modal-footer d-flex justify-content-center pt-0 pb-0 mb-3">
+                                {!error && loginSuccess ? (
+                                    <button type="button" className="btn btn-primary" onClick={() => okay()}>
+                                        Okay
+                                    </button>
+                                ) : (
+                                    <button type="button" className="btn btn-danger" onClick={() => redokay()}>
+                                        Okay
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
       </>
     )

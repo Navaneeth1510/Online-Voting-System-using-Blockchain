@@ -1,0 +1,30 @@
+[
+    {
+        "index": 1,
+        "timestamp": "2024-10-21 21:42:37.513547",
+        "proof": 1,
+        "previous_hash": "0"
+    },
+    {
+        "index": 2,
+        "timestamp": "2024-10-21 21:43:04.019837",
+        "proof": 533,
+        "previous_hash": "54c04111733a8c688d163f2929289a1966a1a64e702e03f5315ee6e2bfc09b7b",
+        "block_data": {
+            "candidate_id": "new_candidate_id_123",
+            "constituency_id": "new_constituency_id_456",
+            "additional_info": "This is some tampered data."
+        }
+    },
+    {
+        "index": 3,
+        "timestamp": "2024-10-21 21:43:11.649101",
+        "proof": 45293,
+        "previous_hash": "b0b6185c613280017c9b18521c7a64be3b51b7462176fa0bb95311366c0f9e4e",
+        "block_data": {
+            "candidate_id": "1234",
+            "timestamp": "2024-10-20T12:34:56",
+            "constituency_id": "5678"
+        }
+    }
+]

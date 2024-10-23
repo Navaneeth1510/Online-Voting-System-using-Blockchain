@@ -55,7 +55,7 @@ function AdminPage( {admin} ) {
                     </div>
                 </div>                
                 <div className="col-4">
-                    <AdminSide admin={admin} />
+                    <AdminSide admin={admin}/>
                 </div>
             </div>
         </div>

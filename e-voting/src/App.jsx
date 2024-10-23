@@ -4,13 +4,14 @@ import Login from './Login Page/Login';
 import Header from './Header/Header';
 import MainPage from './Main Page/MainPage';
 import Constituency from './ConstituencyPage/Constituency';
-import VoterDetails from './Voter-Details/Voter-Details';
 import AdminOTP from './Otp-adminpage/AdminOTP';
 import Admin from './Admin/Admin';
 import AdminSide from './Admin-side/AdminPanel';
 import PrivateRoute from './PrivateRoute'; 
 import Voting from './Voting-Page/Voting';
 import Validation from './Validation/Validation';
+import AdminMainPage from './AdminWelcome/AdminMainPage';
+import VoterMainPage from './VoterWelcome/VoterMainPage';
 
 function App() {
 
@@ -86,7 +87,7 @@ function App() {
       }/>
       <Route path='/voter-details' element={
         <PrivateRoute isAllowed={!!voterData}>
-          <VoterDetails voter={voter} candi={candidates} />
+          <VoterMainPage voter={voter}/>
         </PrivateRoute>
       }/>
       <Route path='/voting' element={
@@ -100,6 +101,11 @@ function App() {
       <Route path='/otp-authentication' element={
         <PrivateRoute isAllowed={!!adminData}>
           <AdminOTP admin={admin} />
+        </PrivateRoute>
+      }/>
+      <Route path='/admin-welcome' element={
+        <PrivateRoute isAllowed={!!adminData}>
+          <AdminMainPage admin={admin} />
         </PrivateRoute>
       }/>
       <Route path='/admin' element={

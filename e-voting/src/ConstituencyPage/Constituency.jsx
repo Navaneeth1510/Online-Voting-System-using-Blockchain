@@ -17,7 +17,7 @@ function Constituency({ voter, candi }) {
             }
             const data = await response.json();
             candi.setCandiData(data);
-            navigate('/voting');
+            navigate('/voter-details');
         } catch (error) {
             console.error('Error:', error.message);
         }
@@ -48,7 +48,7 @@ function Constituency({ voter, candi }) {
                             </div>
                             <div className='col-1'></div>
                         </div>
-                        <div className='row'>
+                        <div className='row mb-0' style={{height:"20vh"}}>
                             <button onClick={()=> nextbutton()} className="mt-5 me-5 fixed-end ms-auto float-end" style={{background:"#5522D0", color:"white", width:"15%", height:"20%"}}>Next</button>
                         </div>
                     </div>
