@@ -13,6 +13,8 @@ import Validation from './Validation/Validation';
 import AdminMainPage from './AdminWelcome/AdminMainPage';
 import VoterMainPage from './VoterWelcome/VoterMainPage';
 
+import ScheduleElection from './schedule_election/schedule_election';
+
 function App() {
 
   //load from localstorage
@@ -124,7 +126,11 @@ function App() {
         </PrivateRoute>
       }/>
 
-
+    <Route path='/schedule-election' element={
+            <PrivateRoute isAllowed={!!adminData}>
+            <ScheduleElection admin={admin} />
+            </PrivateRoute>
+        }/>
 
       
       {/* any other link will go back to main page*/}

@@ -22,7 +22,9 @@ function AdminPage( {admin} ) {
     function validation(){
         navigate('/validation');
     }
-
+    function handleElectionControl() {
+        navigate('/schedule-election');
+    }
     return (
         <div className="container-fluid p-0">
             <HeaderLogout props={admin} user={admin.adminData} />
@@ -32,7 +34,11 @@ function AdminPage( {admin} ) {
                         <div className="col-3"></div>
                         <div className="col-2 mt-5">
                             <div className="row h-75 mt-5">
-                                <button className="control btn btn-lg text-white h-25 mt-5" style={{ backgroundColor: '#436fb5', width: '100%'}}>
+                            <button
+                                    className="control btn btn-lg text-white h-25 mt-5"
+                                    onClick={handleElectionControl}
+                                    style={{ backgroundColor: '#436fb5', width: '100%' }}
+                                >
                                     ELECTION CONTROL
                                 </button>
                                 <button className="control btn btn-lg btn-block text-white h-25" style={{ backgroundColor: '#436fb5', width: '100%'}}>
