@@ -2,26 +2,34 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import HeaderLogout from '../Header_Logout/Header_Logout';
 import AdminSide from '../Admin-side/AdminPanel';
+import { FaHome } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
-const ScheduleElection = ({admin}) => {
-    // State variables for form inputs
-    // const [uniqueId, setUniqueId] = useState('');
-    // const [password, setPassword] = useState('');
+function ScheduleElection({admin}){
     const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
 
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic
         console.log({ uniqueId, password, date, startTime, endTime });
-        // You can further process or validate the data here.
     };
+
+    function backtoHome(){
+        navigate('/admin');
+    }
 
     return (
         <div>
            <HeaderLogout props={admin} user={admin.adminData} />
             <Container fluid>
+                <div className="col-9">
+                    <button className="btn btn-lg d-flex align-items-center" onClick={() => backtoHome()} >
+                        <FaHome className="me-2" />
+                    </button>
+                </div>
                 <Row>
                     <Col md={8}
                     
@@ -63,11 +71,10 @@ const ScheduleElection = ({admin}) => {
                                     />
                                 </Form.Group>
                                 <div className="d-flex justify-content-center">
-                                <Button variant="primary" type="submit" className="mt-3 ">
-                                    Schedule
-                                </Button>
-                                </div>
-                                
+                                    <button  className="btn mt-4 mb-0" style={{ backgroundColor: '#6f42c1', color: 'white', width:"30%" }}>
+                                        Schedule
+                                    </button>
+                                </div>                            
 
                             </Form>
                         </div>

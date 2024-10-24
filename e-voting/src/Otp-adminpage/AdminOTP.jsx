@@ -5,30 +5,50 @@ import './AdminOTP.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import otp from '../../otp-gen/otp';
+import { LuCheckCircle } from "react-icons/lu";
+import { VscError } from "react-icons/vsc";
 
-
-function AdminOTP({admin}){
+function AdminOTP({ admin }) {
     const navigate = useNavigate();
     const [adminotp, setotp] = useState("");
-    
+    const [auth, setAuth] = useState(false);  // To show/hide modal
+    const [crct, setCrct] = useState(false);  // To show success/failure
+
     useEffect(() => {
         sendotp();
     }, []);
 
-
-    async function validate(){
+    async function validate(e) {
+        e.preventDefault();  // Prevent page reload
         console.log('validating the otp');
-        if(adminotp==otp){
-            console.log('otp correct');
+
+        // Perform OTP validation logic
+        if (adminotp === otp) {
+            console.log('OTP correct');
+            setCrct(true);  // Set the state to indicate correct OTP
+        } else {
+            console.log('OTP incorrect');
+            setCrct(false); // Set the state to indicate incorrect OTP
+        }
+
+        // Show modal irrespective of correct/incorrect OTP
+        setAuth(true); 
+    }
+
+    function okay() {
+        if (crct) {
             navigate('/admin-welcome');
+        } else {
+            setAuth(false);  // Close the modal on clicking "Okay" after failed authentication
         }
     }
-    async function sendotp(){
+
+    async function sendotp() {
         console.log("Sending the otp");
         try {
             const response = await fetch(`http://localhost:5000/email/send-otp/${admin.adminData.Name}/${admin.adminData.Email}/${otp}`);
             if (!response.ok) {
-                throw new Error('Couldnt send email');
+                throw new Error('Couldn\'t send email');
             }
             const data = await response.json();
             console.log(data);
@@ -36,37 +56,38 @@ function AdminOTP({admin}){
             console.error('Error:', error.message);
         }
     }
+
     return (
         <>
-            <div className='row otp-page' style={{height:"100vh"}}>
+            <div className='row otp-page' style={{ height: "100vh" }}>
                 <div className="col-4">
-                    <Side/>
+                    <Side />
                 </div>
-                <div className="col-8 ">
+                <div className="col-8">
                     <div className="row mt-5">
                         <div className="col-6 shadow-sm card border rounded-5 ms-5 ps-5 pt-5 pb-5">
                             <h1 className="mb-4" style={{ color: '#5522D0' }}>OTP Authentication</h1>
-                            <p>An OTP has been sent to "<span style={{fontWeight:"bold"}}>{admin.adminData.Email}</span>"</p>
+                            <p>An OTP has been sent to "<span style={{ fontWeight: "bold" }}>{admin.adminData.Email}</span>"</p>
                             <div className="row">
                                 <div className="col-1"></div>
                                 <div className="col-11">
                                     <p>Please enter the OTP below</p>
-                                    <form className="center" onSubmit={()=>validate()}>
-                                        <input type="text" 
+                                    <form className="center" onSubmit={validate}>
+                                        <input
+                                            type="text"
                                             className="mb-3 w-75"
                                             value={adminotp}
-                                            onChange={e => {
-                                                setotp(e.target.value)
-                                            }}
-                                        ></input><br/>
+                                            onChange={e => setotp(e.target.value)}
+                                        /><br />
                                         <div className="row">
                                             <div className="col-3"></div>
                                             <div className="col-6">
-                                                <button type="submit" 
-                                                    className="center white" 
-                                                    style={{ backgroundColor: '#5522D0', color:"white" }}
+                                                <button
+                                                    type="submit"
+                                                    className="center white"
+                                                    style={{ backgroundColor: '#5522D0', color: "white" }}
                                                 >
-                                                Authenticate
+                                                    Authenticate
                                                 </button>
                                             </div>
                                         </div>
@@ -76,9 +97,45 @@ function AdminOTP({admin}){
                         </div>
                     </div>
                 </div>
+                
+                {auth && (
+                    <div
+                        className="modal fade show"
+                        style={{ display: 'block', background: 'rgba(0, 0, 0, 0.8)' }}
+                        aria-labelledby="validationModal"
+                        aria-modal="true"
+                        role="dialog"
+                    >
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content dark rounded-4" style={{ backgroundColor: "#e6e0f3", color: "black" }}>
+                                <div className="modal-header d-flex justify-content-center">
+                                    <div className="logo">
+                                        {crct ? (
+                                            <LuCheckCircle style={{ fontSize: "4rem", color: "green" }} />
+                                        ) : (
+                                            <VscError style={{ fontSize: "4rem", color: "red" }} />
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="modal-body d-flex justify-content-center fs-4 mb-2">
+                                    {crct ? (
+                                        <p>OTP authentication successful</p>
+                                    ) : (
+                                        <p>OTP authentication failed</p>
+                                    )}
+                                </div>
+                                <div className="modal-footer d-flex justify-content-center pt-0 pb-0 mb-3">
+                                    <button type="button" className={crct ? "btn btn-primary" : "btn btn-danger"} onClick={okay}>
+                                        Okay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
-    )
+    );
 }
 
 export default AdminOTP;
