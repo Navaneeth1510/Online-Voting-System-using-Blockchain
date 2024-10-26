@@ -15,6 +15,7 @@ function Voting({ voter, candi }) {
     const[success, setSuccess] = useState(false);
     const[filled, setFilled] = useState(false);
     const[empty, setEmpty] = useState(false);
+    const[spinner, setSpinner] = useState(false);
     const [selectedCandidate, setSelectedCandidate] = useState(null);
     const [partyLogo, setPartyLogo] = useState("src/assets/Voting-img.png");
 
@@ -36,11 +37,12 @@ function Voting({ voter, candi }) {
         setSelectedCandidate(null);
     }
 
-    async function vote(){
-        if(selectedCandidate!==null){
+    async function vote() {
+        if (selectedCandidate !== null) {
+            setSpinner(true);
             const voteData = {
                 candidate_id: selectedCandidate.candidateID,
-                constituency_id: voter.voterData.ConstituencyID,  
+                constituency_id: voter.voterData.ConstituencyID,
                 timestamp: new Date().toISOString(),
             };
             console.log("validating the blockchain");
@@ -57,19 +59,25 @@ function Voting({ voter, candi }) {
                 }
                 const data = await response.json();
                 console.log(data);
-                if(data['status']==='true')
+                if (data['status'] === 'true')
                     setSuccess(true);
-                else    
+                else
                     setSuccess(false);
                 setFilled(true);
             } catch (error) {
                 console.error('Error:', error.message);
+            } finally {
+                setSpinner(false); 
             }
+        } else {
+            setSpinner(true);
+            setEmpty(false); 
+            setTimeout(() => {
+                setEmpty(true);
+                setSpinner(false); 
+            }, 1500); 
         }
-        else{
-            setEmpty(true);
-        }
-    }
+    }    
 
     async function done(){
         try{
@@ -220,7 +228,20 @@ function Voting({ voter, candi }) {
                             <div className="foot row" style={{ height: "8vh" }}>
                                 <div className="col-5"></div>
                                 <div className="col-2">
-                                    <button className="btn mt-1 text-center" onClick={()=>vote()} style={{ width: "100%", backgroundColor: "#5522D0", color: "white" }}>Vote</button>
+                                    {!spinner ?
+                                    (
+                                        <button className="btn mt-1 text-center" onClick={()=>vote()} style={{ width: "100%", backgroundColor: "#5522D0", color: "white" }}>
+                                            Vote
+                                        </button>
+                                    )    
+                                    :
+                                    (
+                                        <button className="btn mt-1 text-center d-flex justify-content-center align-items-center"  disabled  style={{ width: "100%", backgroundColor: "#5522D0", color: "white" }}>
+                                            <span className="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                            <span role="status">&nbsp;&nbsp;Voting...</span>
+                                        </button>
+                                    )
+                                    }                           
                                 </div>
                                 <div className="col-5"></div>
                             </div>
@@ -289,7 +310,7 @@ function Voting({ voter, candi }) {
                                 <div className="modal-footer d-flex justify-content-center pt-0 pb-0 mb-3">
                                     {success?
                                     (
-                                        <button type="button" className="btn btn-primary" onClick={()=>done()}>
+                                        <button type="button" className="btn" onClick={()=>done()} style={{ backgroundColor: "#5522D0", color: "white" }}>
                                         Great
                                         </button>
                                     ):

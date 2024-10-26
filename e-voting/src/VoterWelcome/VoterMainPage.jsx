@@ -42,7 +42,7 @@ function VoterMainPage({ voter }) {
                 <div className="row justify-content-center">
                     <div className="col-12 col-md-12 col-lg-10">
                         <h2 className="mb-4" style={{ color: '#6f42c1' }}>
-                            Welcome, <br />{Name}
+                            Welcome, <br /><p className='fs-1'>{Name}</p>
                         </h2>
 
                         <div className="position-relative">
@@ -57,7 +57,7 @@ function VoterMainPage({ voter }) {
                                         />
                                     </div>
 
-                                    <h2 className="display-6 fw-bold text-center mb-4" style={{ color: '#6f42c1' }}>
+                                    <h2 className="display-6 fw-bold text-center mb-5 mt-0" style={{ color: '#6f42c1' }}>
                                         Voter ID: {voterID}
                                     </h2>
 

@@ -48,8 +48,10 @@ function Constituency({ voter, candi }) {
                             </div>
                             <div className='col-1'></div>
                         </div>
-                        <div className='row mb-0' style={{height:"20vh"}}>
-                            <button onClick={()=> nextbutton()} className="mt-5 me-5 fixed-end ms-auto float-end" style={{background:"#5522D0", color:"white", width:"15%", height:"20%"}}>Next</button>
+                        <div className='row mb-0 text-center' style={{height:"20vh"}}>
+                            <button className="btn mt-1 text-center mt-5 me-5 ms-auto float-end d-flex justify-content-center align-items-center" onClick={()=>nextbutton()} style={{background:"#5522D0", color:"white", width:"15%", height:"20%"}}>
+                                Next
+                            </button>
                         </div>
                     </div>
                 </div>

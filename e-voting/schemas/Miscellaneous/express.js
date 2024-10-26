@@ -19,8 +19,8 @@ mongoose
 .connect(mongoDBURL)
 .then(()=>{
     console.log('app connected to mongodb');
-    app.listen(PORT, ()=>{
-        console.log(`App is listening to port : ${PORT}`);
+    app.listen(5005, ()=>{
+        console.log(`App is listening to port : 5005`);
     });
 })
 .catch((err)=>{

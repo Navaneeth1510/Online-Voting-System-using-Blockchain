@@ -25,15 +25,16 @@ function ScheduleElection({admin}){
         <div>
            <HeaderLogout props={admin} user={admin.adminData} />
             <Container fluid>
+                <Row>
+                    <Col md={8}
+                    
+                    >
+                        
                 <div className="col-9">
                     <button className="btn btn-lg d-flex align-items-center" onClick={() => backtoHome()} >
                         <FaHome className="me-2" />
                     </button>
                 </div>
-                <Row>
-                    <Col md={8}
-                    
-                    >
                     <Row>
                         <Col md={3}>
 

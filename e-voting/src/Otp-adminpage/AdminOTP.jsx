@@ -11,27 +11,23 @@ import { VscError } from "react-icons/vsc";
 function AdminOTP({ admin }) {
     const navigate = useNavigate();
     const [adminotp, setotp] = useState("");
-    const [auth, setAuth] = useState(false);  // To show/hide modal
-    const [crct, setCrct] = useState(false);  // To show success/failure
+    const [auth, setAuth] = useState(false); 
+    const [crct, setCrct] = useState(false); 
 
     useEffect(() => {
         sendotp();
     }, []);
 
     async function validate(e) {
-        e.preventDefault();  // Prevent page reload
+        e.preventDefault();  
         console.log('validating the otp');
-
-        // Perform OTP validation logic
         if (adminotp === otp) {
             console.log('OTP correct');
-            setCrct(true);  // Set the state to indicate correct OTP
+            setCrct(true);  
         } else {
             console.log('OTP incorrect');
-            setCrct(false); // Set the state to indicate incorrect OTP
+            setCrct(false);
         }
-
-        // Show modal irrespective of correct/incorrect OTP
         setAuth(true); 
     }
 
@@ -39,7 +35,7 @@ function AdminOTP({ admin }) {
         if (crct) {
             navigate('/admin-welcome');
         } else {
-            setAuth(false);  // Close the modal on clicking "Okay" after failed authentication
+            setAuth(false); 
         }
     }
 
@@ -84,7 +80,7 @@ function AdminOTP({ admin }) {
                                             <div className="col-6">
                                                 <button
                                                     type="submit"
-                                                    className="center white"
+                                                    className="btn center white"
                                                     style={{ backgroundColor: '#5522D0', color: "white" }}
                                                 >
                                                     Authenticate
@@ -125,9 +121,20 @@ function AdminOTP({ admin }) {
                                     )}
                                 </div>
                                 <div className="modal-footer d-flex justify-content-center pt-0 pb-0 mb-3">
-                                    <button type="button" className={crct ? "btn btn-primary" : "btn btn-danger"} onClick={okay}>
-                                        Okay
-                                    </button>
+                                    
+                                    {crct ? 
+                                    (
+                                        <button type="button" className="btn" onClick={okay} style={{ backgroundColor: "#5522D0", color: "white" }}>
+                                            Okay
+                                        </button>
+                                    )
+                                    :
+                                    (
+                                        <button type="button" className="btn btn-danger" onClick={okay}>
+                                            Okay
+                                        </button>
+                                    )
+                                    }
                                 </div>
                             </div>
                         </div>

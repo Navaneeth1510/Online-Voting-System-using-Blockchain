@@ -13,6 +13,8 @@ function Login({voter, admin}) {
     const[user,setUser] = useState(true);
     const[error, setError] = useState(false);
     const [loginSuccess, setLoginSuccess] = useState(false);
+    const[Loginspinner, setLoginspinner] = useState(false);
+    const[spinner, setSpinner] = useState(false);
 
 
     //voter    
@@ -21,42 +23,47 @@ function Login({voter, admin}) {
     const [VoterPassVisible, setVoterPassVisible] = useState(false);
 
     async function voterLogin(e) {
-        setError(false);
         e.preventDefault();
+        setLoginspinner(true);
+        setError(false);
         setUser(false);
-        try {
-            const response = await fetch(`http://localhost:5000/voter/${VoterID}/${VoterPass}`);
-            if (!response.ok) {
-                setError(true);
-                throw new Error('Voter not found');
-            }
-            const data = await response.json();
-            voter.setVoterData(data);
-            const constituncy = data.ConstituencyID;
-            console.log('constituency id : ', constituncy)
+        setTimeout(async () => {
             try {
-                const response = await fetch(`http://localhost:5000/const/${constituncy}`);
+                const response = await fetch(`http://localhost:5000/voter/${VoterID}/${VoterPass}`);
                 if (!response.ok) {
                     setError(true);
-                    throw new Error('Constituency not found');
+                    throw new Error('Voter not found');
                 }
-                const constData = await response.json();
-                voter.setConstData(constData);
-                setError(false);
-                setLoginSuccess(true);
+                const data = await response.json();
+                voter.setVoterData(data);
+                const constituncy = data.ConstituencyID;
+                console.log('constituency id : ', constituncy);
+    
+                try {
+                    const constResponse = await fetch(`http://localhost:5000/const/${constituncy}`);
+                    if (!constResponse.ok) {
+                        setError(true);
+                        throw new Error('Constituency not found');
+                    }
+                    const constData = await constResponse.json();
+                    voter.setConstData(constData);
+                    setError(false);
+                    setLoginSuccess(true);
+                } catch (error) {
+                    setError(true);
+                    setLoginSuccess(false); 
+                    console.error('Error:', error.message);
+                }
             } catch (error) {
                 setError(true);
                 setLoginSuccess(false); 
                 console.error('Error:', error.message);
             }
-        } catch (error) {
-            setError(true);
-            setLoginSuccess(false); 
-            console.error('Error:', error.message);
-        }
-        setLogin(true);
-        setnewVID("");
-        setnewVP("");
+            setLogin(true);
+            setnewVID("");
+            setnewVP("");
+            setLoginspinner(false); // Hide Loginspinner after login logic
+        }, 1500);
     }
 
     //admin
@@ -65,26 +72,30 @@ function Login({voter, admin}) {
     const [AdminPassVisible, setAdminPassVisible] = useState(false);
 
     async function adminLogin(e) {
+        e.preventDefault();
+        setSpinner(true);
         setError(false);
         setUser(true);
-        e.preventDefault();
-        try {
-            const response = await fetch(`http://localhost:5000/admin/${AdminID}/${AdminPass}`);
-            if (!response.ok) {
+        setTimeout(async ()=>{
+            try {
+                const response = await fetch(`http://localhost:5000/admin/${AdminID}/${AdminPass}`);
+                if (!response.ok) {
+                    setError(true);
+                    throw new Error('Admin not found');
+                }
+                const data = await response.json();
+                admin.setAdminData(data);
+                setLoginSuccess(true); 
+            } catch (error) {
                 setError(true);
-                throw new Error('Admin not found');
+                setLoginSuccess(false);
+                console.error('Error:', error.message);
             }
-            const data = await response.json();
-            admin.setAdminData(data);
-            setLoginSuccess(true); 
-        } catch (error) {
-            setError(true);
-            setLoginSuccess(false);
-            console.error('Error:', error.message);
-        }
-        setLogin(true);
-        setnewAID("");
-        setnewAP("");
+            setLogin(true);
+            setnewAID("");
+            setSpinner(false);
+            setnewAP("");
+        },1500);
     }
 
 
@@ -163,12 +174,23 @@ function Login({voter, admin}) {
                                 <div className="row mb-5 align-middle">
                                     <div className="col-1"></div>
                                     <div className="col-10 position-relative align-middle">
-                                        <button
-                                            className="position-absolute end-0 text-white fs-5 w-25 rounded text-white"
-                                            style={{ backgroundColor: '#5522D0' }}
-                                        >
-                                            Login
-                                        </button>
+                                        {!Loginspinner ? 
+                                            (
+                                                <button
+                                                className="position-absolute end-0 text-white fs-5 w-25 rounded text-white"
+                                                style={{ backgroundColor: '#5522D0' }}
+                                                >                                            
+                                                Login
+                                                </button>
+                                            )
+                                            :
+                                            (
+                                                <button className=" btn-primary position-absolute end-0 text-white fs-5 w-25 rounded text-white" type="button" disabled  style={{ backgroundColor: '#5522D0' }}>
+                                                    <span className="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                                    <span role="status"> Loading...</span>
+                                                </button>
+                                            )
+                                        }
                                     </div>
                                     <div className="col-1"></div>
                                 </div>
@@ -224,12 +246,23 @@ function Login({voter, admin}) {
                                 <div className="row mb-5 align-middle">
                                     <div className="col-1"></div>
                                     <div className="col-10 position-relative align-middle">
-                                        <button
+                                    {!spinner ? 
+                                        (
+                                            <button
                                             className="position-absolute end-0 text-white fs-5 w-25 rounded text-white"
                                             style={{ backgroundColor: '#5522D0' }}
-                                        >
+                                            >                                            
                                             Login
-                                        </button>
+                                            </button>
+                                        )
+                                        :
+                                        (
+                                            <button className=" btn-primary position-absolute end-0 text-white fs-5 w-25 rounded text-white" type="button" disabled  style={{ backgroundColor: '#5522D0' }}>
+                                                <span className="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                                <span role="status"> Loading...</span>
+                                            </button>
+                                        )
+                                    }
                                     </div>
                                     <div className="col-1"></div>
                                 </div>
@@ -269,7 +302,7 @@ function Login({voter, admin}) {
                             </div>
                             <div className="modal-footer d-flex justify-content-center pt-0 pb-0 mb-3">
                                 {!error && loginSuccess ? (
-                                    <button type="button" className="btn btn-primary" onClick={() => okay()}>
+                                    <button type="button" className="btn" onClick={() => okay()} style={{ backgroundColor: "#5522D0", color: "white" }}>
                                         Okay
                                     </button>
                                 ) : (

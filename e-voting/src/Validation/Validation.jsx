@@ -153,7 +153,7 @@ function Validation({admin}) {
                                 <div className="modal-footer d-flex justify-content-center pt-0 pb-0 mb-3">
                                     {valid ?
                                     (
-                                        <button type="button" className="btn btn-primary" onClick={handleCloseModal}>
+                                        <button type="button" className="btn" onClick={handleCloseModal} style={{ backgroundColor: "#5522D0", color: "white" }}>
                                         Okay
                                         </button>
                                     )

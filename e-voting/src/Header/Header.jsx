@@ -11,8 +11,8 @@ function Header() {
                 <div className="col-4 d-flex align-items-center">
                     <img src="src/assets/e-voting-header.png" className="img-fluid ms-3 p-2" style={{width:"25%"}}/>
                 </div>
-                <div className="col-5"></div>
-                <div className="col-3 d-flex align-items-center justify-content-end">
+                <div className="col-4"></div>
+                <div className="col-4 d-flex align-items-center justify-content-end">
                     <button type="button" onClick={() => navigate('/login')} className="btn me-2" style={{ color: "white", backgroundColor: '#5522D0' }}>Home</button>
                     <div className="dropdown">
                         <button className="btn dropdown-toggle me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: "white", backgroundColor: '#5522D0' }}>
@@ -24,7 +24,7 @@ function Header() {
                             <li><a className="dropdown-item">Rahul G Athreyas</a></li>
                         </ul>
                     </div>
-                    <div className="dropdown">
+                    <div className="dropdown me-2">
                         <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: "white", backgroundColor: '#5522D0' }}>
                             Contact Us
                         </button>
