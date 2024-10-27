@@ -117,12 +117,12 @@ function Voting({ voter, candi }) {
                     <div className="col-5 vote">
                         <div className="row" style={{ height: "50vh" }}>
                             <div className="col-1"></div>
-                            <div className="col-10 mt-3">
+                            <div className="col-10 mt-1">
                                 <div className="card border-0">
                                     <div className="image img-fluid center" style={{ textAlign: "center", alignItems: "center" }}>
                                         <img src="src/assets/nami.png" className="img-fluid center" style={{ width: "25%", height: "auto" }} alt="Voter" />
                                     </div>
-                                    <div className="card-body border border-dark rounded-5 fs-6" style={{ backgroundColor: '#e4dcf8' }}>
+                                    <div className="card-body border border-dark rounded-5 fs-6" style={{ backgroundColor: '#e4dcf8'}}>
                                         <div className="details">
                                             <div className="row">
                                                 <div className="col-3 fw-bold">

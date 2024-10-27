@@ -9,7 +9,6 @@ function VoterMainPage({ voter }) {
     const [agreed, setAgreed] = useState(false);
     const [restrict, setRestrict] = useState(false);  // Changed to setRestrict for clarity
     const [showModal, setShowModal] = useState(false); 
-    const status = voter.status;
 
     function goToVotingPage() {
         const status = voter.voterData["Status"];
@@ -46,8 +45,8 @@ function VoterMainPage({ voter }) {
                         </h2>
 
                         <div className="position-relative">
-                            <div className="card border-2 border-purple" style={{ backgroundColor: '#e6e0f3', borderWidth: '2px' }}>
-                                <div className="card-body p-5">
+                            <div className="card  border border-dark rounded-4 " style={{ backgroundColor: '#e6e0f3', borderWidth: '2px' }}>
+                                <div className="card-body p-5 pt-3">
                                     <div className="position-absolute" style={{ top: '-60px', right: '-60px' }}>
                                         <img
                                             src="/src/assets/nami.png"
@@ -57,7 +56,7 @@ function VoterMainPage({ voter }) {
                                         />
                                     </div>
 
-                                    <h2 className="display-6 fw-bold text-center mb-5 mt-0" style={{ color: '#6f42c1' }}>
+                                    <h2 className="display-6 fw-bold text-center" style={{ color: '#6f42c1' }}>
                                         Voter ID: {voterID}
                                     </h2>
 
