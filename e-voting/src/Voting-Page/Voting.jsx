@@ -5,12 +5,18 @@ import HeaderLogout from '../Header_Logout/Header_Logout';
 import { BiReset } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import './Voting.css';
+import Confetti from "react-confetti";
 import { LuCheckCircle } from "react-icons/lu";
 import { MdErrorOutline } from "react-icons/md";
 
 
 function Voting({ voter, candi }) {
     const navigate = useNavigate();
+
+    const [windowDimensions, setWindowDimensions] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
 
     const[success, setSuccess] = useState(false);
     const[filled, setFilled] = useState(false);
@@ -289,7 +295,7 @@ function Voting({ voter, candi }) {
                                     <div className="logo">
                                         {success?
                                         (
-                                            <LuCheckCircle style={{ fontSize: "4rem", color: "green" }} />
+                                            <LuCheckCircle style={{ fontSize: "4rem", color: "green" }} />                                           
                                         ):
                                         (
                                             <MdErrorOutline style={{ fontSize: "4rem", color: "red" }} />
@@ -297,10 +303,12 @@ function Voting({ voter, candi }) {
                                         }                                        
                                     </div>
                                 </div>
-                                <div className="modal-body d-flex justify-content-center fs-4 mb-2">
+                                <div className="modal-body d-flex justify-content-center fs-4 mb-2 text-center">
                                     {success?
                                     (
-                                        <p>Suceesfully casted the vote</p>
+                                        <p>Suceesfully casted the vote<br/>
+                                            Thank you {voter.voterData.Name} !
+                                        </p>
                                     ):
                                     (
                                         <p>Something went wrong !</p>
@@ -325,6 +333,16 @@ function Voting({ voter, candi }) {
                             </div>
                         </div>
                     </div>
+                )}
+                {filled && success && (
+                    <Confetti
+                        style={{ zIndex: 1200 }}
+                        width={windowDimensions.width}
+                        height={windowDimensions.height}
+                        numberOfPieces={300}
+                        recycle={false}
+                        gravity={0.5}
+                    />
                 )}
             </div>
         </>
