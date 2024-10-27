@@ -4,10 +4,10 @@ import json
 from flask import Flask, jsonify, request
 import os
 from pymongo import MongoClient
-from bson import ObjectId  # Import ObjectId
+from bson import ObjectId  
 
 
-print("Current working directory:", os.getcwd())  # Debugging current working directory
+print("Current working directory:", os.getcwd())  
 
 
 # Building the Blockchain
@@ -18,30 +18,28 @@ class Blockchain:
         self.collection = self.db[collection_name]
         self.chain = []
         
-        # Load the chain from MongoDB
+        # Load the chain from MongoDB collection
         if self.collection.count_documents({}) > 0:
             self.load_chain_from_mongodb()
         else:
-            self.create_block(proof=1, previous_hash='0')  # Create the genesis block
+            self.create_block(proof=1, previous_hash='0')  # this is the genesis block
     
     def load_chain_from_mongodb(self):
         # Load the chain from MongoDB
-        records = self.collection.find().sort("index", 1)  # Sort by block index
+        records = self.collection.find().sort("index", 1)  
         self.chain = []
         for record in records:
-            # Convert ObjectId to string and remove the '_id' field
             record_copy = {key: (str(value) if isinstance(value, ObjectId) else value) for key, value in record.items() if key != '_id'}
             self.chain.append(record_copy)
     
     def save_chain_to_mongodb(self):
-        # Clear the collection first
-        self.collection.delete_many({})  # Remove all documents in the collection
+        # empty the collection and then backup
+        self.collection.delete_many({})  
         
         # Save each block into MongoDB
         for block in self.chain:
-            # Remove '_id' if present, since we are inserting new documents
             block_copy = {key: value for key, value in block.items() if key != '_id'}
-            self.collection.insert_one(block_copy)  # Insert the new block without ObjectId
+            self.collection.insert_one(block_copy)
 
     
     
@@ -54,11 +52,10 @@ class Blockchain:
             'previous_hash': previous_hash,
         }
         self.chain.append(block)
-        self.save_chain_to_mongodb()  # Save the blockchain after adding a block
+        self.save_chain_to_mongodb()  # Save the blockchain to MongoDb
         return block
     
     def get_previous_block(self):
-        # Get the last block in the chain
         return self.chain[-1]
 
     def proof_of_work(self, previous_proof):
@@ -68,18 +65,17 @@ class Blockchain:
             hash_operation = hashlib.sha256(
                 str(new_proof**2 - previous_proof**2).encode()
             ).hexdigest()
-            if hash_operation[:4] == '0000':  # Check for leading zeroes
+            if hash_operation[:4] == '0000':  # leading zeroes
                 check_proof = True
             else:
                 new_proof += 1
         return new_proof
     
     def hash(self, block):
-        # Convert ObjectId to string if present in the block
         block_copy = block.copy()
         for key, value in block_copy.items():
-            if isinstance(value, ObjectId):  # Check if the value is an ObjectId
-                block_copy[key] = str(value)  # Convert to string
+            if isinstance(value, ObjectId):  
+                block_copy[key] = str(value) 
 
         # Return the SHA-256 hash of the block
         encoded_block = json.dumps(block_copy, sort_keys=True).encode()
@@ -108,7 +104,6 @@ class Blockchain:
         if 0 < block_index < len(self.chain):
             block = self.chain[block_index]
 
-            # Ensure new_data doesn't have ObjectId before tampering
             new_data_copy = new_data.copy()
             for key, value in new_data_copy.items():
                 if isinstance(value, ObjectId):
@@ -132,19 +127,19 @@ class Blockchain:
         self.save_chain_to_mongodb()
 
 
-# Create a Flask WebApp
+# Flask app
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 from flask import Flask, jsonify, request
-from flask_cors import CORS  # Import CORS
+from flask_cors import CORS 
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app) 
 
 CORS(app, resources={r"/*": {"origins": "http://onlinevotingsystem.com:5173"}})
 
 
-blockchain = Blockchain()  # Instance of the Blockchain class
+blockchain = Blockchain() 
 
 
 
@@ -161,10 +156,11 @@ def mine_block():
     previous_block = blockchain.get_previous_block()
     previous_proof = previous_block['proof']
     
-    proof = blockchain.proof_of_work(previous_proof)  # Proof-of-work
-    previous_hash = blockchain.hash(previous_block)  # Hash of previous block
+    proof = blockchain.proof_of_work(previous_proof)  
+    previous_hash = blockchain.hash(previous_block)  
     
-    block = blockchain.create_block(proof, previous_hash)  # Create a new block
+    # new block is creted here
+    block = blockchain.create_block(proof, previous_hash)  
     block['block_data'] = {
         'candidate_id': candidate_id,
         'timestamp': timestamp,
@@ -186,14 +182,13 @@ def mine_block():
 
 @app.route('/reset_blockchain', methods=['POST'])  
 def reset_blockchain():
-    # Empty all collections in the database
     for collection in blockchain.db.list_collection_names():
         blockchain.db[collection].delete_many({})
     blockchain.__init__()  
     return jsonify({'message': 'Blockchain reset and all collections emptied.'}), 200 
 
 
-# Get the Entire Blockchain
+# retreive the entire blockchain
 @app.route('/get_chain', methods=['GET'])
 def get_chain():
     response = {
@@ -203,7 +198,7 @@ def get_chain():
     return jsonify(response), 200
 
 
-# Check if the Blockchain is Valid
+# validity
 @app.route('/is_valid', methods=['GET'])
 def is_valid():
     is_valid = blockchain.is_chain_valid(blockchain.chain)
@@ -214,10 +209,10 @@ def is_valid():
     return jsonify(response), 200
 
 
-# Tamper with Block Data Endpoint
+# tamper a particular blck
 @app.route('/tamper_block', methods=['POST'])
 def tamper_block():
-    print("Tamper block endpoint was called.")  # Debugging line
+    print("Tamper block endpoint was called.")  
     data = request.get_json()
     if not data or 'block_index' not in data or 'new_data' not in data:
         return jsonify({'message': 'Invalid data: Missing block_index or new_data'}), 400
@@ -238,7 +233,7 @@ def tamper_block():
 
 
 
-# Restore Blockchain from Backup (Used to restore the valid chain after tampering)
+# restring the blockain
 @app.route('/restore_blockchain', methods=['POST'])
 def restore_blockchain():
     try:

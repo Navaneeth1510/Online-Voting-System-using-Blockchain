@@ -22,7 +22,7 @@ const voterSchema = mongoose.Schema(
             match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'], 
         },
         DOB: {
-            type: Date,
+            type: String,
             required: true,
         },
         Address: {

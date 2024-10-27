@@ -45,5 +45,23 @@ router.get('/update/:id/:pass', async (request, response) => {
     }
 });
 
+router.get('/reset', async (request, response) => {
+    try {
+        const { id, pass } = request.params;
+        const result = await Voter.updateMany(
+            {}, 
+            { $set: { Status: 0 } } 
+        );
+        if (result.modifiedCount === 0) {
+            return response.status(404).json({ message: 'No records updated' });
+        }        
+        return response.status(200).json({ message: 'All voters updated to status 0' });
+    } catch (err) {
+        console.log(err.message);
+        response.status(500).send({ message: err.message });
+    }
+});
+
+
 
 export default router;

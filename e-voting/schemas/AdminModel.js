@@ -21,7 +21,7 @@ const adminSchema = mongoose.Schema(
             unique: true,
         },
         DOB: {
-            type: Date,
+            type: String,
             required: true,
         },
         Address: {
