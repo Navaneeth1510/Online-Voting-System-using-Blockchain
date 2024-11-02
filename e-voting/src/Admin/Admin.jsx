@@ -22,6 +22,9 @@ function AdminPage( {admin} ) {
     function validation(){
         navigate('/validation');
     }
+    function statistics(){
+        navigate('/statistics');
+    }
     function handleElectionControl() {
         navigate('/schedule-election');
     }
@@ -41,7 +44,7 @@ function AdminPage( {admin} ) {
                                 >
                                     ELECTION CONTROL
                                 </button>
-                                <button className="control btn btn-lg btn-block text-white h-25" style={{ backgroundColor: '#436fb5', width: '100%'}}>
+                                <button className="control btn btn-lg btn-block text-white h-25" onClick={()=> statistics()} style={{ backgroundColor: '#436fb5', width: '100%'}}>
                                     STATISTICS
                                 </button>
                             </div>

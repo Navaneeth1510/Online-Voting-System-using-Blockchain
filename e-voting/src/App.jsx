@@ -12,6 +12,7 @@ import Validation from './Validation/Validation';
 import AdminMainPage from './AdminWelcome/AdminMainPage';
 import VoterMainPage from './VoterWelcome/VoterMainPage';
 import ScheduleElection from './Schedule_election/schedule_election';
+import Statistics from './Statistics/Statistics';
 
 function App() {
 
@@ -121,6 +122,11 @@ function App() {
             <Route path='/validation' element={
                 <PrivateRoute isAllowed={!!adminData}>
                     <Validation admin={admin} />
+                </PrivateRoute>
+            } />
+            <Route path='/statistics' element={
+                <PrivateRoute isAllowed={!!adminData}>
+                    <Statistics admin={admin} />
                 </PrivateRoute>
             } />
 

@@ -5,7 +5,6 @@ from flask import Flask, jsonify, request
 import os
 from pymongo import MongoClient
 from bson import ObjectId  
-from collections import defaultdict
 
 
 print("Current working directory:", os.getcwd())  
@@ -45,16 +44,22 @@ class Blockchain:
     
     
     def create_block(self, proof, previous_hash):
-        # Create a new block
         block = {
             'index': len(self.chain) + 1,
             'timestamp': str(datetime.datetime.now()),
             'proof': proof,
             'previous_hash': previous_hash,
+            'current_hash': '', 
+            'next_hash': '',  
         }
         self.chain.append(block)
-        self.save_chain_to_mongodb()  # Save the blockchain to MongoDb
+        block['current_hash'] = self.hash(block)
+        if len(self.chain) > 1:
+            self.chain[-2]['next_hash'] = block['current_hash']
+        
+        self.save_chain_to_mongodb()
         return block
+
     
     def get_previous_block(self):
         return self.chain[-1]
@@ -83,23 +88,30 @@ class Blockchain:
         return hashlib.sha256(encoded_block).hexdigest()
         
     def is_chain_valid(self, chain):
-        # Validate the blockchain
         previous_block = chain[0]
         block_index = 1
         while block_index < len(chain):
             block = chain[block_index]
+            
+            # Check if previous_hash matches current_hash of previous block
             if block['previous_hash'] != self.hash(previous_block):
-                return False  # Check if previous hash matches
+                return False  
+            
+            # Check if the next_hash in the previous block matches the current block's hash
+            if previous_block.get('next_hash') and previous_block['next_hash'] != self.hash(block):
+                return False
+            
+            # Check proof of work validity
             previous_proof = previous_block['proof']
             proof = block['proof']
-            hash_operation = hashlib.sha256(
-                str(proof**2 - previous_proof**2).encode()
-            ).hexdigest()
-            if hash_operation[:4] != '0000':  # Check proof-of-work
+            hash_operation = hashlib.sha256(str(proof**2 - previous_proof**2).encode()).hexdigest()
+            if hash_operation[:4] != '0000':  
                 return False
+            
             previous_block = block
             block_index += 1
         return True
+
 
     def tamper_block_data(self, block_index, new_data):
         if 0 < block_index < len(self.chain):
@@ -127,49 +139,6 @@ class Blockchain:
         self.collection.delete_many({})
         self.save_chain_to_mongodb()
 
-    def get_voting_percentage(self, chain):
-        vote_count = {}
-        total_votes = 10
-
-        for block in chain: 
-            block_data = block.get('block_data', {})
-            constituency_id = block_data.get('constituency_id')
-            
-            if constituency_id:
-                if constituency_id in vote_count:
-                    vote_count[constituency_id] += 1
-                else:
-                    vote_count[constituency_id] = 1
-
-        voting_percentage = {}
-        for constituency, count in vote_count.items():
-            voting_percentage[constituency] = (count / total_votes) * 100 if total_votes > 0 else 0
-
-        return voting_percentage
-
-    # Assuming this is a method within the Blockchain class
-    def count_votes_by_constituency(self, blockchain_data):
-        vote_count = defaultdict(lambda: defaultdict(int))
-
-        for block in blockchain_data["chain"][1:]:
-            block_data = block.get("block_data")
-            if block_data:
-                constituency_id = block_data.get("constituency_id")
-                candidate_id = block_data.get("candidate_id")
-                
-                if constituency_id and candidate_id:
-                    vote_count[constituency_id][candidate_id] += 1
-
-        result = []
-        for constituency_id, candidates in vote_count.items():
-            result.append({
-                "constituency_id": constituency_id,
-                "candidates": dict(candidates)
-            })
-
-        return result
-
-
 
 # Flask app
 app = Flask(__name__)
@@ -196,33 +165,39 @@ def mine_block():
     candidate_id = data['candidate_id']
     timestamp = data['timestamp']
     constituency_id = data['constituency_id']
-
+    
     previous_block = blockchain.get_previous_block()
     previous_proof = previous_block['proof']
     
-    proof = blockchain.proof_of_work(previous_proof)  
-    previous_hash = blockchain.hash(previous_block)  
+    proof = blockchain.proof_of_work(previous_proof)
+    previous_hash = previous_block['current_hash']
     
-    # new block is creted here
-    block = blockchain.create_block(proof, previous_hash)  
+    # Create the new block
+    block = blockchain.create_block(proof, previous_hash)
     block['block_data'] = {
         'candidate_id': candidate_id,
         'timestamp': timestamp,
         'constituency_id': constituency_id,
     }
-
+    
+    if len(blockchain.chain) > 1:
+        blockchain.chain[-2]['next_hash'] = block['current_hash']
+    
     blockchain.save_chain_to_mongodb()
     
     response = {
-        'status':'true',
+        'status': 'true',
         'message': 'Block mined successfully!',
         'index': block['index'],
         'timestamp': block['timestamp'],
         'proof': block['proof'],
         'previous_hash': block['previous_hash'],
+        'current_hash': block['current_hash'],
+        'next_hash': block.get('next_hash', ''),
         'block_data': block['block_data'],
     }
-    return jsonify(response), 200 
+    return jsonify(response), 200
+
 
 @app.route('/reset_blockchain', methods=['POST'])  
 def reset_blockchain():
@@ -274,23 +249,8 @@ def tamper_block():
         return jsonify(response), 200
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
-    
-@app.route('/voting_percentage', methods=['GET'])
-def voting_percentage():
-    try:
-        percentages = blockchain.get_voting_percentage(blockchain.chain)
-        response = {
-            'voting_percentage': percentages,
-            'message': 'Voting percentage calculated successfully.'
-        }
-        return jsonify(response), 200
-    except FileNotFoundError as e: 
-        return jsonify({"error": str(e)}), 404
 
-@app.route('/result', methods=['GET'])
-def result():
-    result = blockchain.count_votes_by_constituency({"chain": blockchain.chain})
-    return jsonify(result)
+
 
 # restring the blockain
 @app.route('/restore_blockchain', methods=['POST'])
