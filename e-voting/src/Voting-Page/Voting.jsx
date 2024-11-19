@@ -10,7 +10,7 @@ import { LuCheckCircle } from "react-icons/lu";
 import { MdErrorOutline } from "react-icons/md";
 
 
-function Voting({ voter, candi }) {
+function Voting({ voter, candi, start, end}) {
     const navigate = useNavigate();
 
     const [windowDimensions, setWindowDimensions] = useState({
@@ -24,6 +24,7 @@ function Voting({ voter, candi }) {
     const[spinner, setSpinner] = useState(false);
     const [selectedCandidate, setSelectedCandidate] = useState(null);
     const [partyLogo, setPartyLogo] = useState("src/assets/Voting-img.png");
+    const [results, setResult] = useState(false);
 
     useEffect(() => {
         if (selectedCandidate) {
@@ -34,6 +35,31 @@ function Voting({ voter, candi }) {
             setPartyLogo("src/assets/Voting-img.png");
         }
     }, [selectedCandidate]);
+
+    useEffect(() => {
+        function resultsOut() {
+            const currentTime = new Date();
+            currentTime.setHours(currentTime.getHours() + 5);
+            currentTime.setMinutes(currentTime.getMinutes() + 30);
+            const c = currentTime.toISOString();
+            if (c < start || c > end) {
+                console.log(start)
+                console.log(end)
+                console.log(c)
+                setResult(true);
+                console.log(true);
+            } else {
+                setResult(false);
+                console.log(false);
+            }
+        }
+
+        const intervalId = setInterval(() => {
+            resultsOut();
+        }, 1000); 
+
+        return () => clearInterval(intervalId);
+    }, [start, end]);
 
     async function handleSelection(candidate) {
         setSelectedCandidate(candidate);
@@ -51,39 +77,54 @@ function Voting({ voter, candi }) {
                 constituency_id: voter.voterData.ConstituencyID,
                 timestamp: new Date().toISOString(),
             };
-            console.log("validating the blockchain");
+            console.log("Validating the blockchain...");
+            
             try {
-                const response = await fetch('http://localhost:5000/blockchain/mine_block', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(voteData),
-                });
-                if (!response.ok) {
-                    throw new Error('couldnt cast the vote');
+                const validateResponse = await fetch(`http://localhost:5000/blockchain/validate`);
+                const validateData = await validateResponse.json();
+                
+                if (validateData.is_valid === true) {  
+                    try {
+                        const mineResponse = await fetch('http://localhost:5000/blockchain/mine_block', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(voteData),
+                        });
+                        
+                        if (!mineResponse.ok) {
+                            throw new Error('Couldn’t cast the vote');
+                        }
+                        
+                        const data = await mineResponse.json();
+                        console.log(data);
+                        setSuccess(data.status === 'true');
+                        setFilled(true);                        
+                    } catch (error) {
+                        setSuccess(false);
+                        console.error('Error casting vote:', error.message);
+                    }
+                } 
+                else {
+                    console.log(validateData.is_valid)
+                    setSuccess(validateData.is_valid === 'true');
                 }
-                const data = await response.json();
-                console.log(data);
-                if (data['status'] === 'true')
-                    setSuccess(true);
-                else
-                    setSuccess(false);
-                setFilled(true);
-            } catch (error) {
-                console.error('Error:', error.message);
-            } finally {
-                setSpinner(false); 
-            }
+            } 
+            catch (error) {
+                setSuccess(false);
+                console.error('Error validating blockchain:', error.message);
+            } 
         } else {
             setSpinner(true);
-            setEmpty(false); 
+            setEmpty(false);
             setTimeout(() => {
                 setEmpty(true);
-                setSpinner(false); 
-            }, 1500); 
+                setSpinner(false);
+            }, 1500);
         }
-    }    
+    }
+    
 
     async function done(){
         try{
@@ -232,13 +273,25 @@ function Voting({ voter, candi }) {
                                 </table>
                             </div>
                             <div className="foot row" style={{ height: "8vh" }}>
-                                <div className="col-5"></div>
-                                <div className="col-2">
+                                <div className="col-4"></div>
+                                <div className="col-4 d-flex justify-content-center">
                                     {!spinner ?
                                     (
-                                        <button className="btn mt-1 text-center" onClick={()=>vote()} style={{ width: "100%", backgroundColor: "#5522D0", color: "white" }}>
-                                            Vote
-                                        </button>
+                                        <>
+                                        {!results ?
+                                            (
+                                                <button className="btn text-center" onClick={()=>vote()} style={{ width: "50%", height:"75%", backgroundColor: "#5522D0", color: "white" }}>
+                                                    Vote
+                                                </button>
+                                            )
+                                            :
+                                            (
+                                                <button className="btn" style={{ width: "70%", height:"75%", backgroundColor: "#5522D0", color: "white" }} disabled="true">
+                                                    Election ended
+                                                </button>
+                                            )
+                                        }
+                                        </>
                                     )    
                                     :
                                     (
@@ -249,7 +302,7 @@ function Voting({ voter, candi }) {
                                     )
                                     }                           
                                 </div>
-                                <div className="col-5"></div>
+                                <div className="col-4"></div>
                             </div>
                         </div>
                     </div>
@@ -311,7 +364,9 @@ function Voting({ voter, candi }) {
                                         </p>
                                     ):
                                     (
-                                        <p>Something went wrong !</p>
+                                        <p>Couldn't cast your vote !<br />
+                                            Please recast your vote
+                                        </p>
                                     )
                                     }
                                 </div>

@@ -7,6 +7,7 @@ import constRoutes from './constRoutes.js'
 import emailRoutes from './mail_setup.js'
 import candiRoutes from './candiRoutes.js';
 import blockchainRoutes from './blockchainRoutes.js';
+import timingRoutes from './timeRoutes.js';
 import cors from 'cors';
 
 const app = express();
@@ -20,6 +21,7 @@ app.use('/const',constRoutes);
 app.use('/email',emailRoutes);
 app.use('/candi',candiRoutes);
 app.use('/blockchain',blockchainRoutes);
+app.use('/time',timingRoutes);
 
 
 mongoose

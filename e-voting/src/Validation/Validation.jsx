@@ -89,7 +89,7 @@ function Validation({admin}) {
                         </div>
                     </div>
                     <div className="body d-flex justify-content-center">
-                        <div className="bg-light border rounded-4 p-4 border-secondary mt-5" style={{width:"75%"}}>
+                        <div className=" border rounded-4 p-4 border-secondary mt-5" style={{width:"75%", backgroundColor: "#E2F0D9"}}>
                             <h2 className="display-6 fw-bold" style={{ color: '#6f42c1' }}>
                                 Instructions & Guidelines
                             </h2>

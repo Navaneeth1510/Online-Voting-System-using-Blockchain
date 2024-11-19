@@ -83,23 +83,31 @@ class Blockchain:
         return hashlib.sha256(encoded_block).hexdigest()
         
     def is_chain_valid(self, chain):
-        # Validate the blockchain
         previous_block = chain[0]
         block_index = 1
+        
         while block_index < len(chain):
             block = chain[block_index]
+            
+            # Check if the previous hash is correct
             if block['previous_hash'] != self.hash(previous_block):
-                return False  # Check if previous hash matches
+                print(f"Invalid previous hash at block {block_index}")
+                return False
+            
+            # Check proof of work
             previous_proof = previous_block['proof']
             proof = block['proof']
-            hash_operation = hashlib.sha256(
-                str(proof**2 - previous_proof**2).encode()
-            ).hexdigest()
-            if hash_operation[:4] != '0000':  # Check proof-of-work
+            hash_operation = hashlib.sha256(str(proof**2 - previous_proof**2).encode()).hexdigest()
+            if hash_operation[:4] != '0000':
+                print(f"Invalid proof of work at block {block_index}")
                 return False
+            
+            # Move to the next block
             previous_block = block
             block_index += 1
+        print('correct')
         return True
+
 
     def tamper_block_data(self, block_index, new_data):
         if 0 < block_index < len(self.chain):

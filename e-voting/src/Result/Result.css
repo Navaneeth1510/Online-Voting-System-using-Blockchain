@@ -1,0 +1,5 @@
+.content{
+    .shadow-sm {
+        box-shadow: 7px 7px 4px  #e4dcf8 !important;
+    }
+}

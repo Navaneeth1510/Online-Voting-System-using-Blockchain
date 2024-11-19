@@ -1,14 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import HeaderLogout from '../Header_Logout/Header_Logout';
 import { MdErrorOutline } from "react-icons/md";
 
-function VoterMainPage({ voter }) {
+function VoterMainPage({ voter, start, end }) {
     const navigate = useNavigate();
     const [agreed, setAgreed] = useState(false);
     const [restrict, setRestrict] = useState(false);  // Changed to setRestrict for clarity
     const [showModal, setShowModal] = useState(false); 
+    const [results, setResult] = useState(false);
+
+    useEffect(() => {
+        function resultsOut() {
+            const currentTime = new Date();
+            currentTime.setHours(currentTime.getHours() + 5);
+            currentTime.setMinutes(currentTime.getMinutes() + 30);
+            const c = currentTime.toISOString();
+            if (c < start || c > end) {
+                console.log(start)
+                console.log(end)
+                console.log(c)
+                setResult(true);
+                console.log(true);
+            } else {
+                setResult(false);
+                console.log(false);
+            }
+        }
+
+        const intervalId = setInterval(() => {
+            resultsOut();
+        }, 1000); 
+
+        return () => clearInterval(intervalId);
+    }, [start, end]);
+
+    function gotoresults(){
+        navigate('/results');
+    }
 
     function goToVotingPage() {
         const status = voter.voterData["Status"];
@@ -36,10 +66,33 @@ function VoterMainPage({ voter }) {
             <div className="header">
                 <HeaderLogout props={voter} user={voter.voterData} />
             </div>
-
-            <div className="container py-5">
+            <div className="container py-5"> 
                 <div className="row justify-content-center">
-                    <div className="col-12 col-md-12 col-lg-10">
+                {results && (
+                    <div className="toast-container position-fixed top-0 start-0 w-100 p-1" style={{marginTop:"8vh"}}>
+                        <div className="toast align-items-center text-bg-warning border-0 show" role="alert" aria-live="assertive" aria-atomic="true"
+                            style={{
+                                width: '100%',
+                                maxWidth: '100%',
+                                fontSize:'1rem',
+                                borderRadius: 4, 
+                            }}
+                        >
+                            <div className="d-flex justify-content-between align-items-center px-3 py-2">
+                                <div className="toast-body">
+                                    The results are out !!
+                                </div>
+                                <button type="button" className="btn btn-dark ms-auto me-2" data-bs-dismiss="toast" aria-label="View Results"
+                                    onClick={()=>gotoresults()}
+                                >
+                                    View Results
+                                </button>
+                                <button type="button" className="btn-close btn-close-dark" data-bs-dismiss="toast"></button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                    <div className="col-12 col-md-12 col-lg-10 mt-4">
                         <h2 className="mb-4" style={{ color: '#6f42c1' }}>
                             Welcome, <br /><p className='fs-1'>{Name}</p>
                         </h2>
@@ -103,7 +156,7 @@ function VoterMainPage({ voter }) {
                                 <button
                                     className="btn btn-primary"
                                     style={{ backgroundColor: '#6f42c1', borderColor: '#6f42c1', width: '15%' }}
-                                    onClick={goToVotingPage}
+                                    onClick={goToVotingPage} disabled={results}
                                 >
                                     Next
                                 </button>

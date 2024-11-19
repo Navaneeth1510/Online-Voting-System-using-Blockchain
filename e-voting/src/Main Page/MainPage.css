@@ -1,4 +1,6 @@
-
+.row{
+    --mytoast-max-width: 100% !important;
+}
 .main-page{
     .fs-1 {
         font-size: 5rem !important;
@@ -9,4 +11,7 @@
     .ms-4 {
         margin-left: 25rem !important;
     }
+    .toast {
+        max-width: var(--mytoast-max-width, 500px) !important;
+    }    
 }
