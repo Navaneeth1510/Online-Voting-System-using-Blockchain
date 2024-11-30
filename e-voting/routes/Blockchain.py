@@ -154,6 +154,20 @@ class Blockchain:
             voting_percentage[constituency] = (count / total_votes) * 100 if total_votes > 0 else 0
 
         return voting_percentage
+    
+    def get_candidate_timestamps(self):
+        candidate_timestamps = []
+        for block in self.chain[1:]:  # Skip genesis block (usually has no data)
+            block_data = block.get("block_data")
+            if block_data:
+                candidate_info = {
+                    'candidate_id': block_data.get("candidate_id"),
+                    'timestamp': block_data.get("timestamp")
+                }
+                candidate_timestamps.append(candidate_info)
+        print(candidate_timestamps)
+        
+        return jsonify(candidate_timestamps),200
 
     # Assuming this is a method within the Blockchain class
     def count_votes_by_constituency(self, blockchain_data):
@@ -299,6 +313,11 @@ def voting_percentage():
 def result():
     result = blockchain.count_votes_by_constituency({"chain": blockchain.chain})
     return jsonify(result)
+
+@app.route('/candidate_timestamps', methods=['GET'])
+def candidate_timestamps():
+    candidate_timestamps = blockchain.get_candidate_timestamps()
+    return candidate_timestamps
 
 # restring the blockain
 @app.route('/restore_blockchain', methods=['POST'])

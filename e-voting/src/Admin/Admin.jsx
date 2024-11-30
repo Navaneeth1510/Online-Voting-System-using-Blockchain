@@ -22,6 +22,9 @@ function AdminPage( {admin} ) {
     function validation(){
         navigate('/validation');
     }
+    function votes(){
+        navigate('/votes');
+    }
     function statistics(){
         navigate('/statistics');
     }
@@ -55,7 +58,7 @@ function AdminPage( {admin} ) {
                                 <button className="control btn btn-lg btn-block text-white h-25 mt-5" onClick={()=> validation()} style={{ backgroundColor: '#436fb5', width: '100%'}}>
                                     VALIDATION
                                 </button>
-                                <button className="control btn btn-lg btn-block text-white h-25" style={{ backgroundColor: '#436fb5', width: '100%'}}>
+                                <button className="control btn btn-lg btn-block text-white h-25" style={{ backgroundColor: '#436fb5', width: '100%'}} onClick={()=>votes()}>
                                     VOTES
                                 </button>
                             </div>

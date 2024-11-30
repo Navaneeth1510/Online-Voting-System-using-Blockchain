@@ -15,6 +15,9 @@ function MainPage({ start, end }) {
             currentTime.setHours(currentTime.getHours() + 5);
             currentTime.setMinutes(currentTime.getMinutes() + 30);
             const c = currentTime.toISOString();
+            // console.log(c);
+            // console.log(start);
+            // console.log(end);
             if (c < start || c > end) {
                 setResult(true);
                 console.log(true);

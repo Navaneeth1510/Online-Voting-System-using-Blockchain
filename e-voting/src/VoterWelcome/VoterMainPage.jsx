@@ -17,15 +17,15 @@ function VoterMainPage({ voter, start, end }) {
             currentTime.setHours(currentTime.getHours() + 5);
             currentTime.setMinutes(currentTime.getMinutes() + 30);
             const c = currentTime.toISOString();
+            console.log(start)
+            console.log(end)
+            console.log(c)
             if (c < start || c > end) {
-                console.log(start)
-                console.log(end)
-                console.log(c)
                 setResult(true);
-                console.log(true);
+                console.log('Results out: '+true);
             } else {
                 setResult(false);
-                console.log(false);
+                console.log('Results not out: '+false);
             }
         }
 
@@ -47,6 +47,7 @@ function VoterMainPage({ voter, start, end }) {
             setRestrict(true);
         }
         else if (agreed && status==0){
+            console.log('going to voting page')
             navigate('/voting');
         } 
         else {

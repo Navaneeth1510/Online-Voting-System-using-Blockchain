@@ -15,6 +15,7 @@ import VoterMainPage from './VoterWelcome/VoterMainPage';
 import ScheduleElection from './Schedule_election/schedule_election';
 import Statistics from './Statistics/Statistics';
 import Result from './Result/Result';
+import Votes from './Votes/Votes';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
@@ -23,36 +24,54 @@ function App() {
     const[startTime, setStart] = useState(null);
     const[endTime, setEnd] = useState(null);
     const [isElectionActive, setIsElectionActive] = useState(false);
+    const [wasElectionActive, setWasElectionActive] = useState(() => {
+        const local = localStorage.getItem("WasElectionActive");
+        return local ? JSON.parse(local) : false;
+    });
 
     useEffect(() => {
         const fetchTiming = async () => {
             try {
-                const response = await fetch('http://localhost:5000/time/');                
+                const response = await fetch('http://localhost:5000/time/');
                 const data = await response.json();
                 const currentTime = new Date();
                 currentTime.setHours(currentTime.getHours() + 5);
                 currentTime.setMinutes(currentTime.getMinutes() + 30);
                 const c = currentTime.toISOString();
-                // console.log('useeffect current: '+c)
                 const startTim = data.startTime; 
                 const endTim = data.endTime;
-                // console.log('useeffect start: '+startTim);
-                // console.log('useeffect end: '+endTim);
-                // setData(data);
-
+    
                 setStart(startTim);
                 setEnd(endTim);
-
-                const isActive = (c >= startTim && c <= endTim);
-                // console.log('time? : '+isActive)
+    
+                const isActive = c >= startTim && c <= endTim;
+                console.log('election? : '+isActive+" and "+wasElectionActive)
+                if (isActive && !wasElectionActive) {
+                    console.log('Election started, resetting voters...');
+                    try {
+                        await fetch('http://127.0.0.1:5000/voter/reset');
+                        console.log('Voters reset done');
+                        setWasElectionActive(true);
+                    } catch (error) {
+                        console.error('Could not reset voters:', error);
+                    }
+                } else if (!isActive && wasElectionActive) {
+                    console.log('Election ended');
+                    setWasElectionActive(false);
+                }
+    
                 setIsElectionActive(isActive);
             } catch (error) {
                 console.error("Failed to fetch timings:", error);
             }
         };
-
+    
         fetchTiming();
-    }, []);
+        const intervalId = setInterval(fetchTiming, 1000);
+    
+        return () => clearInterval(intervalId); 
+    }, [wasElectionActive]); 
+    
 
     function isWithinTiming(start, end) {
         const currentTime = new Date();
@@ -61,18 +80,12 @@ function App() {
         const c = currentTime.toISOString();
         const startT = new Date(start);
         const endT = new Date(end);
-        // console.log('current date: '+c) 
-        // console.log('start date: '+startT) 
-        // console.log('end date: '+endT) 
-        
-        // Check if the current time is within the start and end time
-        const isWithin = c >= start && c <= end;
-    
-        // console.log('Current Time:', c);
-        // console.log('Start Time:', start);
-        // console.log('End Time:', end);
-        // console.log('Is within timing:', isWithin);
-        
+        console.log('in within function')
+        console.log(start)
+        console.log(end)
+        console.log(c)
+        const isWithin = c >= start && c <= end;    
+        console.log(isWithin)    
         return isWithin;
     }
 
@@ -102,6 +115,10 @@ function App() {
     useEffect(() => {
         localStorage.setItem("voterData", JSON.stringify(voterData));
     }, [voterData]);
+
+    useEffect(() => {
+        localStorage.setItem("WasElectionActive", wasElectionActive);
+    }, [wasElectionActive]);
 
     useEffect(() => {
         localStorage.setItem("adminData", JSON.stringify(adminData));
@@ -164,7 +181,7 @@ function App() {
                     </PrivateRoute>
             } />
             <Route path='/voting' element={
-                isElectionActive && isWithinTiming(startTime, endTime)?
+                isWithinTiming(startTime, endTime)==true?
                     <PrivateRoute isAllowed={!!voterData}>
                         <Voting voter={voter} candi={candidates} start={startTime} end={endTime} />
                     </PrivateRoute>
@@ -197,6 +214,11 @@ function App() {
             <Route path='/validation' element={
                 <PrivateRoute isAllowed={!!adminData}>
                     <Validation admin={admin} />
+                </PrivateRoute>
+            } />
+            <Route path='/votes' element={
+                <PrivateRoute isAllowed={!!adminData}>
+                    <Votes admin={admin} />
                 </PrivateRoute>
             } />
             <Route path='/statistics' element={

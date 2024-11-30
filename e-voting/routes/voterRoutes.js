@@ -55,10 +55,10 @@ router.get('/reset', async (request, response) => {
         if (result.modifiedCount === 0) {
             return response.status(404).json({ message: 'No records updated' });
         }        
-        return response.status(200).json({ message: 'All voters updated to status 0' });
+        return response.status(200).json({ message: 'All voters updated to status 0', status:200 });
     } catch (err) {
         console.log(err.message);
-        response.status(500).send({ message: err.message });
+        response.status(500).send({ message: err.message, status:500 });
     }
 });
 
