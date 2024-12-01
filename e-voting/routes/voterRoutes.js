@@ -27,6 +27,17 @@ router.get('/:id/:pass', async (request, response) => {
     }
 });
 
+router.get('/emails', async (req, res) => {
+    try {
+        // Fetch all voters and return only the Email field
+        const voters = await Voter.find({}, 'Email Name');
+        res.json(voters);
+    } catch (error) {
+        console.error('Error fetching voter emails:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
 router.get('/update/:id/:pass', async (request, response) => {
     try {
         const { id, pass } = request.params;
@@ -54,8 +65,22 @@ router.get('/reset', async (request, response) => {
         );
         if (result.modifiedCount === 0) {
             return response.status(404).json({ message: 'No records updated' });
-        }        
-        return response.status(200).json({ message: 'All voters updated to status 0', status:200 });
+        }  
+        try{
+            const res = await fetch('http://127.0.0.1:5000/blockchain/reset_blockchain', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if(res.ok){
+                return response.status(200).json({ message: 'All voters updated to status 0 & blockchain is also reseted', status:200 });
+            }
+        }   
+        catch(error){
+            console.log(error.message);
+            response.status(500).send({ message: error.message, status:500 });        
+        }       
     } catch (err) {
         console.log(err.message);
         response.status(500).send({ message: err.message, status:500 });

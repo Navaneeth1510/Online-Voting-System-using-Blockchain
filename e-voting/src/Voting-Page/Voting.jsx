@@ -295,7 +295,7 @@ function Voting({ voter, candi, start, end}) {
                                     )    
                                     :
                                     (
-                                        <button className="btn mt-1 text-center d-flex justify-content-center align-items-center"  disabled  style={{ width: "100%", backgroundColor: "#5522D0", color: "white" }}>
+                                        <button className="btn text-center d-flex justify-content-center align-items-center"  disabled  style={{ width: "50%", height:"75%", backgroundColor: "#5522D0", color: "white" }}>
                                             <span className="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
                                             <span role="status">&nbsp;&nbsp;Voting...</span>
                                         </button>

@@ -37,6 +37,12 @@ router.post('/schedule', async(request, response)=>{
         schedule.endTime = convertToIST(new Date(schedule.endTime));
         const del = await Timing.deleteMany({});
         const res = await Timing.create(schedule);
+        try {
+            await fetch(`http://localhost:5010/email/send/${schedule.startTime}/${schedule.endTime}`);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+
         if(res){
             response.status(200).send({ message: 'Schedule updated successfully!' });
         }else{

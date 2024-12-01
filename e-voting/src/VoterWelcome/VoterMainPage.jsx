@@ -4,37 +4,32 @@ import { useNavigate } from 'react-router-dom';
 import HeaderLogout from '../Header_Logout/Header_Logout';
 import { MdErrorOutline } from "react-icons/md";
 
-function VoterMainPage({ voter, start, end }) {
+function VoterMainPage({ voter }) {
     const navigate = useNavigate();
     const [agreed, setAgreed] = useState(false);
-    const [restrict, setRestrict] = useState(false);  // Changed to setRestrict for clarity
+    const [restrict, setRestrict] = useState(false); 
     const [showModal, setShowModal] = useState(false); 
-    const [results, setResult] = useState(false);
-
+    
+    // time control part
+    const [active, setActive] = useState(() => {
+        const local = localStorage.getItem("active");
+        return local ? JSON.parse(local) : false;
+    });
     useEffect(() => {
-        function resultsOut() {
-            const currentTime = new Date();
-            currentTime.setHours(currentTime.getHours() + 5);
-            currentTime.setMinutes(currentTime.getMinutes() + 30);
-            const c = currentTime.toISOString();
-            console.log(start)
-            console.log(end)
-            console.log(c)
-            if (c < start || c > end) {
-                setResult(true);
-                console.log('Results out: '+true);
-            } else {
-                setResult(false);
-                console.log('Results not out: '+false);
+        const interval = setInterval(() => {
+            const local = localStorage.getItem("active");
+            if (local) {
+                console.log('in mainpage, active = '+local);
+                setActive(JSON.parse(local));
             }
-        }
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+    useEffect(() => {
+        localStorage.setItem("active", active);
+    }, [active]);
+    // time control part
 
-        const intervalId = setInterval(() => {
-            resultsOut();
-        }, 1000); 
-
-        return () => clearInterval(intervalId);
-    }, [start, end]);
 
     function gotoresults(){
         navigate('/results');
@@ -51,13 +46,13 @@ function VoterMainPage({ voter, start, end }) {
             navigate('/voting');
         } 
         else {
-            setShowModal(true);  // Show terms & conditions modal
+            setShowModal(true);  
         }
     }
 
     function handleCloseModal() {
-        setShowModal(false);  // Close the terms & conditions modal
-        setRestrict(false);   // Close the restrict modal
+        setShowModal(false);  
+        setRestrict(false);   
     }
 
     const { Name, voterID, Email, DOB, Address } = voter.voterData || {};
@@ -69,7 +64,7 @@ function VoterMainPage({ voter, start, end }) {
             </div>
             <div className="container py-5"> 
                 <div className="row justify-content-center">
-                {results && (
+                {!active && (
                     <div className="toast-container position-fixed top-0 start-0 w-100 p-1" style={{marginTop:"8vh"}}>
                         <div className="toast align-items-center text-bg-warning border-0 show" role="alert" aria-live="assertive" aria-atomic="true"
                             style={{
@@ -95,7 +90,7 @@ function VoterMainPage({ voter, start, end }) {
                 )}
                     <div className="col-12 col-md-12 col-lg-10 mt-4">
                         <h2 className="mb-4" style={{ color: '#6f42c1' }}>
-                            Welcome, <br /><p className='fs-1'>{Name}</p>
+                            Welcome, <br /><p className='fs-1'>{voter.voterData.Name}</p>
                         </h2>
 
                         <div className="position-relative">
@@ -111,16 +106,16 @@ function VoterMainPage({ voter, start, end }) {
                                     </div>
 
                                     <h2 className="display-6 fw-bold text-center" style={{ color: '#6f42c1' }}>
-                                        Voter ID: {voterID}
+                                        Voter ID: {voter.voterData.voterID}
                                     </h2>
 
                                     <hr className="border-2 border-purple mb-4" style={{ borderColor: '#6f42c1' }} />
 
                                     <ul className="list-unstyled fs-5">
-                                        <li className="mb-2"><strong>Name:</strong> {Name}</li>
-                                        <li className="mb-2"><strong>Email:</strong> {Email}</li>
-                                        <li className="mb-2"><strong>Date of Birth:</strong> {new Date(DOB).toLocaleDateString()}</li>
-                                        <li className="mb-2"><strong>Address:</strong> {Address}</li>
+                                        <li className="mb-2"><strong>Name:</strong> {voter.voterData.Name}</li>
+                                        <li className="mb-2"><strong>Email:</strong> {voter.voterData.Email}</li>
+                                        <li className="mb-2"><strong>Date of Birth:</strong> {new Date(voter.voterData.DOB).toLocaleDateString()}</li>
+                                        <li className="mb-2"><strong>Address:</strong> {voter.voterData.Address}</li>
                                         <li className="mb-2"><strong>Status: </strong>
                                             {voter.voterData["Status"]==0 ?
                                                 (
@@ -157,7 +152,7 @@ function VoterMainPage({ voter, start, end }) {
                                 <button
                                     className="btn btn-primary"
                                     style={{ backgroundColor: '#6f42c1', borderColor: '#6f42c1', width: '15%' }}
-                                    onClick={goToVotingPage} disabled={results}
+                                    onClick={goToVotingPage} disabled={!active}
                                 >
                                     Next
                                 </button>

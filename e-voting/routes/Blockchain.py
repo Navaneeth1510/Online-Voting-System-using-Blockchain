@@ -190,6 +190,31 @@ class Blockchain:
             })
 
         return result
+    
+    # def generate_results_json(self):
+    #     results = {}
+        
+    #     for block in self.chain[1:]:  # Skip the genesis block
+    #         block_data = block.get("block_data", {})
+            
+    #         constituency_id = block_data.get("constituency_id")
+    #         candidate_id = block_data.get("candidate_id")
+    #         candidate_name = block_data.get("candidate_name", "N/A")
+    #         candidate_pic = block_data.get("candidate_pic", "N/A")
+    #         party_pic = block_data.get("party_pic", "N/A")
+    #         num_votes = block_data.get("num_votes", 0)
+            
+    #         if constituency_id not in results:
+    #             results[constituency_id] = {}
+            
+    #         results[constituency_id][candidate_id] = {
+    #             "Name": candidate_name,
+    #             "Pic": candidate_pic,
+    #             "Partypic": party_pic,
+    #             "Numofvotes": num_votes,
+    #         }
+        
+    #     return results
 
 
 
@@ -313,6 +338,14 @@ def voting_percentage():
 def result():
     result = blockchain.count_votes_by_constituency({"chain": blockchain.chain})
     return jsonify(result)
+
+# @app.route('/results_json', methods=['GET'])
+# def results_json():
+#     try:
+#         results = blockchain.generate_results_json()
+#         return jsonify({"status": "true", "message": "Results fetched successfully.", "results": results}), 200
+#     except Exception as e:
+#         return jsonify({"status": "false", "message": str(e)}), 500
 
 @app.route('/candidate_timestamps', methods=['GET'])
 def candidate_timestamps():

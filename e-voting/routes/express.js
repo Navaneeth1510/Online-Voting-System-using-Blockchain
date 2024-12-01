@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import voterRoutes from './voterRoutes.js'
 import adminRoutes from './adminRoutes.js'
 import constRoutes from './constRoutes.js'
-import emailRoutes from './mail_setup.js'
 import candiRoutes from './candiRoutes.js';
 import blockchainRoutes from './blockchainRoutes.js';
 import timingRoutes from './timeRoutes.js';
@@ -18,7 +17,6 @@ app.use(express.json());
 app.use('/voter',voterRoutes);
 app.use('/admin',adminRoutes);
 app.use('/const',constRoutes);
-app.use('/email',emailRoutes);
 app.use('/candi',candiRoutes);
 app.use('/blockchain',blockchainRoutes);
 app.use('/time',timingRoutes);

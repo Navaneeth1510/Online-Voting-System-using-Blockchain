@@ -35,6 +35,25 @@ router.post('/restore', async (req, res) => {
     }
 });
 
+router.post('/reset_blockchain', async (req, res) => { 
+    try {
+        const fetchResponse = await fetch('http://127.0.0.1:5005/reset_blockchain', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!fetchResponse.ok) {
+            throw new Error('Something went wrong');
+        }
+        const data = await fetchResponse.json(); 
+        return res.status(200).json(data); 
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 router.post('/mine_block', async (req, res) => { 
     try {
         const body = req.body;

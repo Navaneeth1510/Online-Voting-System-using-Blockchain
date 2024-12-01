@@ -42,7 +42,7 @@ function AdminOTP({ admin }) {
     async function sendotp() {
         console.log("Sending the otp");
         try {
-            const response = await fetch(`http://localhost:5000/email/send-otp/${admin.adminData.Name}/${admin.adminData.Email}/${otp}`);
+            const response = await fetch(`http://localhost:5010/email/send-otp/${admin.adminData.Name}/${admin.adminData.Email}/${otp}`);
             if (!response.ok) {
                 throw new Error('Couldn\'t send email');
             }

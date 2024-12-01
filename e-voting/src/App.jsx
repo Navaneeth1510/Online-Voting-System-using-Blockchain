@@ -22,8 +22,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function App() {
 
     const[startTime, setStart] = useState(null);
+    const[flag, setFlag] = useState(0);
     const[endTime, setEnd] = useState(null);
-    const [isElectionActive, setIsElectionActive] = useState(false);
+    // const [isElectionActive, setIsElectionActive] = useState(false);
+    const [isElectionActive, setIsElectionActive] = useState(() => {
+        const local = localStorage.getItem("active");
+        return local ? JSON.parse(local) : false;
+    });
     const [wasElectionActive, setWasElectionActive] = useState(() => {
         const local = localStorage.getItem("WasElectionActive");
         return local ? JSON.parse(local) : false;
@@ -49,17 +54,17 @@ function App() {
                 if (isActive && !wasElectionActive) {
                     console.log('Election started, resetting voters...');
                     try {
+                        setWasElectionActive(true);
                         await fetch('http://127.0.0.1:5000/voter/reset');
                         console.log('Voters reset done');
-                        setWasElectionActive(true);
+                        console.log('--------------------------------------------')
                     } catch (error) {
                         console.error('Could not reset voters:', error);
                     }
-                } else if (!isActive && wasElectionActive) {
-                    console.log('Election ended');
-                    setWasElectionActive(false);
                 }
-    
+                else if(isActive==false && wasElectionActive==true){
+                    setWasElectionActive(false);
+                }    
                 setIsElectionActive(isActive);
             } catch (error) {
                 console.error("Failed to fetch timings:", error);
@@ -119,6 +124,9 @@ function App() {
     useEffect(() => {
         localStorage.setItem("WasElectionActive", wasElectionActive);
     }, [wasElectionActive]);
+    useEffect(() => {
+        localStorage.setItem("active", isElectionActive);
+    }, [isElectionActive]);
 
     useEffect(() => {
         localStorage.setItem("adminData", JSON.stringify(adminData));
@@ -154,7 +162,7 @@ function App() {
         <Routes>
             {/*can access all these routes directly*/}
             {/*timing shd be checked. only if the current time is bw the start and end time mainpage and loginpage can be accessed else goes to results only */}
-            <Route path='/' element={<MainPage start={startTime} end={endTime}/>
+            <Route path='/' element={<MainPage start={startTime} end={endTime} active={isElectionActive}/>
             } />
 
             <Route path='/login' element={

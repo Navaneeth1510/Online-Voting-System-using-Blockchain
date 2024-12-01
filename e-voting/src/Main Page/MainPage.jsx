@@ -5,34 +5,26 @@ import './MainPage.css';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-function MainPage({ start, end }) {
+function MainPage() {
     const navigate = useNavigate();
-    const [results, setResult] = useState(false);
 
+    const [active, setActive] = useState(() => {
+        const local = localStorage.getItem("active");
+        return local ? JSON.parse(local) : false;
+    });
     useEffect(() => {
-        function resultsOut() {
-            const currentTime = new Date();
-            currentTime.setHours(currentTime.getHours() + 5);
-            currentTime.setMinutes(currentTime.getMinutes() + 30);
-            const c = currentTime.toISOString();
-            // console.log(c);
-            // console.log(start);
-            // console.log(end);
-            if (c < start || c > end) {
-                setResult(true);
-                console.log(true);
-            } else {
-                setResult(false);
-                console.log(false);
+        const interval = setInterval(() => {
+            const local = localStorage.getItem("active");
+            if (local) {
+                console.log('in mainpage, active = '+local);
+                setActive(JSON.parse(local));
             }
-        }
-
-        const intervalId = setInterval(() => {
-            resultsOut();
-        }, 1000); 
-
-        return () => clearInterval(intervalId);
-    }, [start, end]); 
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+    useEffect(() => {
+        localStorage.setItem("active", active);
+    }, [active]);
 
     function gotoresults(){
         console.log('navigating')
@@ -46,7 +38,7 @@ function MainPage({ start, end }) {
         <>           
             <div className="row main-page min-vh-100" style={{ backgroundColor: '#e4dcf8' }}>
 
-            {results && (
+            {!active && (
                     <div className="toast-container position-fixed top-0 start-0 w-100 p-1">
                         <div className="toast align-items-center text-bg-warning border-0 show" role="alert" aria-live="assertive" aria-atomic="true"
                             style={{
