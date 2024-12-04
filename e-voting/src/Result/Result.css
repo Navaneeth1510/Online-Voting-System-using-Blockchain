@@ -1,5 +1,35 @@
-.content{
+.content {
     .shadow-sm {
-        box-shadow: 7px 7px 4px  #e4dcf8 !important;
+        box-shadow: 7px 7px 4px #e4dcf8 !important;
     }
+}
+.header{
+    .tooltip {
+        max-width: 5000px; 
+        white-space: normal; 
+    }
+}
+
+.carousel-control-prev, .carousel-control-next {
+    padding: 0.5rem 1rem; 
+    margin: 0;  
+    width: auto;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-control-prev span, .carousel-control-next span {
+    font-size: 1.5rem; 
+}
+
+.carousel-control-prev span {
+    margin-right: 5px;
+}
+
+.carousel-control-next span {
+    margin-left: 5px; 
+}
+.btnn:focus {
+    border:white;
 }

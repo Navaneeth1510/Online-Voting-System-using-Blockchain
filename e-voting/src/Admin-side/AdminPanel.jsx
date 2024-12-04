@@ -13,7 +13,7 @@ function AdminSide({admin}){
                         </div>                        
                         <div className="card mt-5" style={{backgroundColor:'#e4dcf8', border:'none'}}>
                             <div className="image img-fluid center" style={{textAlign:"center",alignItems:"center"}}>
-                                <img src="src/assets/nami.png" className="img-fluid center" style={{width:"30%", height:"auto"}}></img>
+                                <img src={`src/assets/Candidates/${admin.adminData.AdminPic}`} className="img-fluid center rounded-circle" style={{width:"30%", height:"auto"}}></img>
                             </div>
                             <div className="card-body border border-dark rounded-5 fs-6 mt-5">
                                 <div className="row ps-1">

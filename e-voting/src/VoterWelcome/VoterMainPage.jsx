@@ -131,7 +131,7 @@ function VoterMainPage({ voter }) {
                                 </div>
                             </div>
 
-                            <div className="d-flex justify-content-between align-items-center mt-4">
+                            <div className="d-flex justify-content-between align-items-center mt-4 ms-2">
                                 <div className="form-check">
                                     <input
                                         type="checkbox"

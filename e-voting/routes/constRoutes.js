@@ -27,4 +27,19 @@ router.get('/:id', async (request, response) => {
     }
 });
 
+
+router.get('/', async (request, response) => {
+    try {
+        const constituencies = await Constituency.find().select('constituencyID');
+        if (!constituencies || constituencies.length === 0) {
+            return response.status(404).json({ message: 'No constituencies found' });
+        }
+        return response.status(200).json(constituencies);
+    } catch (err) {
+        console.log(err.message);
+        response.status(500).send({ message: err.message });
+    }
+});
+
+
 export default router;

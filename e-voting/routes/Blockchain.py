@@ -155,6 +155,25 @@ class Blockchain:
 
         return voting_percentage
     
+    def get_voting_percentage_for_constituency(self, chain, constituency_id):
+        vote_count = 0
+        total_votes = 10  # Total votes can be dynamic based on your requirements
+
+        # Loop through the blockchain to find the votes for the given constituency_id
+        for block in chain: 
+            block_data = block.get('block_data', {})
+            block_constituency_id = block_data.get('constituency_id')
+            if str(block_constituency_id) == str(constituency_id):
+                vote_count += 1
+        if vote_count > 0 :
+            voting_percentage = (vote_count / total_votes) * 100 
+        else:
+            voting_percentage = 0
+        return {
+            "voting_percentage": voting_percentage
+        }
+
+    
     def get_candidate_timestamps(self):
         candidate_timestamps = []
         for block in self.chain[1:]:  # Skip genesis block (usually has no data)
@@ -331,6 +350,14 @@ def voting_percentage():
             'message': 'Voting percentage calculated successfully.'
         }
         return jsonify(response), 200
+    except FileNotFoundError as e: 
+        return jsonify({"error": str(e)}), 404
+    
+@app.route('/voting_percentage/<int:id>', methods=['GET'])
+def calc_voting_percentage(id):
+    try:
+        percentages = blockchain.get_voting_percentage_for_constituency(blockchain.chain, id)
+        return jsonify(percentages), 200
     except FileNotFoundError as e: 
         return jsonify({"error": str(e)}), 404
 

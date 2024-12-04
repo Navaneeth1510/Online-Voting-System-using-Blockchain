@@ -53,10 +53,6 @@ router.get('/send-otp/:name/:email/:otp', async (req, res) => {
 function formatDateTime(dateString) {
     // Parse the date in UTC
     const date = new Date(dateString);
-
-    // console.log(date);
-
-    // Format the date
     const months = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -106,6 +102,10 @@ router.get('/send/:start/:end', async (req, res) => {
                         We kindly request you to participate and cast your vote during the scheduled time.
                     </div>
                     <div>
+                        In order to vote in the election, 
+                        <a href="http://onlinevotingsystem.com:5173/">Click Here</a>
+                    </div>
+                    <div><br>
                         <h3>Best regards,</h3>
                         <h4>Online Voting System</h4>
                     </div>

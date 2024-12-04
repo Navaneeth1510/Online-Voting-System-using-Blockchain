@@ -251,7 +251,7 @@ function Voting({ voter, candi, start, end}) {
                                                     <img className="m-1" src={`src/assets/Party/${candidate.partyPic}`} alt={`${candidate.partyPic}`} style={{ width: "50%" }} />
                                                 </td>
                                                 <td className="border border-dark fs">
-                                                    <img src={`src/assets/Party/${candidate.candidadatePic}`} alt={`${candidate.candidateName}`} style={{ width: "50%" }} />
+                                                    <img src={`src/assets/Candidates/${candidate.candidatePic}`} alt={`${candidate.candidateName}`} style={{ width: "50%" }} />
                                                 </td>
                                                 <td className="border border-dark fs">{candidate.partyName}</td>
                                                 <td className="border border-dark fs">{candidate.candidateName}</td>

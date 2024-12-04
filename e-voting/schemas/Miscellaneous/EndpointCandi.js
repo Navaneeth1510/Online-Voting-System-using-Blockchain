@@ -23,4 +23,15 @@ router.post('/', async (request, response) => {
     }
 });
 
+router.get('/', async (request, response) => {
+    try {
+        const candi = await Candidate.find();
+        return response.status(201).send(candi); // Return the created voters
+
+    } catch (error) {
+        console.log("error");
+        return response.status(500).send("here"); // Send a 500 error for server issues
+    }
+});
+
 export default router;

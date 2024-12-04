@@ -16,6 +16,35 @@ router.get('/validate', async (req, res) => {
     }
 });
 
+router.get('/voting_percentage', async (req, res) => { 
+    try {
+        const fetchResponse = await fetch('http://localhost:5005/voting_percentage'); 
+        if (!fetchResponse.ok) {
+            throw new Error('Something went wrong');
+        }
+        const data = await fetchResponse.json(); 
+        return res.status(200).json(data); 
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.get('/voting_percentage/:id', async (req, res) => { 
+    try {
+        const id = req.params.id;
+        const fetchResponse = await fetch(`http://localhost:5005/voting_percentage/${id}`); 
+        if (!fetchResponse.ok) {
+            throw new Error('Something went wrong');
+        }
+        const data = await fetchResponse.json(); 
+        return res.status(200).json(data); 
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 router.post('/restore', async (req, res) => { 
     try {
         const fetchResponse = await fetch('http://localhost:5005/restore_blockchain', {

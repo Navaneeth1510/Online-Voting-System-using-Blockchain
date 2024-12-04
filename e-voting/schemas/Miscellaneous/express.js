@@ -19,7 +19,7 @@ mongoose
 .connect(mongoDBURL)
 .then(()=>{
     console.log('app connected to mongodb');
-    app.listen(5005, ()=>{
+    app.listen(5015, ()=>{
         console.log(`App is listening to port : 5005`);
     });
 })
