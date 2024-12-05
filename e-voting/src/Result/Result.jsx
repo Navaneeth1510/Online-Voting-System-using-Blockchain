@@ -75,6 +75,18 @@ function Result() {
         navigate(-1);
     }
 
+    async function takeScreenshot(name){
+        const element = document.getElementById('ss2'); 
+        const canvas = await html2canvas(element);
+        const dataURL = canvas.toDataURL('image/png');
+
+        // Create a link and trigger the download
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = `${name}.png`;
+        link.click();
+    };
+
     useEffect(() => {
         async function fetchAllVotingPercentages() {
             const percentages = {};
@@ -138,13 +150,13 @@ function Result() {
                     }
                 </div>
             </div>
-            <div className="content d-flex justify-content-center" style={{ height: '110vh' }}>
+            <div className="content d-flex justify-content-center" id="ss1" style={{ height: '110vh' }}>
                 <div
                     id="carouselExample"
                     className="carousel slide shadow-sm p-3 rounded-4"
                     style={{ backgroundColor: '#e4dcf8', width: '80%', height: '87vh' }}
                 >
-                    <div className="carousel-inner" style={{ padding: "0" }}>
+                    <div className="carousel-inner" id="ss2" style={{ padding: "0", backgroundColor: '#e4dcf8' }}>
                         <div className="carousel-item active" style={{ height: '83vh' }}>
                             <div className="d-flex justify-content-center align-items-center text-center h-100">
                                 <div className="w-75">
