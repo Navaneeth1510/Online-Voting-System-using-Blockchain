@@ -6,8 +6,9 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Pie } from 'react-chartjs-2';
 import { useNavigate } from 'react-router-dom';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 // Import chart.js components
 import {
     Chart as ChartJS,
@@ -67,6 +68,8 @@ function Result() {
             setTimes({ startD, startT, endD, endT });
         }
     }
+
+    
 
     function goback() {
         navigate(-1);
@@ -182,13 +185,33 @@ function Result() {
                             const maxVotes = Math.max(...constituency.candidates.map(candidate => candidate.votes));
                             const winners = constituency.candidates.filter(candidate => candidate.votes === maxVotes);
 
+                            async function takeScreenshot(name, element) {
+                                if (!element) {
+                                    console.error('Element with ID "ss" not found');
+                                    return;
+                                }
+                            
+                                const canvas = await html2canvas(element);
+                                const dataURL = canvas.toDataURL('image/png');
+                                const link = document.createElement('a');
+                                link.href = dataURL;
+                                link.download = `${name}.png`;
+                                link.click();
+                            }
+                                                        
 
                             return (
-                                <div className="carousel-item" style={{ height: '83vh' }} key={constituency.constituencyID}>
-                                    <div className="Consti name ms-4">
+                                <div className="carousel-item"  id="ss2" style={{ height: '83vh',  backgroundColor: '#e4dcf8' }} key={constituency.constituencyID}>
+                                    <div className="Consti name ms-4 d-flex align-items-center justify-content-between" >
                                         <button type="button" className="btnn fs-2 ms-2 border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title={constituency.details} style={{ color: '#5522D0', backgroundColor: '#e4dcf8' }}>
                                             {constituency.constituencyName}
                                         </button>
+                                        <FontAwesomeIcon 
+                                            icon={faDownload} 
+                                            className="me-0" 
+                                            style={{ fontSize: "1.5rem" }}
+                                            onClick={()=>takeScreenshot(constituency.constituencyName, document.getElementById('ss2'))} 
+                                        />
                                     </div>
                                     <div className="row pe-5">
                                         <div className="col-6 p-3 d-flex flex-column justify-content-center align-items-center">
@@ -289,12 +312,28 @@ function Result() {
                             );
                         })}
                     </div>
-                    <button className="carousel-control-prev ms-0 cc d-flex justift-content-center align-items-center" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span className="me-5"><FontAwesomeIcon icon={faAngleLeft} style={{ fontSize: "2rem", color: "green" }} /></span>
+                    <button
+                        className="carousel-control-prev ms-0 cc d-flex justify-content-center align-items-center h-50"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="prev"
+                        style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }}
+                    >
+                        <span className="me-5">
+                            <FontAwesomeIcon icon={faAngleLeft} style={{ fontSize: "2rem", color: "green" }} />
+                        </span>
                         <span className="visually-hidden">Previous</span>
                     </button>
-                    <button className="carousel-control-next cc" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span className="ms-5"><FontAwesomeIcon icon={faAngleRight} style={{ fontSize: "2rem", color: "green" }} /></span>
+                    <button
+                        className="carousel-control-next cc h-50 d-flex justify-content-center align-items-center"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="next"
+                        style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }}
+                    >
+                        <span className="ms-5">
+                            <FontAwesomeIcon icon={faAngleRight} style={{ fontSize: "2rem", color: "green" }} />
+                        </span>
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
