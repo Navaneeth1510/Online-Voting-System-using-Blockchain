@@ -33,7 +33,16 @@ class Blockchain:
         for record in records:
             record_copy = {key: (str(value) if isinstance(value, ObjectId) else value) for key, value in record.items() if key != '_id'}
             self.chain.append(record_copy)
-    
+
+
+    def mongodb_chain(self):
+        records = self.collection.find().sort("index", 1)  
+        secondary_chain = []
+        for record in records:
+            record_copy = {key: (str(value) if isinstance(value, ObjectId) else value) for key, value in record.items() if key != '_id'}
+            secondary_chain.append(record_copy)
+        return secondary_chain
+     
     def save_chain_to_mongodb(self):
         # empty the collection and then backup
         self.collection.delete_many({})  
@@ -287,6 +296,45 @@ blockchain = Blockchain()
 
 
 
+# @app.route('/mine_block', methods=['POST'])
+# def mine_block():
+#     data = request.get_json()
+#     if not data or 'candidate_id' not in data or 'constituency_id' not in data or 'timestamp' not in data:
+#         return jsonify({'message': 'Invalid data: Missing candidate_id, constituency_id, or timestamp'}), 400
+    
+#     candidate_id = data['candidate_id']
+#     timestamp = data['timestamp']
+#     constituency_id = data['constituency_id']
+
+#     previous_block = blockchain.get_previous_block()
+#     previous_proof = previous_block['proof']
+    
+#     proof = blockchain.proof_of_work(previous_proof)  
+#     previous_hash = blockchain.hash(previous_block)  
+    
+#     # new block is creted here
+#     block = blockchain.create_block(proof, previous_hash)  
+#     block['block_data'] = {
+#         'candidate_id': candidate_id,
+#         'timestamp': timestamp,
+#         'constituency_id': constituency_id,
+#     }
+
+#     blockchain.save_chain_to_mongodb()
+    
+#     response = {
+#         'status':'true',
+#         'message': 'Block mined successfully!',
+#         'index': block['index'],
+#         'timestamp': block['timestamp'],
+#         'proof': block['proof'],
+#         'previous_hash': block['previous_hash'],
+#         'block_data': block['block_data'],
+#     }
+#     return jsonify(response), 200 
+
+
+
 @app.route('/mine_block', methods=['POST'])
 def mine_block():
     data = request.get_json()
@@ -296,33 +344,56 @@ def mine_block():
     candidate_id = data['candidate_id']
     timestamp = data['timestamp']
     constituency_id = data['constituency_id']
+    
+    # Step 1: Load the secondary_chain from MongoDB
+    secondary_chain = blockchain.mongodb_chain()
 
-    previous_block = blockchain.get_previous_block()
+    # Step 2: Compare blockchain with secondary_chain
+    missing_blocks = [
+        block for block in blockchain.chain if block not in secondary_chain
+    ]
+
+    # Step 3: Add missing blocks to secondary_chain
+    for missing_block in missing_blocks:
+        proof = blockchain.proof_of_work(missing_block['proof'])
+        previous_hash = blockchain.hash(missing_block)
+        # Recreate and add the missing block using create_block
+        recreated_block = blockchain.create_block(proof, previous_hash)
+        recreated_block['block_data'] = missing_block.get('block_data', {})
+        secondary_chain.append(recreated_block)
+
+    # Step 4: Mine the new block for the current transaction
+    previous_block = secondary_chain[-1]
     previous_proof = previous_block['proof']
-    
-    proof = blockchain.proof_of_work(previous_proof)  
-    previous_hash = blockchain.hash(previous_block)  
-    
-    # new block is creted here
-    block = blockchain.create_block(proof, previous_hash)  
-    block['block_data'] = {
+    proof = blockchain.proof_of_work(previous_proof)
+    previous_hash = blockchain.hash(previous_block)
+
+    # Use create_block to mine the new block
+    new_block = blockchain.create_block(proof, previous_hash)
+    new_block['block_data'] = {
         'candidate_id': candidate_id,
         'timestamp': timestamp,
         'constituency_id': constituency_id,
     }
+    secondary_chain.append(new_block)
 
-    blockchain.save_chain_to_mongodb()
-    
+    # Step 5: Save the updated secondary_chain to MongoDB and update blockchain
+    blockchain.collection.delete_many({})
+    blockchain.collection.insert_many(secondary_chain)
+    blockchain.blockchain = secondary_chain.copy()
+
+    # Step 6: Prepare and return the response
     response = {
-        'status':'true',
+        'status': 'true',
         'message': 'Block mined successfully!',
-        'index': block['index'],
-        'timestamp': block['timestamp'],
-        'proof': block['proof'],
-        'previous_hash': block['previous_hash'],
-        'block_data': block['block_data'],
+        'index': new_block['index'],
+        'timestamp': new_block['timestamp'],
+        'proof': new_block['proof'],
+        'previous_hash': new_block['previous_hash'],
+        'block_data': new_block['block_data'],
     }
-    return jsonify(response), 200 
+    return jsonify(response), 200
+
 
 @app.route('/reset_blockchain', methods=['POST'])  
 def reset_blockchain():
@@ -335,11 +406,22 @@ def reset_blockchain():
 # retreive the entire blockchain
 @app.route('/get_chain', methods=['GET'])
 def get_chain():
+    # Helper function to serialize ObjectId
+    def serialize_block(block):
+        return {
+            key: (str(value) if isinstance(value, ObjectId) else value)
+            for key, value in block.items()
+        }
+    
+    # Serialize the entire chain
+    serialized_chain = [serialize_block(block) for block in blockchain.chain]
+    
     response = {
-        'chain': blockchain.chain,
-        'length': len(blockchain.chain),
+        'chain': serialized_chain,
+        'length': len(serialized_chain),
     }
     return jsonify(response), 200
+
 
 
 # validity

@@ -33,3 +33,8 @@
 .btnn:focus {
     border:white;
 }
+.Consti{
+    .right{
+        margin-right:10%;
+    }
+}

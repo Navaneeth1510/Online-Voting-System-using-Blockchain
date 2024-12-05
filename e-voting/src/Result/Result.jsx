@@ -6,7 +6,8 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Pie } from 'react-chartjs-2';
 import { useNavigate } from 'react-router-dom';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
-
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import html2canvas from 'html2canvas';
 
 // Import chart.js components
 import {
@@ -72,6 +73,18 @@ function Result() {
         navigate(-1);
     }
 
+    async function takeScreenshot(name){
+        const element = document.getElementById('ss2'); 
+        const canvas = await html2canvas(element);
+        const dataURL = canvas.toDataURL('image/png');
+
+        // Create a link and trigger the download
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = `${name}.png`;
+        link.click();
+    };
+
     useEffect(() => {
         async function fetchAllVotingPercentages() {
             const percentages = {};
@@ -135,13 +148,13 @@ function Result() {
                     }
                 </div>
             </div>
-            <div className="content d-flex justify-content-center" style={{ height: '110vh' }}>
+            <div className="content d-flex justify-content-center" id="ss1" style={{ height: '110vh' }}>
                 <div
                     id="carouselExample"
                     className="carousel slide shadow-sm p-3 rounded-4"
                     style={{ backgroundColor: '#e4dcf8', width: '80%', height: '87vh' }}
                 >
-                    <div className="carousel-inner" style={{ padding: "0" }}>
+                    <div className="carousel-inner" id="ss2" style={{ padding: "0", backgroundColor: '#e4dcf8' }}>
                         <div className="carousel-item active" style={{ height: '83vh' }}>
                             <div className="d-flex justify-content-center align-items-center text-center h-100">
                                 <div className="w-75">
@@ -184,11 +197,13 @@ function Result() {
 
 
                             return (
-                                <div className="carousel-item" style={{ height: '83vh' }} key={constituency.constituencyID}>
-                                    <div className="Consti name ms-4">
-                                        <button type="button" className="btnn fs-2 ms-2 border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title={constituency.details} style={{ color: '#5522D0', backgroundColor: '#e4dcf8' }}>
+                                <div className="carousel-item" id="ss" style={{ height: '83vh' }} key={constituency.constituencyID}>
+                                    <div className="Consti name ms-4 d-flex align-items-center justify-content-between">
+                                    <button type="button"  className="btnn fs-2 ms-2 border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title={constituency.details} style={{ color: '#5522D0', backgroundColor: '#e4dcf8' }} >
                                             {constituency.constituencyName}
                                         </button>
+                                        <FontAwesomeIcon icon={faDownload} onClick={()=>takeScreenshot(constituency.constituencyName)} className="me-2" style={{fontSize:"1.2rem"}}/>
+
                                     </div>
                                     <div className="row pe-5">
                                         <div className="col-6 p-3 d-flex flex-column justify-content-center align-items-center">
@@ -289,12 +304,16 @@ function Result() {
                             );
                         })}
                     </div>
-                    <button className="carousel-control-prev ms-0 cc d-flex justift-content-center align-items-center" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span className="me-5"><FontAwesomeIcon icon={faAngleLeft} style={{ fontSize: "2rem", color: "green" }} /></span>
+                    <button className="carousel-control-prev ms-0 cc d-flex justify-content-center align-items-center h-50" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }} >
+                        <span className="me-5">
+                            <FontAwesomeIcon icon={faAngleLeft} style={{ fontSize: "2rem", color: "green" }} />
+                        </span>
                         <span className="visually-hidden">Previous</span>
                     </button>
-                    <button className="carousel-control-next cc" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span className="ms-5"><FontAwesomeIcon icon={faAngleRight} style={{ fontSize: "2rem", color: "green" }} /></span>
+                    <button className="carousel-control-next cc h-50 d-flex justify-content-center align-items-center" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }} >
+                        <span className="ms-5">
+                            <FontAwesomeIcon icon={faAngleRight} style={{ fontSize: "2rem", color: "green" }} />
+                        </span>
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
