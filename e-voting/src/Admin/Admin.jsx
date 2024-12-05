@@ -12,9 +12,7 @@ function AdminPage( {admin} ) {
     const adminData = admin.adminData;
 
     useEffect(() => {
-        console.log('in useEffect');
         if (adminData == null) {
-            console.log('it is null');
             navigate('/login');
         }
     }, [adminData, navigate]);

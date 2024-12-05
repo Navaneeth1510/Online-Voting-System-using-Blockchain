@@ -50,14 +50,14 @@ function App() {
                 setEnd(endTim);
     
                 const isActive = c >= startTim && c <= endTim;
-                console.log('election? : '+isActive+" and "+wasElectionActive)
+                // console.log('election? : '+isActive+" and "+wasElectionActive)
                 if (isActive && !wasElectionActive) {
-                    console.log('Election started, resetting voters...');
+                    // console.log('Election started, resetting voters...');
                     try {
                         setWasElectionActive(true);
                         await fetch('http://127.0.0.1:5000/voter/reset');
-                        console.log('Voters reset done');
-                        console.log('--------------------------------------------')
+                        // console.log('Voters reset done');
+                        // console.log('--------------------------------------------')
                     } catch (error) {
                         console.error('Could not reset voters:', error);
                     }
@@ -85,12 +85,12 @@ function App() {
         const c = currentTime.toISOString();
         const startT = new Date(start);
         const endT = new Date(end);
-        console.log('in within function')
-        console.log(start)
-        console.log(end)
-        console.log(c)
+        // console.log('in within function')
+        // console.log(start)
+        // console.log(end)
+        // console.log(c)
         const isWithin = c >= start && c <= end;    
-        console.log(isWithin)    
+        // console.log(isWithin)    
         return isWithin;
     }
 
@@ -155,6 +155,9 @@ function App() {
         setCandiData: setCandiData,
     };
 
+    useEffect(()=>{
+        console.log("Welcome to Online Voting System !")
+    })
 
 
 

@@ -104,4 +104,18 @@ router.post('/mine_block', async (req, res) => {
     }
 });
 
+router.get('/results', async(req, res)=>{
+    try{
+        const rresponse = await fetch('http://localhost:5005/vote_count');
+        if (!rresponse.ok) {
+            throw new Error('Something went wrong');
+        }
+        const data = await rresponse.json(); 
+        return res.status(200).json(data); 
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+})
+
 export default router;

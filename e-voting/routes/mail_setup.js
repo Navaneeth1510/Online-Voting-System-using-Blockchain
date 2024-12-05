@@ -114,7 +114,6 @@ router.get('/send/:start/:end', async (req, res) => {
             };
             try {
                 const info = await transporter.sendMail(mailOptions);
-                console.log(`Email sent to ${email}: ${info.response}`);
             } catch (error) {
                 console.error('Error sending OTP:', error);
                 res.status(500).send({ error: 'Error sending OTP' });

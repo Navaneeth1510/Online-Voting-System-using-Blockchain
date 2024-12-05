@@ -19,7 +19,6 @@ function VoterMainPage({ voter }) {
         const interval = setInterval(() => {
             const local = localStorage.getItem("active");
             if (local) {
-                console.log('in mainpage, active = '+local);
                 setActive(JSON.parse(local));
             }
         }, 1000);
@@ -37,12 +36,10 @@ function VoterMainPage({ voter }) {
 
     function goToVotingPage() {
         const status = voter.voterData["Status"];
-        console.log(status);
         if (agreed && status===1) {  
             setRestrict(true);
         }
         else if (agreed && status==0){
-            console.log('going to voting page')
             navigate('/voting');
         } 
         else {

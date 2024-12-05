@@ -37,7 +37,6 @@ function Login({voter, admin}) {
                 const data = await response.json();
                 voter.setVoterData(data);
                 const constituncy = data.ConstituencyID;
-                console.log('constituency id : ', constituncy);
     
                 try {
                     const constResponse = await fetch(`http://localhost:5000/const/${constituncy}`);

@@ -1,7 +1,6 @@
 import './AdminPanel.css'
 function AdminSide({admin}){
     const imageurl = admin.adminData.AdminPic
-    console.log(imageurl);
 
     return (
         <>

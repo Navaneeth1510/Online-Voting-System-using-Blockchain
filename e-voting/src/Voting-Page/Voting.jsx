@@ -28,7 +28,6 @@ function Voting({ voter, candi, start, end}) {
 
     useEffect(() => {
         if (selectedCandidate) {
-            console.log("Selected candidate:", selectedCandidate);
             const img = `src/assets/Party/${selectedCandidate.partyPic}`;
             setPartyLogo(img);
         } else {
@@ -43,14 +42,9 @@ function Voting({ voter, candi, start, end}) {
             currentTime.setMinutes(currentTime.getMinutes() + 30);
             const c = currentTime.toISOString();
             if (c < start || c > end) {
-                console.log(start)
-                console.log(end)
-                console.log(c)
                 setResult(true);
-                console.log(true);
             } else {
                 setResult(false);
-                console.log(false);
             }
         }
 
@@ -77,7 +71,6 @@ function Voting({ voter, candi, start, end}) {
                 constituency_id: voter.voterData.ConstituencyID,
                 timestamp: new Date().toISOString(),
             };
-            console.log("Validating the blockchain...");
             
             try {
                 const validateResponse = await fetch(`http://localhost:5000/blockchain/validate`);
@@ -98,7 +91,6 @@ function Voting({ voter, candi, start, end}) {
                         }
                         
                         const data = await mineResponse.json();
-                        console.log(data);
                         setSuccess(data.status === 'true');
                         setFilled(true);                        
                     } catch (error) {
@@ -107,7 +99,6 @@ function Voting({ voter, candi, start, end}) {
                     }
                 } 
                 else {
-                    console.log(validateData.is_valid)
                     setSuccess(validateData.is_valid === 'true');
                 }
             } 
@@ -130,15 +121,12 @@ function Voting({ voter, candi, start, end}) {
         try{
             const voterId = voter.voterData.voterID;
             const password = voter.voterData.Password;
-            console.log(voterId);
-            console.log(password);
             const response = await fetch(`http://localhost:5000/voter/update/${voterId}/${password}`);
             if (!response.ok) {
                 setError(true);
                 throw new Error('Voter not found');
             }
             const data = await response.json();
-            console.log(data);
             voter.setVoterData(data);
             navigate('/voter-details');
         } catch (error) {

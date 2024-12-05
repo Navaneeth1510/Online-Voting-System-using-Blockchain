@@ -14,14 +14,12 @@ function Validation({admin}) {
     const[valid, setValid] = useState(true);
 
     async function validateBlockchain(){
-        console.log("validating the blockchain");
         try {
             const response = await fetch(`http://localhost:5000/blockchain/validate`);
             if (!response.ok) {
                 throw new Error('couldnt fetch details');
             }
             const data = await response.json();
-            console.log(data);
             setValidate(true);
             if(data["is_valid"]==false){
                 setValid(false);
@@ -32,7 +30,6 @@ function Validation({admin}) {
         }
     }
     async function restoreBlockchain(){
-        console.log("restoring the blockchain");
         try {
             const response = await fetch(`http://localhost:5000/blockchain/restore`, {
                 method: 'POST', 
@@ -44,15 +41,12 @@ function Validation({admin}) {
                 throw new Error('couldnt fetch details');
             }
             const data = await response.json();
-            console.log(data);
-            console.log("validating the blockchain");
             try {
                 const response = await fetch(`http://localhost:5000/blockchain/validate`);
                 if (!response.ok) {
                     throw new Error('couldnt fetch details');
                 }
                 const data = await response.json();
-                console.log(data);
                 setValidate(false);
                 if(data["is_valid"]==true){
                     setValid(true);

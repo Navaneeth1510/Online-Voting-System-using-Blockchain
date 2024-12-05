@@ -22,10 +22,6 @@ function ScheduleElection({ admin }) {
         const startDateTime = new Date(`${date}T${startTime}`);
         const endDateTime = new Date(`${date}T${endTime}`);
         const now = new Date();
-        
-        console.log("Date:", date);
-        console.log("Start Time:", startDateTime);
-        console.log("End Time:", endDateTime);
 
         if (!date || !startTime || !endTime) {
             setError("All fields are required!");

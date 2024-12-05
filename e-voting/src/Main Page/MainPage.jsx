@@ -16,7 +16,6 @@ function MainPage() {
         const interval = setInterval(() => {
             const local = localStorage.getItem("active");
             if (local) {
-                console.log('in mainpage, active = '+local);
                 setActive(JSON.parse(local));
             }
         }, 1000);
@@ -27,7 +26,6 @@ function MainPage() {
     }, [active]);
 
     function gotoresults(){
-        console.log('navigating')
         navigate('/results');
     }
     const handleGetStarted = () => {

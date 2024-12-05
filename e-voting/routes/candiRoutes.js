@@ -40,21 +40,17 @@ router.get('/', async (request, response) => {
         // Iterate through candidates and structure by constituencyID
         for (const candidate of candidates) {
             const constituencyID = candidate.constituencyID;
-            console.log(constituencyID)
 
             // Make API call to fetch constituency name
             const constituencyResponse = await fetch(`http://localhost:5000/const/${constituencyID}`);
-            // const votingPercentage = await fetch(`http://localhost:5000/blockchain/voting_percentage/${constituencyID}`);
-            // Check if the response is successful
             if (!constituencyResponse.ok) {
                 throw new Error('Failed to fetch constituency data');
             }
 
             // Parse the JSON response
             const constituencyData = await constituencyResponse.json();
-            const constituencyName = constituencyData.Name;  // Access the 'Name' property
+            const constituencyName = constituencyData.Name; 
             const constiDetails = constituencyData.Details;
-            console.log(constituencyName)
 
             if (!formattedData[constituencyID]) {
                 formattedData[constituencyID] = {
@@ -71,10 +67,8 @@ router.get('/', async (request, response) => {
                 partyName: candidate.partyName,
                 partyPic: candidate.partyPic,
                 candidatePic: candidate.candidatePic,
-                votes: counter, // Use counter as votes
+                votes: 0,
             });
-
-            counter += 1;
         }
 
         const result = Object.values(formattedData);

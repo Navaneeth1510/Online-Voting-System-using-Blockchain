@@ -3,6 +3,7 @@ import hashlib
 import json
 from flask import Flask, jsonify, request
 import os
+import requests
 from pymongo import MongoClient
 from bson import ObjectId  
 from collections import defaultdict
@@ -105,7 +106,7 @@ class Blockchain:
             # Move to the next block
             previous_block = block
             block_index += 1
-        print('correct')
+            
         return True
 
 
@@ -184,7 +185,6 @@ class Blockchain:
                     'timestamp': block_data.get("timestamp")
                 }
                 candidate_timestamps.append(candidate_info)
-        print(candidate_timestamps)
         
         return jsonify(candidate_timestamps),200
 
@@ -209,31 +209,65 @@ class Blockchain:
             })
 
         return result
-    
-    # def generate_results_json(self):
-    #     results = {}
+
+    def count_votes_by_candidate_and_constituency(self):
+        # API call to fetch constituency data
+        try:
+            response = requests.get("http://localhost:5000/candi/")
+            response.raise_for_status()
+            constituency_data = response.json()
+        except requests.RequestException as e:
+            print(f"Error fetching constituency data: {e}")
+            return []
         
-    #     for block in self.chain[1:]:  # Skip the genesis block
-    #         block_data = block.get("block_data", {})
-            
-    #         constituency_id = block_data.get("constituency_id")
-    #         candidate_id = block_data.get("candidate_id")
-    #         candidate_name = block_data.get("candidate_name", "N/A")
-    #         candidate_pic = block_data.get("candidate_pic", "N/A")
-    #         party_pic = block_data.get("party_pic", "N/A")
-    #         num_votes = block_data.get("num_votes", 0)
-            
-    #         if constituency_id not in results:
-    #             results[constituency_id] = {}
-            
-    #         results[constituency_id][candidate_id] = {
-    #             "Name": candidate_name,
-    #             "Pic": candidate_pic,
-    #             "Partypic": party_pic,
-    #             "Numofvotes": num_votes,
-    #         }
+        # Create a mapping of constituencyID to constituency details and candidates for easy lookup
+        constituency_mapping = {
+            constituency["constituencyID"]: {
+                "constituencyName": constituency["constituencyName"],
+                "details": constituency["details"],
+                "candidates": {
+                    candidate["candidateID"]: candidate
+                    for candidate in constituency["candidates"]
+                }
+            }
+            for constituency in constituency_data
+        }
         
-    #     return results
+        # Traverse the blockchain and update vote counts
+        for block in self.chain[1:]:  # Skipping the genesis block
+            block_data = block.get("block_data", {})
+            candidate_id = block_data.get("candidate_id")
+            constituency_id = block_data.get("constituency_id")
+            
+            if candidate_id and constituency_id:
+                # Check if constituency and candidate exist in the JSON data
+                if constituency_id in constituency_mapping and candidate_id in constituency_mapping[constituency_id]["candidates"]:
+                    constituency_mapping[constituency_id]["candidates"][candidate_id]["votes"] += 1
+        
+        # Convert the updated mapping back into the desired output format
+        result = []
+        for constituency_id, constituency_info in constituency_mapping.items():
+            constituency_result = {
+                "constituencyID": constituency_id,
+                "constituencyName": constituency_info["constituencyName"],
+                "details": constituency_info["details"],
+                "candidates": [
+                    {
+                        "candidateID": candidate["candidateID"],
+                        "candidateName": candidate["candidateName"],
+                        "partyName": candidate["partyName"],
+                        "partyPic": candidate["partyPic"],
+                        "candidatePic": candidate["candidatePic"],
+                        "votes": candidate["votes"]
+                    }
+                    for candidate in constituency_info["candidates"].values()
+                ]
+            }
+            result.append(constituency_result)
+        
+        return result
+
+
 
 
 
@@ -322,7 +356,7 @@ def is_valid():
 # tamper a particular blck
 @app.route('/tamper_block', methods=['POST'])
 def tamper_block():
-    print("Tamper block endpoint was called.")  
+    
     data = request.get_json()
     if not data or 'block_index' not in data or 'new_data' not in data:
         return jsonify({'message': 'Invalid data: Missing block_index or new_data'}), 400
@@ -366,13 +400,14 @@ def result():
     result = blockchain.count_votes_by_constituency({"chain": blockchain.chain})
     return jsonify(result)
 
-# @app.route('/results_json', methods=['GET'])
-# def results_json():
-#     try:
-#         results = blockchain.generate_results_json()
-#         return jsonify({"status": "true", "message": "Results fetched successfully.", "results": results}), 200
-#     except Exception as e:
-#         return jsonify({"status": "false", "message": str(e)}), 500
+@app.route('/vote_count', methods=['GET'])
+def vote_count():
+    try:        
+        results = blockchain.count_votes_by_candidate_and_constituency()
+        return jsonify(results), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route('/candidate_timestamps', methods=['GET'])
 def candidate_timestamps():

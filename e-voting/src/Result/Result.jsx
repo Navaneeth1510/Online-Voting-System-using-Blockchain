@@ -5,6 +5,8 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Pie } from 'react-chartjs-2';
 import { useNavigate } from 'react-router-dom';
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+
 
 // Import chart.js components
 import {
@@ -23,14 +25,14 @@ function Result() {
     const [flag, setFlag] = useState(0);
     const [votingPercentages, setVotingPercentages] = useState({});
     const navigate = useNavigate();
-    const [vp, setVP] = useState(0);
+    // const[tie, setTie] = useState(false);
 
 
     useEffect(() => {
         async function fetchResults() {
             try {
                 if (flag === 0) {
-                    const response = await fetch('http://localhost:5000/candi/');
+                    const response = await fetch('http://localhost:5000/blockchain/results');
                     const times = await fetch('http://localhost:5000/time/');
                     if (response.ok && times.ok) {
                         const res = await response.json();
@@ -51,8 +53,6 @@ function Result() {
 
     useEffect(() => {
         if (time) {
-            console.log("Time object:", time);
-            console.log('Processing time...');
             processTime();
         }
     }, [time]);
@@ -157,7 +157,6 @@ function Result() {
                         {results.map((constituency) => {
                             const labels = constituency.candidates.map((candidate) => candidate.candidateName);
                             const data = constituency.candidates.map((candidate) => candidate.votes);
-                            // const votingp = fetchVotingPercentage(constituency.constituencyID) || "Calculating...";
 
                             const pieChartData = {
                                 labels,
@@ -180,9 +179,9 @@ function Result() {
                                 },
                             };
 
-                            const winner = constituency.candidates.reduce((max, candidate) =>
-                                candidate.votes > max.votes ? candidate : max
-                            );
+                            const maxVotes = Math.max(...constituency.candidates.map(candidate => candidate.votes));
+                            const winners = constituency.candidates.filter(candidate => candidate.votes === maxVotes);
+
 
                             return (
                                 <div className="carousel-item" style={{ height: '83vh' }} key={constituency.constituencyID}>
@@ -235,30 +234,50 @@ function Result() {
                                             <div>
                                                 <h2>Winner :</h2>
                                             </div>
-                                            <div className="d-flex justify-content-center mt-4 p-0">
-                                                <div className="w-75 d-flex justify-content-center align-items-center">
-                                                    <img
-                                                        className="border border-5 border-dark"
-                                                        src={`src/assets/Party/${winner.partyPic}`}
-                                                        alt="Winner Party"
-                                                        style={{ width: '40%' }}
-                                                    />
-                                                    <img
-                                                        className="border border-5 border-dark ms-4"
-                                                        src={`src/assets/Candidates/${winner.candidatePic}`}
-                                                        alt="Winner Candidate"
-                                                        style={{ width: '40%' }}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="d-flex flex-column justify-content-center align-items-center mt-4">
-                                                <div>
-                                                    <h4>Name: {winner.candidateName}</h4>
-                                                    <h4>Party: {winner.partyName}</h4>
-                                                    <h4>ID: {winner.candidateID}</h4>
-                                                    <h4>Votes: {winner.votes}</h4>
-                                                </div>
-                                            </div>
+                                            {votingPercentages[constituency.constituencyID]!=0 ?
+                                                (
+                                                    <>
+                                                    <div className="d-flex justify-content-center mt-4 p-0">
+                                                        <div className="w-75 d-flex justify-content-center align-items-center">
+                                                            <img
+                                                                className="border border-5 border-dark"
+                                                                src={`src/assets/Party/${winners[0].partyPic}`}
+                                                                alt="Winner Party"
+                                                                style={{ width: '40%' }}
+                                                            />
+                                                            <img
+                                                                className="border border-5 border-dark ms-4"
+                                                                src={`src/assets/Candidates/${winners[0].candidatePic}`}
+                                                                alt="Winner Candidate"
+                                                                style={{ width: '40%' }}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="d-flex flex-column justify-content-center align-items-center mt-4">
+                                                        <div>
+                                                            <h4>Name: {winners[0].candidateName}</h4>
+                                                            <h4>Party: {winners[0].partyName}</h4>
+                                                            <h4>ID: {winners[0].candidateID}</h4>
+                                                            <h4>Votes: {winners[0].votes}</h4>
+                                                        </div>
+                                                    </div>
+                                                    {winners.length > 1 &&                                                        
+                                                        <div className="d-flex justify-content-center align-items-center mt-1">
+                                                            <FontAwesomeIcon icon={faCircleExclamation} style={{ fontSize: "1rem", color: "red", marginRight: "0.5rem" }} />
+                                                            <p className="text-danger mb-0">There is a tie condition. Please evaluate accordingly.</p>
+                                                      </div>
+                                                      
+                                                    }
+                                                    </>
+                                                )
+                                                :
+                                                (
+                                                    <div className="d-flex justify-content-center align-items-center p-0" style={{height:"50vh"}}>
+                                                        <h2>No winner !</h2>
+                                                    </div>
+                                                )
+                                            }
+                                            
                                             <div className="d-flex justify-content-center align-items-center">
                                                 <h3 className="border-top border-dark ps-3 pe-3 pt-3 mt-3">
                                                     Voting Percentage: {votingPercentages[constituency.constituencyID]}%

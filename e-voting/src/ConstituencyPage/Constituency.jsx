@@ -5,12 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import './Constituency.css'
 function Constituency({ voter, candi }) {
     const uri = voter.constData.constituencyPic;
-    console.log(uri);
     const navigate = useNavigate();
     async function nextbutton(){
         try {
             const id = voter.voterData.ConstituencyID;
-            console.log(`http://localhost:5000/candi/${voter.voterData.ConstituencyID}`);
             const response = await fetch(`http://localhost:5000/candi/${voter.voterData.ConstituencyID}`);
             if (!response.ok) {
                 throw new Error('Candidates not found');

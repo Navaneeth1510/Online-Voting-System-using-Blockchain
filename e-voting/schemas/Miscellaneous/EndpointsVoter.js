@@ -31,5 +31,17 @@ router.post('/', async (request, response) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    try {
+        // Selecting only the specified fields and excluding the _id field
+        const voters = await Voter.find().select('voterID Name Email DOB Address ConstituencyID VoterPic Status Password -_id');
+        return res.status(200).send(voters);
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send({ message: error.message });
+    }
+});
+
+
 
 export default router;

@@ -20,12 +20,9 @@ function AdminOTP({ admin }) {
 
     async function validate(e) {
         e.preventDefault();  
-        console.log('validating the otp');
         if (adminotp === otp) {
-            console.log('OTP correct');
             setCrct(true);  
         } else {
-            console.log('OTP incorrect');
             setCrct(false);
         }
         setAuth(true); 
@@ -40,14 +37,12 @@ function AdminOTP({ admin }) {
     }
 
     async function sendotp() {
-        console.log("Sending the otp");
         try {
             const response = await fetch(`http://localhost:5010/email/send-otp/${admin.adminData.Name}/${admin.adminData.Email}/${otp}`);
             if (!response.ok) {
                 throw new Error('Couldn\'t send email');
             }
             const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.error('Error:', error.message);
         }

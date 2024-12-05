@@ -1,1102 +1,1102 @@
 [
     {
-        "voterID": "YER285614",
-        "Name": "Rakesh Sharma",
-        "Email": "rakesh.sharma.1@mail.com",
-        "DOB": "1985-01-12",
+        "voterID": "YER914804",
+        "Password": "Navaneeth",
+        "Name": "Navaneeth N",
+        "Email": "navaneethnaren6@gmail.com",
+        "DOB": "2003-10-15",
         "Address": "1, 1st Main, M M Hills Road, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "rakesh.png",
-        "Status": 0,
-        "Password": "A1b2C3d4E5"
+        "Status": 0
     },
     {
-        "voterID": "YER743218",
-        "Name": "Anjali Singh",
-        "Email": "anjali.singh.2@mail.com",
+        "voterID": "YER984505",
+        "Password": "Rahul",
+        "Name": "Rahul G Athreyas",
+        "Email": "rahulgathreyas1408@gmail.com",
         "DOB": "1990-07-23",
         "Address": "7, 2nd Cross, Vinayaka Layout, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
-        "VoterPic": "anjali.png",
-        "Status": 0,
-        "Password": "QwErTy!2345"
+        "ConstituencyID": "1",
+        "VoterPic": "rahul.png",
+        "Status": 0
     },
     {
-        "voterID": "YER859673",
-        "Name": "Ravi Kumar",
-        "Email": "ravi.kumar.3@mail.com",
+        "voterID": "YER872248",
+        "Password": "Prarthana",
+        "Name": "Prarthana R",
+        "Email": "prarthana130503@gmail.com",
         "DOB": "1992-11-18",
         "Address": "12, 3rd Block, Uttarahalli Main Road, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
-        "VoterPic": "ravi.png",
-        "Status": 0,
-        "Password": "Password123!"
+        "ConstituencyID": "1",
+        "VoterPic": "prarthana.png",
+        "Status": 0
     },
     {
         "voterID": "YER162847",
+        "Password": "9xYv8PqW5L",
         "Name": "Meera Joshi",
         "Email": "meera.joshi.4@mail.com",
         "DOB": "1988-05-30",
         "Address": "15, 4th Cross, Srinivas Nagar, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "meera.png",
-        "Status": 0,
-        "Password": "9xYv8PqW5L"
+        "Status": 0
     },
     {
         "voterID": "YER394752",
+        "Password": "Secure#Key42",
         "Name": "Arun Patil",
         "Email": "arun.patil.5@mail.com",
         "DOB": "1983-09-14",
         "Address": "5, 5th Main, R R Layout, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "arun.png",
-        "Status": 0,
-        "Password": "Secure#Key42"
+        "Status": 0
     },
     {
         "voterID": "YER648295",
+        "Password": "5gHj$3lMn2",
         "Name": "Swati Verma",
         "Email": "swati.verma.6@mail.com",
         "DOB": "1996-02-07",
         "Address": "9, 6th Cross, Kottanahalli, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "swati.png",
-        "Status": 0,
-        "Password": "5gHj$3lMn2"
+        "Status": 0
     },
     {
         "voterID": "YER921548",
+        "Password": "PurpleDuck79@",
         "Name": "Amit Chawla",
         "Email": "amit.chawla.7@mail.com",
         "DOB": "1987-06-22",
         "Address": "8, 7th Main, 1st Stage, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "amit.png",
-        "Status": 0,
-        "Password": "PurpleDuck79@"
+        "Status": 0
     },
     {
         "voterID": "YER374619",
+        "Password": "CoffeeTime88#",
         "Name": "Neha Kapoor",
         "Email": "neha.kapoor.8@mail.com",
         "DOB": "1993-08-11",
         "Address": "22, 8th Cross, Vinayaka Nagar, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "neha.png",
-        "Status": 0,
-        "Password": "CoffeeTime88#"
+        "Status": 0
     },
     {
         "voterID": "YER563487",
+        "Password": "R3dBalloon!",
         "Name": "Rajiv Pandey",
         "Email": "rajiv.pandey.9@mail.com",
         "DOB": "1980-12-29",
         "Address": "14, 9th Block, R R Layout, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "rajiv.png",
-        "Status": 0,
-        "Password": "R3dBalloon!"
+        "Status": 0
     },
     {
         "voterID": "YER825914",
+        "Password": "$uperSecure99",
         "Name": "Pooja Mehta",
         "Email": "pooja.mehta.10@mail.com",
         "DOB": "1991-04-15",
         "Address": "4, 10th Main, Banashankari, Uttarahalli, Bengaluru, Karnataka 560061, India",
-        "ConstituencyID": 1,
+        "ConstituencyID": "1",
         "VoterPic": "pooja.png",
-        "Status": 0,
-        "Password": "$uperSecure99"
+        "Status": 0
     },
     {
         "voterID": "YER473529",
+        "Password": "8tRt7KoA@4",
         "Name": "Manoj Gupta",
         "Email": "manoj.gupta.11@mail.com",
         "DOB": "1984-02-21",
         "Address": "18, 2nd Block, Jayanagar, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "manoj.png",
-        "Status": 0,
-        "Password": "8tRt7KoA@4"
+        "Status": 0
     },
     {
         "voterID": "YER852136",
+        "Password": "Summer2024!",
         "Name": "Deepika Reddy",
         "Email": "deepika.reddy.12@mail.com",
         "DOB": "1989-10-10",
         "Address": "40, 5th Main, Jayanagar 4th Block, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "deepika.png",
-        "Status": 0,
-        "Password": "Summer2024!"
+        "Status": 0
     },
     {
         "voterID": "YER641935",
+        "Password": "StarWarsRocks!",
         "Name": "Suresh Pillai",
         "Email": "suresh.pillai.13@mail.com",
         "DOB": "1979-09-25",
         "Address": "25, 3rd Block, Jayanagar, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "suresh.png",
-        "Status": 0,
-        "Password": "StarWarsRocks!"
+        "Status": 0
     },
     {
         "voterID": "YER928354",
+        "Password": "Ocean#Blue20",
         "Name": "Nisha Jain",
         "Email": "nisha.jain.14@mail.com",
         "DOB": "1994-11-03",
         "Address": "60, 7th Cross, Jayanagar 5th Block, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "nisha.png",
-        "Status": 0,
-        "Password": "Ocean#Blue20"
+        "Status": 0
     },
     {
         "voterID": "YER317268",
+        "Password": "6YmB9qLsP@",
         "Name": "Rahul Khurana",
         "Email": "rahul.khurana.15@mail.com",
         "DOB": "1992-03-27",
         "Address": "5, 1st Main, Jayanagar 6th Block, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "rahul.png",
-        "Status": 0,
-        "Password": "6YmB9qLsP@"
+        "Status": 0
     },
     {
         "voterID": "YER659431",
+        "Password": "GuitarHero^77",
         "Name": "Priya Patel",
         "Email": "priya.patel.16@mail.com",
         "DOB": "1990-05-19",
         "Address": "14, 4th Block, Jayanagar, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "priya.png",
-        "Status": 0,
-        "Password": "GuitarHero^77"
+        "Status": 0
     },
     {
         "voterID": "YER386941",
+        "Password": "H0llywood$22",
         "Name": "Vinay Deshmukh",
         "Email": "vinay.deshmukh17@mail.com",
         "DOB": "1986-07-15",
         "Address": "29, 9th Cross, Jayanagar 3rd Block, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "vinay.png",
-        "Status": 0,
-        "Password": "H0llywood$22"
+        "Status": 0
     },
     {
         "voterID": "YER538624",
+        "Password": "MapleTree*3",
         "Name": "Sonal Naik",
         "Email": "sonal.naik.18@mail.com",
         "DOB": "1997-08-06",
         "Address": "8, 6th Main, Jayanagar 8th Block, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "sonal.png",
-        "Status": 0,
-        "Password": "MapleTree*3"
+        "Status": 0
     },
     {
         "voterID": "YER793185",
+        "Password": "11GreenPasture!",
         "Name": "Arvind Iyer",
         "Email": "arvind.iyer.19@mail.com",
         "DOB": "1983-04-30",
         "Address": "12, South End Circle, Jayanagar, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "arvind.png",
-        "Status": 0,
-        "Password": "11GreenPasture!"
+        "Status": 0
     },
     {
         "voterID": "YER264815",
+        "Password": "Dandelion^09",
         "Name": "Kavya Bhat",
         "Email": "kavya.bhat.20@mail.com",
         "DOB": "1995-10-01",
         "Address": "31, 10th Main, Jayanagar 4th Block, Bengaluru, Karnataka 560011, India",
-        "ConstituencyID": 2,
+        "ConstituencyID": "2",
         "VoterPic": "kavya.png",
-        "Status": 0,
-        "Password": "Dandelion^09"
+        "Status": 0
     },
     {
         "voterID": "YER528943",
+        "Password": "7$LittleBirds",
         "Name": "Pankaj Mishra",
         "Email": "pankaj.mishra.1@mail.com",
         "DOB": "1986-10-14",
         "Address": "32, 3rd Main, 2nd Block, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "pankaj.png",
-        "Status": 0,
-        "Password": "7$LittleBirds"
+        "Status": 0
     },
     {
         "voterID": "YER835167",
+        "Password": "LuckyCharm@21",
         "Name": "Rohini Shetty",
         "Email": "rohini.shetty.2@mail.com",
         "DOB": "1993-02-24",
         "Address": "45, 5th Main, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "rohini.png",
-        "Status": 0,
-        "Password": "LuckyCharm@21"
+        "Status": 0
     },
     {
         "voterID": "YER264589",
+        "Password": "Simple^Pass99",
         "Name": "Amitabh Verma",
         "Email": "amitabh.verma.3@mail.com",
         "DOB": "1984-05-18",
         "Address": "22, 8th Cross, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "amitabh.png",
-        "Status": 0,
-        "Password": "Simple^Pass99"
+        "Status": 0
     },
     {
         "voterID": "YER953176",
+        "Password": "$WonderWoman3",
         "Name": "Jyoti Bhatt",
         "Email": "jyoti.bhatt.4@mail.com",
         "DOB": "1991-07-20",
         "Address": "11, 9th Cross, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "jyoti.png",
-        "Status": 0,
-        "Password": "$WonderWoman3"
+        "Status": 0
     },
     {
         "voterID": "YER812347",
+        "Password": "Elephant!Forest",
         "Name": "Karan Desai",
         "Email": "karan.desai.5@mail.com",
         "DOB": "1988-12-10",
         "Address": "13, 4th Cross, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "karan.png",
-        "Status": 0,
-        "Password": "Elephant!Forest"
+        "Status": 0
     },
     {
         "voterID": "YER456832",
+        "Password": "0n3RingToRul3",
         "Name": "Ankita Singh",
         "Email": "ankita.singh.6@mail.com",
         "DOB": "1992-09-03",
         "Address": "7, 3rd Block, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "ankita.png",
-        "Status": 0,
-        "Password": "0n3RingToRul3"
+        "Status": 0
     },
     {
         "voterID": "YER734918",
+        "Password": "CuriousCat@56",
         "Name": "Vikas Sharma",
         "Email": "vikas.sharma.7@mail.com",
         "DOB": "1985-11-02",
         "Address": "19, 7th Cross, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "vikas.png",
-        "Status": 0,
-        "Password": "CuriousCat@56"
+        "Status": 0
     },
     {
         "voterID": "YER649283",
+        "Password": "KingOf$Castle9",
         "Name": "Neelam Kulkarni",
         "Email": "neelam.kulkarni.8@mail.com",
         "DOB": "1990-08-05",
         "Address": "30, 6th Cross, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "neelam.png",
-        "Status": 0,
-        "Password": "KingOf$Castle9"
+        "Status": 0
     },
     {
         "voterID": "YER983145",
+        "Password": "Tiger_King27",
         "Name": "Anurag Jain",
         "Email": "anurag.jain.9@mail.com",
         "DOB": "1989-03-15",
         "Address": "25, 10th Block, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "anurag.png",
-        "Status": 0,
-        "Password": "Tiger_King27"
+        "Status": 0
     },
     {
         "voterID": "YER193674",
+        "Password": "GoldenFish!42",
         "Name": "Sweta Iyer",
         "Email": "sweta.iyer.10@mail.com",
         "DOB": "1995-04-09",
         "Address": "50, 11th Cross, Basavanagudi, Bengaluru, Karnataka 560004, India",
-        "ConstituencyID": 3,
+        "ConstituencyID": "3",
         "VoterPic": "sweta.png",
-        "Status": 0,
-        "Password": "GoldenFish!42"
-    },    
+        "Status": 0
+    },
     {
         "voterID": "YER183295",
+        "Password": "Mountain^Climb",
         "Name": "Kunal Mehta",
         "Email": "kunal.mehta.1@mail.com",
         "DOB": "1987-06-19",
         "Address": "12, 1st Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "kunal.png",
-        "Status": 0,
-        "Password": "Mountain^Climb"
+        "Status": 0
     },
     {
         "voterID": "YER573942",
+        "Password": "C3P0AndR2D2#",
         "Name": "Arpita Dutta",
         "Email": "arpita.dutta.2@mail.com",
         "DOB": "1991-02-27",
         "Address": "18, 2nd Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "arpita.png",
-        "Status": 0,
-        "Password": "C3P0AndR2D2#"
+        "Status": 0
     },
     {
         "voterID": "YER843576",
+        "Password": "Safe*House88",
         "Name": "Ramesh Patel",
         "Email": "ramesh.patel.3@mail.com",
         "DOB": "1979-08-15",
         "Address": "26, 3rd Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "ramesh.png",
-        "Status": 0,
-        "Password": "Safe*House88"
+        "Status": 0
     },
     {
         "voterID": "YER928563",
+        "Password": "Moonlight@Magic",
         "Name": "Suman Agarwal",
         "Email": "suman.agarwal.4@mail.com",
         "DOB": "1986-10-09",
         "Address": "30, 4th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "suman.png",
-        "Status": 0,
-        "Password": "Moonlight@Magic"
+        "Status": 0
     },
     {
         "voterID": "YER453782",
+        "Password": "Hidden$Valley4",
         "Name": "Varun Kaushik",
         "Email": "varun.kaushik.5@mail.com",
         "DOB": "1990-03-18",
         "Address": "8, 5th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "varun.png",
-        "Status": 0,
-        "Password": "Hidden$Valley4"
+        "Status": 0
     },
     {
         "voterID": "YER367491",
+        "Password": "Tr0pical!Sun7",
         "Name": "Pallavi Nair",
         "Email": "pallavi.nair.6@mail.com",
         "DOB": "1994-12-23",
         "Address": "21, 6th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "pallavi.png",
-        "Status": 0,
-        "Password": "Tr0pical!Sun7"
+        "Status": 0
     },
     {
         "voterID": "YER982143",
+        "Password": "Star@ryNight5",
         "Name": "Nikhil Gupta",
         "Email": "nikhil.gupta.7@mail.com",
         "DOB": "1988-04-04",
         "Address": "14, 7th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "nikhil.png",
-        "Status": 0,
-        "Password": "Star@ryNight5"
+        "Status": 0
     },
     {
         "voterID": "YER764321",
+        "Password": "Lightning^Flash9",
         "Name": "Kiran Rao",
         "Email": "kiran.rao.8@mail.com",
         "DOB": "1985-07-14",
         "Address": "3, 8th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "kiran.png",
-        "Status": 0,
-        "Password": "Lightning^Flash9"
+        "Status": 0
     },
     {
         "voterID": "YER237194",
+        "Password": "Ra!nBow8",
         "Name": "Siddharth Reddy",
         "Email": "siddharth.reddy.9@mail.com",
         "DOB": "1993-01-02",
         "Address": "40, 9th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "siddharth.png",
-        "Status": 0,
-        "Password": "Ra!nBow8"
+        "Status": 0
     },
     {
         "voterID": "YER239784",
+        "Password": "Fox$Tail32",
         "Name": "Shalini Bose",
         "Email": "shalini.bose.10@mail.com",
         "DOB": "1993-11-17",
         "Address": "15, 10th Block, Padmanabhanagar, Bengaluru, Karnataka 560070, India",
-        "ConstituencyID": 4,
+        "ConstituencyID": "4",
         "VoterPic": "shalini.png",
-        "Status": 0,
-        "Password": "Fox$Tail32"
+        "Status": 0
     },
     {
         "voterID": "YER581324",
+        "Password": "BlueSky$Over",
         "Name": "Vishal Reddy",
         "Email": "vishal.reddy.1@mail.com",
         "DOB": "1988-02-19",
         "Address": "1, Bungalow Road, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "vishal.png",
-        "Status": 0,
-        "Password": "BlueSky$Over"
+        "Status": 0
     },
     {
         "voterID": "YER492386",
+        "Password": "Strong_Knight1",
         "Name": "Priya Kapoor",
         "Email": "priya.kapoor.2@mail.com",
         "DOB": "1993-07-11",
         "Address": "2nd Floor, 6th Cross, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "priya.png",
-        "Status": 0,
-        "Password": "Strong_Knight1"
+        "Status": 0
     },
     {
         "voterID": "YER724839",
+        "Password": "M4rvelSuper!",
         "Name": "Sanjay Gupta",
         "Email": "sanjay.gupta.3@mail.com",
         "DOB": "1981-03-08",
         "Address": "15, Shivaji Nagar, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "sanjay.png",
-        "Status": 0,
-        "Password": "M4rvelSuper!"
+        "Status": 0
     },
     {
         "voterID": "YER693284",
+        "Password": "Green$Planet12",
         "Name": "Ritu Mehra",
         "Email": "ritu.mehra.4@mail.com",
         "DOB": "1992-12-04",
         "Address": "7, Yeshwanthpur, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "ritu.png",
-        "Status": 0,
-        "Password": "Green$Planet12"
+        "Status": 0
     },
     {
         "voterID": "YER347918",
+        "Password": "CitrusSun#55",
         "Name": "Amit Kulkarni",
         "Email": "amit.kulkarni.5@mail.com",
         "DOB": "1984-09-15",
         "Address": "3, 1st Main, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "amit.png",
-        "Status": 0,
-        "Password": "CitrusSun#55"
+        "Status": 0
     },
     {
         "voterID": "YER873451",
+        "Password": "HappyFrog^9",
         "Name": "Sneha Sharma",
         "Email": "sneha.sharma.6@mail.com",
         "DOB": "1995-05-29",
         "Address": "56, 4th Cross, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "sneha.png",
-        "Status": 0,
-        "Password": "HappyFrog^9"
+        "Status": 0
     },
     {
         "voterID": "YER926475",
+        "Password": "Island$Escape4",
         "Name": "Abhishek Tiwari",
         "Email": "abhishek.tiwari.7@mail.com",
         "DOB": "1989-01-13",
         "Address": "21, Chikkabala, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "abhishek.png",
-        "Status": 0,
-        "Password": "Island$Escape4"
+        "Status": 0
     },
     {
         "voterID": "YER645198",
+        "Password": "Dino@Park88",
         "Name": "Anjali Singh",
         "Email": "anjali.singh.8@mail.com",
         "DOB": "1990-10-21",
         "Address": "9, Lakkasandra, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "anjali.png",
-        "Status": 0,
-        "Password": "Dino@Park88"
+        "Status": 0
     },
     {
         "voterID": "YER538712",
+        "Password": "BookLover#52",
         "Name": "Vivek Patel",
         "Email": "vivek.patel.9@mail.com",
         "DOB": "1986-08-16",
         "Address": "35, 2nd Block, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "vivek.png",
-        "Status": 0,
-        "Password": "BookLover#52"
+        "Status": 0
     },
     {
         "voterID": "YER183746",
+        "Password": "Ninja$Skills13",
         "Name": "Pooja Iyer",
         "Email": "pooja.iyer.10@mail.com",
         "DOB": "1994-06-07",
         "Address": "18, K R Market, Chickpet, Bengaluru, Karnataka 560053, India",
-        "ConstituencyID": 5,
+        "ConstituencyID": "5",
         "VoterPic": "pooja.png",
-        "Status": 0,
-        "Password": "Ninja$Skills13"
+        "Status": 0
     },
     {
         "voterID": "YER458217",
+        "Password": "DarkNight_Hero",
         "Name": "Manoj Kumar",
         "Email": "manoj.kumar.1@mail.com",
         "DOB": "1980-03-12",
         "Address": "5, 2nd Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "manoj.png",
-        "Status": 0,
-        "Password": "DarkNight_Hero"
+        "Status": 0
     },
     {
         "voterID": "YER924673",
+        "Password": "ForestElf@27",
         "Name": "Deepika Malhotra",
         "Email": "deepika.malhotra.2@mail.com",
         "DOB": "1993-09-09",
         "Address": "29, 3rd Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "deepika.png",
-        "Status": 0,
-        "Password": "ForestElf@27"
+        "Status": 0
     },
     {
         "voterID": "YER812569",
+        "Password": "Cactus^Desert3",
         "Name": "Rahul Desai",
         "Email": "rahul.desai.3@mail.com",
         "DOB": "1987-11-22",
         "Address": "12, 4th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "rahul.png",
-        "Status": 0,
-        "Password": "Cactus^Desert3"
+        "Status": 0
     },
     {
         "voterID": "YER764291",
+        "Password": "ArcticWind_88",
         "Name": "Shivani Rao",
         "Email": "shivani.rao.4@mail.com",
         "DOB": "1992-12-17",
         "Address": "45, 1st Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "shivani.png",
-        "Status": 0,
-        "Password": "ArcticWind_88"
+        "Status": 0
     },
     {
         "voterID": "YER376194",
+        "Password": "Panther$Paw1",
         "Name": "Mohit Bhatia",
         "Email": "mohit.bhatia.5@mail.com",
         "DOB": "1988-07-08",
         "Address": "16, 5th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "mohit.png",
-        "Status": 0,
-        "Password": "Panther$Paw1"
+        "Status": 0
     },
     {
         "voterID": "YER198364",
+        "Password": "JetPack!Fly7",
         "Name": "Arvind Joshi",
         "Email": "arvind.joshi.6@mail.com",
         "DOB": "1985-05-05",
         "Address": "22, 6th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "arvind.png",
-        "Status": 0,
-        "Password": "JetPack!Fly7"
+        "Status": 0
     },
     {
         "voterID": "YER647291",
+        "Password": "CozyFire$21",
         "Name": "Meera Kaur",
         "Email": "meera.kaur.7@mail.com",
         "DOB": "1990-08-25",
         "Address": "33, 7th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "meera.png",
-        "Status": 0,
-        "Password": "CozyFire$21"
+        "Status": 0
     },
     {
         "voterID": "YER589213",
+        "Password": "AstroCat!88",
         "Name": "Ashok Pandey",
         "Email": "ashok.pandey.8@mail.com",
         "DOB": "1982-01-17",
         "Address": "14, 8th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "ashok.png",
-        "Status": 0,
-        "Password": "AstroCat!88"
+        "Status": 0
     },
     {
         "voterID": "YER314789",
+        "Password": "SoccerStar#44",
         "Name": "Kavya Bhaskar",
         "Email": "kavya.bhaskar.9@mail.com",
         "DOB": "1991-03-11",
         "Address": "28, 9th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "kavya.png",
-        "Status": 0,
-        "Password": "SoccerStar#44"
+        "Status": 0
     },
     {
         "voterID": "YER842176",
+        "Password": "Pink$Rose22",
         "Name": "Rajveer Singh",
         "Email": "singh.rajveer.9@mail.com",
         "DOB": "2001-03-11",
         "Address": "28, 10th Block, Rajajinagar, Bangalore, Karnataka 560010, India",
-        "ConstituencyID": 6,
+        "ConstituencyID": "6",
         "VoterPic": "kavya.png",
-        "Status": 0,
-        "Password": "Pink$Rose22"
-    },    
+        "Status": 0
+    },
     {
         "voterID": "YER567893",
+        "Password": "9WinterChill@",
         "Name": "Aarav Yadav",
         "Email": "aaravyadav01@gmail.com",
         "DOB": "1994-05-12",
         "Address": "45, Sai Krupa Apartment, 1st Cross, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "aarav.png",
-        "Status": 0,
-        "Password": "9WinterChill@"
+        "Status": 0
     },
     {
         "voterID": "YER789034",
+        "Password": "Hero$Journey12",
         "Name": "Sanya Sharma",
         "Email": "sanyasharma02@gmail.com",
         "DOB": "1996-03-20",
         "Address": "12, Ashoka Nagar, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "sanya.png",
-        "Status": 0,
-        "Password": "Hero$Journey12"
+        "Status": 0
     },
     {
         "voterID": "YER239450",
+        "Password": "3Sunflower^Field",
         "Name": "Rohan Mehra",
         "Email": "rohanmehra03@gmail.com",
         "DOB": "1992-08-15",
         "Address": "9, MS Ramaiah Layout, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "rohan.png",
-        "Status": 0,
-        "Password": "3Sunflower^Field"
+        "Status": 0
     },
     {
         "voterID": "YER342159",
+        "Password": "Galactic$Star",
         "Name": "Priya Singh",
         "Email": "priyasingh04@gmail.com",
         "DOB": "2000-12-05",
         "Address": "34, Anand Nagar, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "priya.png",
-        "Status": 0,
-        "Password": "Galactic$Star"
+        "Status": 0
     },
     {
         "voterID": "YER123456",
+        "Password": "Smooth_Sailing",
         "Name": "Mohit Kapoor",
         "Email": "mohitkapoor05@gmail.com",
         "DOB": "1998-11-30",
         "Address": "23, Aramane Nagar, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "mohit.png",
-        "Status": 0,
-        "Password": "Smooth_Sailing"
+        "Status": 0
     },
     {
         "voterID": "YER654321",
+        "Password": "Iron@Will22",
         "Name": "Nisha Arora",
         "Email": "nishaarora06@gmail.com",
         "DOB": "2002-04-25",
         "Address": "15, Shivananda Nagar, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "nisha.png",
-        "Status": 0,
-        "Password": "Iron@Will22"
+        "Status": 0
     },
     {
         "voterID": "YER987654",
+        "Password": "Adventure$Time",
         "Name": "Karan Verma",
         "Email": "karanverma07@gmail.com",
         "DOB": "1997-09-14",
         "Address": "30, Raghavendra Layout, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "karan.png",
-        "Status": 0,
-        "Password": "Adventure$Time"
+        "Status": 0
     },
     {
         "voterID": "YER159753",
+        "Password": "7FireFlies!",
         "Name": "Aditi Bansal",
         "Email": "aditibansal08@gmail.com",
         "DOB": "2001-01-20",
         "Address": "18, Kacharakana Halli, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "aditi.png",
-        "Status": 0,
-        "Password": "7FireFlies!"
+        "Status": 0
     },
     {
         "voterID": "YER753159",
+        "Password": "GalaxyWolf_7",
         "Name": "Rahul Choudhary",
         "Email": "rahulchoudhary09@gmail.com",
         "DOB": "1995-06-07",
         "Address": "25, Shivaji Nagar, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "rahul.png",
-        "Status": 0,
-        "Password": "GalaxyWolf_7"
+        "Status": 0
     },
     {
         "voterID": "YER951753",
+        "Password": "Peace@&Love99",
         "Name": "Tanya Reddy",
         "Email": "tanyareddy10@gmail.com",
         "DOB": "2003-08-18",
         "Address": "50, R.T. Nagar, Hebbal, Bangalore 560024, India",
-        "ConstituencyID": 7,
+        "ConstituencyID": "7",
         "VoterPic": "tanya.png",
-        "Status": 0,
-        "Password": "Peace@&Love99"
-    },    
+        "Status": 0
+    },
     {
         "voterID": "YER852963",
+        "Password": "Lemon$Zest01",
         "Name": "Ravi Sharma",
         "Email": "ravisharma01@gmail.com",
         "DOB": "1995-03-02",
         "Address": "22, Shivaji Nagar, Bangalore, Karnataka 560001, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "ravi.png",
-        "Status": 0,
-        "Password": "Lemon$Zest01"
+        "Status": 0
     },
     {
         "voterID": "YER963258",
+        "Password": "Whisper_Wind",
         "Name": "Meera Iyer",
         "Email": "meeraiyer02@gmail.com",
         "DOB": "2004-11-14",
         "Address": "44, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "meera.png",
-        "Status": 0,
-        "Password": "Whisper_Wind"
+        "Status": 0
     },
     {
         "voterID": "YER147852",
+        "Password": "Royal$Knight44",
         "Name": "Suresh Reddy",
         "Email": "sureshreddy03@gmail.com",
         "DOB": "1998-07-21",
         "Address": "10, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "suresh.png",
-        "Status": 0,
-        "Password": "Royal$Knight44"
+        "Status": 0
     },
     {
         "voterID": "YER258741",
+        "Password": "@SugarPlum29",
         "Name": "Anjali Gupta",
         "Email": "anjaligupta04@gmail.com",
         "DOB": "2001-12-30",
         "Address": "16, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "anjali.png",
-        "Status": 0,
-        "Password": "@SugarPlum29"
+        "Status": 0
     },
     {
         "voterID": "YER369852",
+        "Password": "Deep$Ocean5",
         "Name": "Karthik Nair",
         "Email": "karthiknair05@gmail.com",
         "DOB": "2003-05-17",
         "Address": "32, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "karthik.png",
-        "Status": 0,
-        "Password": "Deep$Ocean5"
+        "Status": 0
     },
     {
         "voterID": "YER456123",
+        "Password": "SunsetGlow^18",
         "Name": "Pooja Desai",
         "Email": "poojadesai06@gmail.com",
         "DOB": "1996-10-09",
         "Address": "20, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "pooja.png",
-        "Status": 0,
-        "Password": "SunsetGlow^18"
+        "Status": 0
     },
     {
         "voterID": "YER123456",
+        "Password": "PixelArt$21",
         "Name": "Nikhil Patil",
         "Email": "nikhilpatil07@gmail.com",
         "DOB": "1999-02-23",
         "Address": "45, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "nikhil.png",
-        "Status": 0,
-        "Password": "PixelArt$21"
+        "Status": 0
     },
     {
         "voterID": "YER789012",
+        "Password": "TropicalBreeze!",
         "Name": "Tanvi Sethi",
         "Email": "tanvisethi08@gmail.com",
         "DOB": "2002-08-05",
         "Address": "78, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "tanvi.png",
-        "Status": 0,
-        "Password": "TropicalBreeze!"
+        "Status": 0
     },
     {
         "voterID": "YER234567",
+        "Password": "Secret$Door88",
         "Name": "Vikram Rao",
         "Email": "vikramrao09@gmail.com",
         "DOB": "1997-04-15",
         "Address": "89, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "vikram.png",
-        "Status": 0,
-        "Password": "Secret$Door88"
+        "Status": 0
     },
     {
         "voterID": "YER345678",
+        "Password": "Magic_Potion22",
         "Name": "Riya Jain",
         "Email": "riyajain10@gmail.com",
         "DOB": "2000-06-28",
         "Address": "53, Shivajinagar, Bangalore, Karnataka 560051, India",
-        "ConstituencyID": 8,
+        "ConstituencyID": "8",
         "VoterPic": "riya.png",
-        "Status": 0,
-        "Password": "Magic_Potion22"
-},
+        "Status": 0
+    },
     {
         "voterID": "YER159864",
+        "Password": "Silent@River",
         "Name": "Neha Sharma",
         "Email": "nehasharma01@gmail.com",
         "DOB": "1993-05-17",
         "Address": "10, 2nd Main Road, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "neha.png",
-        "Status": 0,
-        "Password": "Silent@River"
+        "Status": 0
     },
     {
         "voterID": "YER852369",
+        "Password": "Cherry$Blossom1",
         "Name": "Vikrant Singh",
         "Email": "vikrantsingh02@gmail.com",
         "DOB": "1999-03-24",
         "Address": "15, 5th Cross, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "vikrant.png",
-        "Status": 0,
-        "Password": "Cherry$Blossom1"
+        "Status": 0
     },
     {
         "voterID": "YER741258",
+        "Password": "ButterFly_66",
         "Name": "Riya Patel",
         "Email": "riyapatel03@gmail.com",
         "DOB": "2000-11-10",
         "Address": "20, 4th Block, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "riya.png",
-        "Status": 0,
-        "Password": "ButterFly_66"
+        "Status": 0
     },
     {
         "voterID": "YER369258",
+        "Password": "$WinterBreeze",
         "Name": "Aditya Verma",
         "Email": "adityaverma04@gmail.com",
         "DOB": "1995-09-15",
         "Address": "25, 3rd Main, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "aditya.png",
-        "Status": 0,
-        "Password": "$WinterBreeze"
+        "Status": 0
     },
     {
         "voterID": "YER456789",
+        "Password": "Flame@Dragon4",
         "Name": "Pooja Khanna",
         "Email": "poojakhanna05@gmail.com",
         "DOB": "1998-04-28",
         "Address": "8, 6th Cross, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "pooja.png",
-        "Status": 0,
-        "Password": "Flame@Dragon4"
+        "Status": 0
     },
     {
         "voterID": "YER159753",
+        "Password": "Angelic$Light",
         "Name": "Sakshi Joshi",
         "Email": "sakshijoshi06@gmail.com",
         "DOB": "2002-07-22",
         "Address": "30, 1st Block, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "sakshi.png",
-        "Status": 0,
-        "Password": "Angelic$Light"
+        "Status": 0
     },
     {
         "voterID": "YER753951",
+        "Password": "Cr1stalCastle#",
         "Name": "Karan Gupta",
         "Email": "karangupta07@gmail.com",
         "DOB": "1996-01-19",
         "Address": "12, 7th Main, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "karan.png",
-        "Status": 0,
-        "Password": "Cr1stalCastle#"
+        "Status": 0
     },
     {
         "voterID": "YER951753",
+        "Password": "Unicorn_Tales",
         "Name": "Tanya Sharma",
         "Email": "tanyasharma08@gmail.com",
         "DOB": "2003-10-05",
         "Address": "21, 8th Cross, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "tanya.png",
-        "Status": 0,
-        "Password": "Unicorn_Tales"
+        "Status": 0
     },
     {
         "voterID": "YER258963",
+        "Password": "EndlessSky@5",
         "Name": "Rajesh Nair",
         "Email": "rajeshnair09@gmail.com",
         "DOB": "1994-02-14",
         "Address": "40, 9th Main, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "rajesh.png",
-        "Status": 0,
-        "Password": "EndlessSky@5"
+        "Status": 0
     },
     {
         "voterID": "YER369874",
+        "Password": "Starlight$Dream",
         "Name": "Sneha Bhatia",
         "Email": "snehabhatia10@gmail.com",
         "DOB": "2001-06-30",
         "Address": "70, 10th Cross, Malleshwaram, Bangalore, Karnataka 560003, India",
-        "ConstituencyID": 9,
+        "ConstituencyID": "9",
         "VoterPic": "sneha.png",
-        "Status": 0,
-        "Password": "Starlight$Dream"
-    },    
+        "Status": 0
+    },
     {
         "voterID": "YER852741",
+        "Password": "Cozy_Cabin66",
         "Name": "Amit Tiwari",
         "Email": "amittiwari01@gmail.com",
         "DOB": "1997-12-01",
         "Address": "21, Mahatma Gandhi Road, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "amit.png",
-        "Status": 0,
-        "Password": "Cozy_Cabin66"
+        "Status": 0
     },
     {
         "voterID": "YER963147",
+        "Password": "Brave@Soldier",
         "Name": "Snehal Patil",
         "Email": "snehalpatil02@gmail.com",
         "DOB": "2003-09-14",
         "Address": "34, Yeshwanthpur Industrial Area, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "snehal.png",
-        "Status": 0,
-        "Password": "Brave@Soldier"
+        "Status": 0
     },
     {
         "voterID": "YER147963",
+        "Password": "Electric$Pulse",
         "Name": "Tarun Singh",
         "Email": "tarunsingh03@gmail.com",
         "DOB": "1995-04-20",
         "Address": "5, 1st Main, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "tarun.png",
-        "Status": 0,
-        "Password": "Electric$Pulse"
+        "Status": 0
     },
     {
         "voterID": "YER258147",
+        "Password": "Sapphire_Sky",
         "Name": "Divya Menon",
         "Email": "divyamenon04@gmail.com",
         "DOB": "2001-08-05",
         "Address": "15, 2nd Cross, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "divya.png",
-        "Status": 0,
-        "Password": "Sapphire_Sky"
+        "Status": 0
     },
     {
         "voterID": "YER369258",
+        "Password": "Hidden@Treasure",
         "Name": "Karan Bansal",
         "Email": "karanbansal05@gmail.com",
         "DOB": "1998-11-22",
         "Address": "28, Near Yeshwanthpur Railway Station, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "karan.png",
-        "Status": 0,
-        "Password": "Hidden@Treasure"
+        "Status": 0
     },
     {
         "voterID": "YER456789",
+        "Password": "Dream$Big20",
         "Name": "Ananya Raghav",
         "Email": "ananyaraghav06@gmail.com",
         "DOB": "2004-03-18",
         "Address": "12, 3rd Main Road, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "ananya.png",
-        "Status": 0,
-        "Password": "Dream$Big20"
+        "Status": 0
     },
     {
         "voterID": "YER159753",
+        "Password": "CoffeeBean^75",
         "Name": "Ritika Mehta",
         "Email": "ritikamehta07@gmail.com",
         "DOB": "1996-10-26",
         "Address": "45, 4th Cross, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "ritika.png",
-        "Status": 0,
-        "Password": "CoffeeBean^75"
+        "Status": 0
     },
     {
         "voterID": "YER753951",
+        "Password": "Frosty$Morn",
         "Name": "Nikhil Rao",
         "Email": "nikhilrao08@gmail.com",
         "DOB": "2002-02-11",
         "Address": "60, New Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "nikhil.png",
-        "Status": 0,
-        "Password": "Frosty$Morn"
+        "Status": 0
     },
     {
         "voterID": "YER951852",
+        "Password": "Courage_Roar!",
         "Name": "Sonam Agarwal",
         "Email": "sonamagarwal09@gmail.com",
         "DOB": "1994-07-30",
         "Address": "90, 5th Main, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "sonam.png",
-        "Status": 0,
-        "Password": "Courage_Roar!"
+        "Status": 0
     },
     {
         "voterID": "YER852963",
+        "Password": "Sparkle@Firewood",
         "Name": "Shivani Thakur",
         "Email": "shivanisharma10@gmail.com",
         "DOB": "2003-12-20",
         "Address": "32, 6th Cross, Yeshwanthpur, Bangalore 560022, India",
-        "ConstituencyID": 10,
+        "ConstituencyID": "10",
         "VoterPic": "shivani.png",
-        "Status": 0,
-        "Password": "Sparkle@Firewood"
+        "Status": 0
     }
 ]
