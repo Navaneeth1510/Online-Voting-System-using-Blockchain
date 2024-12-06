@@ -75,18 +75,6 @@ function Result() {
         navigate(-1);
     }
 
-    async function takeScreenshot(name){
-        const element = document.getElementById('ss2'); 
-        const canvas = await html2canvas(element);
-        const dataURL = canvas.toDataURL('image/png');
-
-        // Create a link and trigger the download
-        const link = document.createElement('a');
-        link.href = dataURL;
-        link.download = `${name}.png`;
-        link.click();
-    };
-
     useEffect(() => {
         async function fetchAllVotingPercentages() {
             const percentages = {};
@@ -202,13 +190,26 @@ function Result() {
                                     console.error('Element with ID "ss" not found');
                                     return;
                                 }
-                            
-                                const canvas = await html2canvas(element);
-                                const dataURL = canvas.toDataURL('image/png');
-                                const link = document.createElement('a');
-                                link.href = dataURL;
-                                link.download = `${name}.png`;
-                                link.click();
+                                const button = document.getElementById("down");
+                                if(button){
+                                    button.style.display="none";
+                                }
+                                try{
+                                    const canvas = await html2canvas(element);
+                                    const dataURL = canvas.toDataURL('image/png');
+                                    const link = document.createElement('a');
+                                    link.href = dataURL;
+                                    link.download = `${name}.png`;
+                                    link.click();
+                                }
+                                catch (error) {
+                                    console.error('Error taking screenshot:', error);
+                                }
+                                finally{
+                                    if(button){
+                                        button.style.display="block";
+                                    }
+                                }
                             }
                                                         
 
@@ -220,6 +221,7 @@ function Result() {
                                         </button>
                                         <FontAwesomeIcon 
                                             icon={faDownload} 
+                                            id = "down"
                                             className="me-0" 
                                             style={{ fontSize: "1.5rem" }}
                                             onClick={()=>takeScreenshot(constituency.constituencyName, document.getElementById('ss2'))} 
