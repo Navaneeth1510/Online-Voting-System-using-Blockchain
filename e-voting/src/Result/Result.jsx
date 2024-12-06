@@ -316,7 +316,7 @@ function Result() {
                                             }
                                             
                                             <div className="d-flex justify-content-center align-items-center">
-                                                <h3 className="border-top border-dark ps-3 pe-3 pt-3 mt-3">
+                                                <h3 className="border-top border-dark ps-3 pe-3 mt-3 pt-3">
                                                     Voting Percentage: {votingPercentages[constituency.constituencyID]}%
                                                 </h3>
                                             </div>
@@ -338,13 +338,7 @@ function Result() {
                         </span>
                         <span className="visually-hidden">Previous</span>
                     </button>
-                    <button
-                        className="carousel-control-next cc h-50 d-flex justify-content-center align-items-center"
-                        type="button"
-                        data-bs-target="#carouselExample"
-                        data-bs-slide="next"
-                        style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }}
-                    >
+                    <button className="carousel-control-next cc h-50 d-flex justify-content-center align-items-center" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }} >
                         <span className="ms-5">
                             <FontAwesomeIcon icon={faAngleRight} style={{ fontSize: "2rem", color: "green" }} />
                         </span>
