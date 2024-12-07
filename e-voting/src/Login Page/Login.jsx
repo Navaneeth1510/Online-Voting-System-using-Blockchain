@@ -109,7 +109,7 @@ function Login({voter, admin}) {
         if(user)            
             navigate('/otp-authentication');
         else
-            navigate('/constituency');
+            navigate('/face-detection-details');
     }
 
     return (

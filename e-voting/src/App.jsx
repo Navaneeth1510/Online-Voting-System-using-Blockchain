@@ -16,6 +16,8 @@ import ScheduleElection from './Schedule_election/schedule_election';
 import Statistics from './Statistics/Statistics';
 import Result from './Result/Result';
 import Votes from './Votes/Votes';
+import FaceDetection from './FaceDetection/FaceDetection';
+import PreFaceDetection from './PreFaceDetection/PreFaceDetection';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
@@ -181,6 +183,18 @@ function App() {
             {/* can access these roytes only on a condition check. wither admin has logged in or voter has logged in  */}
 
             {/* Voter routes */}
+            <Route path='/face-detection-details' element={
+                    <PrivateRoute isAllowed={!!voterData}>
+                        <PreFaceDetection />
+                    </PrivateRoute>
+            } />
+
+            <Route path='/face-detection' element={
+                    <PrivateRoute isAllowed={!!voterData}>
+                        <FaceDetection voter={voter}/>
+                    </PrivateRoute>
+            } />
+
             <Route path='/constituency' element={
                     <PrivateRoute isAllowed={!!voterData}>
                         <Constituency voter={voter} candi={candidates} />
