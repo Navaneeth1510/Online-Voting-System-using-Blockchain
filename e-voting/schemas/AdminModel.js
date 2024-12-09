@@ -20,6 +20,11 @@ const adminSchema = mongoose.Schema(
             required: true,
             unique: true,
         },
+        Phone:{
+            type:String,
+            required:true,
+            unique:true,
+        },
         DOB: {
             type: String,
             required: true,

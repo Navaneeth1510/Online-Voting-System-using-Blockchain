@@ -35,17 +35,22 @@ function FaceDetection({ voter }) {
         }
     };
 
-    useEffect(() => {
-        const startCamera = async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                videoRef.current.srcObject = stream;
-                videoRef.current.onplaying = () => setVideoReady(true);
-            } catch (error) {
-                console.error("Error accessing camera:", error);
-            }
-        };
+    function reset(){
+        setCapturedImage(null);
+        startCamera();
+    }
 
+    const startCamera = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            videoRef.current.srcObject = stream;
+            videoRef.current.onplaying = () => setVideoReady(true);
+        } catch (error) {
+            console.error("Error accessing camera:", error);
+        }
+    };
+
+    useEffect(() => {
         startCamera();
 
         return () => {
@@ -117,14 +122,23 @@ function FaceDetection({ voter }) {
                                     <button type="button" onClick={() => captureImage()} className="btn video-feed" style={{ backgroundColor: "#5522D0", color: "white" }} disabled={capturedImage != null}>
                                         Capture
                                     </button>
+                                    {capturedImage!=null &&
+                                        <button type="button" onClick={() => reset()} className="btn ms-5 btn-success video-feed" style={{  color: "white" }}>
+                                            Reset
+                                        </button>
+                                    }
                                 </div>
                             </div>
                             {capturedImage != null &&
                                 <div className="row mt-5 justify-content-center d-flex align-items-center">
                                     <div className="d-flex justify-content-center align-items-center flex-column">
-                                        <FontAwesomeIcon icon={faSpinner} spin />
-                                        <p>Processing the image</p>
-                                        <p>This might take some time</p>
+                                        <FontAwesomeIcon icon={faSpinner} spin style={{fontSize:"1.5rem"}}/>
+                                        <div className="">
+                                        Processing the image
+                                        </div>
+                                        <div className="">
+                                        This might take some time
+                                        </div>
                                     </div>
                                 </div>
                             }

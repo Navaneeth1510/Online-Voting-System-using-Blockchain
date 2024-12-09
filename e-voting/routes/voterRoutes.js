@@ -38,6 +38,18 @@ router.get('/emails', async (req, res) => {
     }
 });
 
+router.get('/phones', async (req, res) => {
+    try {
+        // Fetch voters where the Phone field exists and is not null
+        const voters = await Voter.find({ Phone: { $exists: true, $ne: null } }, 'Phone Name');
+        res.json(voters);
+    } catch (error) {
+        console.error('Error fetching voter phones:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+
 router.get('/update/:id/:pass', async (request, response) => {
     try {
         const { id, pass } = request.params;

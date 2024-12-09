@@ -21,6 +21,10 @@ const voterSchema = mongoose.Schema(
             unique: true,
             match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'], 
         },
+        Phone:{
+            type:String,
+            unique:true,
+        },
         DOB: {
             type: String,
             required: true,

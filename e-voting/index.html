@@ -20,15 +20,30 @@
     <body class="overflow-hidden">
         <div id="root" className="overflow-hidden"></div>
         <script type="module" src="/src/main.jsx"></script>
-        <!-- <script>
-            document.addEventListener('keydown', function (event) {
-                if (event.keyCode === 123 || (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 85))) {
-                event.preventDefault();
-                }
-            });
-            document.addEventListener('contextmenu', function (event) {
-                event.preventDefault();
-            });
-        </script> -->
+        <script>
+            // Disable browser navigation using history manipulation
+            window.history.forward();
+            function noBack() {
+                window.history.forward();
+            }
+            window.onload = noBack;
+            window.onpopstate = noBack();
+            
+
+            // Disable developer tools
+            // document.addEventListener('keydown', function (event) {
+            //     if (
+            //         event.keyCode === 123 || // F12
+            //         (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 85)) // Ctrl+Shift+I / Ctrl+Shift+U
+            //     ) {
+            //         event.preventDefault();
+            //     }
+            // });
+
+            // // Disable right-click context menu
+            // document.addEventListener('contextmenu', function (event) {
+            //     event.preventDefault();
+            // });
+        </script>
     </body>
 </html>
